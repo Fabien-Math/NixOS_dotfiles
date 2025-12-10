@@ -1,0 +1,27 @@
+{
+  # User Configuration
+  username = "fabien"; # Your username (auto-set with install.sh, live-install.sh, rebuild)
+  desktop = "hyprland"; # Option: hyprland
+  terminal = "kitty"; # Option: kitty
+  editor = "vscode"; # Options: vscode, nvchad, neovim
+  browser = "firefox"; # Option: firefox
+  tuiFileManager = "yazi"; # Option: yazi
+  sddmTheme = "purple_leaves"; # Options: astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
+  sddmWallpaper = "cyberpunk_streets";
+  lockWallpaper = "dark_forest";
+  wallpaper = "moon"; # See modules/themes/wallpapers for options
+  shell = "bash"; # Options: zsh, bash
+  games = true; # Whether to enable the gaming module
+
+  # Hardware Configuration
+  videoDriver = "amdgpu"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
+  hostname = "fabien"; # Your system hostname
+
+  # Localization
+  clock24h = true; # 24H or 12H clock in waybar
+  locale = "en_GB.UTF-8"; # System locale
+  timezone = "Europe/Paris"; # Your timezone
+  kbdLayout = "fr"; # Keyboard layout
+  kbdVariant = "latin9"; # Keyboard variant (can be empty)
+  consoleKeymap = "fr"; # TTY keymap
+}
