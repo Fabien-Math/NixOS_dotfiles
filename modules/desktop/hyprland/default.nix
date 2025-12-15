@@ -219,6 +219,7 @@ in
               };
               layerrule = [
                 "blur, rofi"
+                "blur, waybar"
                 "ignorezero, rofi"
                 "ignorealpha 0.7, rofi"
 
@@ -402,213 +403,213 @@ in
                 ",XF86AudioLowerVolume,exec,pamixer -d 2"
                 ",XF86AudioRaiseVolume,exec,pamixer -i 2"
               ];
-              bind =
-                let
-                  autoclicker = pkgs.callPackage ./scripts/autoclicker.nix { };
-                in
-                [
-                  # Keybinds help menu
-                  "$mainMod, question, exec, ${./scripts/keybinds.sh}"
-                  "$mainMod, slash, exec, ${./scripts/keybinds.sh}"
-                  "$mainMod CTRL, K, exec, ${./scripts/keybinds.sh}"
+        bind =
+          let
+            autoclicker = pkgs.callPackage ./scripts/autoclicker.nix { };
+          in
+          [
+            # Keybinds help menu
+            "$mainMod, question, exec, ${./scripts/keybinds.sh}"
+            "$mainMod, slash, exec, ${./scripts/keybinds.sh}"
+            "$mainMod CTRL, K, exec, ${./scripts/keybinds.sh}"
 
-                  "$mainMod, F8, exec, kill $(cat /tmp/auto-clicker.pid) 2>/dev/null || ${lib.getExe autoclicker} --cps 40"
-                  # "$mainMod ALT, mouse:276, exec, kill $(cat /tmp/auto-clicker.pid) 2>/dev/null || ${lib.getExe autoclicker} --cps 60"
+            "$mainMod, F8, exec, kill $(cat /tmp/auto-clicker.pid) 2>/dev/null || ${lib.getExe autoclicker} --cps 40"
+            # "$mainMod ALT, mouse:276, exec, kill $(cat /tmp/auto-clicker.pid) 2>/dev/null || ${lib.getExe autoclicker} --cps 60"
 
-                  # Night Mode (lower value means warmer temp)
-                  "$mainMod, F9, exec, ${getExe pkgs.hyprsunset} --temperature 3500" # good values: 3500, 3000, 2500
-                  "$mainMod, F10, exec, pkill hyprsunset"
+            # Night Mode (lower value means warmer temp)
+            "$mainMod, F9, exec, ${getExe pkgs.hyprsunset} --temperature 3500" # good values: 3500, 3000, 2500
+            "$mainMod, F10, exec, pkill hyprsunset"
 
-                  # Window/Session actions
-                  "$mainMod, Q, exec, ${./scripts/dontkillsteam.sh}" # killactive, kill the window on focus
-                  "ALT, F4, exec, ${./scripts/dontkillsteam.sh}" # killactive, kill the window on focus
-                  "$mainMod, delete, exit" # kill hyperland session
-                  "$mainMod, W, togglefloating" # toggle the window on focus to float
-                  "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
-                  "$mainMod SHIFT, Tab, togglesplit" # toggle the window on focus to float
-                  "ALT, return, fullscreen" # toggle the window on focus to fullscreen
-                  "$mainMod ALT, L, exec, hyprlock" # lock screen
-                  "$mainMod, backspace, exec, pkill -x wlogout || wlogout -b 4" # logout menu
-                  "$CONTROL, ESCAPE, exec, pkill waybar || waybar" # toggle waybar
+            # Window/Session actions
+            "$mainMod, Q, exec, ${./scripts/dontkillsteam.sh}" # killactive, kill the window on focus
+            "ALT, F4, exec, ${./scripts/dontkillsteam.sh}" # killactive, kill the window on focus
+            "$mainMod, delete, exit" # kill hyperland session
+            "$mainMod, W, togglefloating" # toggle the window on focus to float
+            "$mainMod SHIFT, G, togglegroup" # toggle the window on focus to float
+            "$mainMod SHIFT, Tab, togglesplit" # toggle the window on focus to float
+            "ALT, return, fullscreen" # toggle the window on focus to fullscreen
+            "$mainMod ALT, L, exec, hyprlock" # lock screen
+            "$mainMod, backspace, exec, pkill -x wlogout || wlogout -b 4" # logout menu
+            "$CONTROL, ESCAPE, exec, pkill waybar || waybar" # toggle waybar
 
-                  # Applications/Programs
-                  "$mainMod, Return, exec, $term"
-                  "$mainMod, T, exec, $term"
-                  "$mainMod, E, exec, $fileManager"
-                  "$mainMod, C, exec, $editor"
-                  "$mainMod, F, exec, $browser"
-                  "$mainMod SHIFT, S, exec, spotify"
-                  "$mainMod SHIFT, Y, exec, youtube-music"
-                  "$CONTROL ALT, DELETE, exec, $term -e '${getExe pkgs.btop}'" # System Monitor
-                  "$mainMod CTRL, C, exec, hyprpicker --autocopy --format=hex" # Colour Picker
+            # Applications/Programs
+            "$mainMod, Return, exec, $term"
+            "$mainMod, T, exec, $term"
+            "$mainMod, E, exec, $fileManager"
+            "$mainMod, C, exec, $editor"
+            "$mainMod, F, exec, $browser"
+            "$mainMod SHIFT, S, exec, spotify"
+            "$mainMod SHIFT, Y, exec, youtube-music"
+            "$CONTROL ALT, DELETE, exec, $term -e '${getExe pkgs.btop}'" # System Monitor
+            "$mainMod CTRL, C, exec, hyprpicker --autocopy --format=hex" # Colour Picker
 
-                  "$mainMod, A, exec, launcher drun" # launch desktop applications
-                  "$mainMod, SPACE, exec, launcher drun" # launch desktop applications
-                  "$mainMod SHIFT, W, exec, launcher wallpaper" # launch wallpaper switcher
-                  "$mainMod, Z, exec, launcher emoji" # launch emoji picker
-                  "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
-                  "$mainMod, G, exec, launcher games" # game launcher
-                  "$mainMod, tab, exec, launcher window" # switch between desktop applications
-                  # "$mainMod, R, exec, launcher file" # brrwse system files
-                  "$mainMod ALT, K, exec, ${./scripts/keyboardswitch.sh}" # change keyboard layout
-                  "$mainMod SHIFT, N, exec, swaync-client -t -sw" # swayNC panel
-                  "$mainMod SHIFT, Q, exec, swaync-client -t -sw" # swayNC panel
-                  "$mainMod ALT, G, exec, ${./scripts/gamemode.sh}" # disable hypr effects for gamemode
-                  "$mainMod, V, exec, ${./scripts/ClipManager.sh}" # Clipboard Manager
-                  "$mainMod, M, exec, ${./scripts/rofimusic.sh}" # online music
+            "$mainMod, A, exec, launcher drun" # launch desktop applications
+            "$mainMod, SPACE, exec, launcher drun" # launch desktop applications
+            "$mainMod SHIFT, W, exec, launcher wallpaper" # launch wallpaper switcher
+            "$mainMod, Z, exec, launcher emoji" # launch emoji picker
+            "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
+            "$mainMod, G, exec, launcher games" # game launcher
+            "$mainMod, tab, exec, launcher window" # switch between desktop applications
+            # "$mainMod, R, exec, launcher file" # brrwse system files
+            "$mainMod ALT, K, exec, ${./scripts/keyboardswitch.sh}" # change keyboard layout
+            "$mainMod SHIFT, N, exec, swaync-client -t -sw" # swayNC panel
+            "$mainMod SHIFT, Q, exec, swaync-client -t -sw" # swayNC panel
+            "$mainMod ALT, G, exec, ${./scripts/gamemode.sh}" # disable hypr effects for gamemode
+            "$mainMod, V, exec, ${./scripts/ClipManager.sh}" # Clipboard Manager
+            "$mainMod, M, exec, ${./scripts/rofimusic.sh}" # online music
 
-                  # Screenshot/Screencapture
-                  "$mainMod SHIFT, R, exec, ${./scripts/screen-record.sh} a" # Screen Record (area select)
-                  "$mainMod CTRL, R, exec, ${./scripts/screen-record.sh} m" # Screen Record (monitor select)
-                  "$mainMod, P, exec, ${./scripts/screenshot.sh} s" # drag to snip an area / click on a window to print it
-                  "$mainMod CTRL, P, exec, ${./scripts/screenshot.sh} sf" # frozen screen, drag to snip an area / click on a window to print it
-                  "$mainMod, print, exec, ${./scripts/screenshot.sh} m" # print focused monitor
-                  "$mainMod ALT, P, exec, ${./scripts/screenshot.sh} p" # print all monitor outputs
+            # Screenshot/Screencapture
+            "$mainMod SHIFT, R, exec, ${./scripts/screen-record.sh} a" # Screen Record (area select)
+            "$mainMod CTRL, R, exec, ${./scripts/screen-record.sh} m" # Screen Record (monitor select)
+            "$mainMod, P, exec, ${./scripts/screenshot.sh} s" # drag to snip an area / click on a window to print it
+            "$mainMod CTRL, P, exec, ${./scripts/screenshot.sh} sf" # frozen screen, drag to snip an area / click on a window to print it
+            "$mainMod, print, exec, ${./scripts/screenshot.sh} m" # print focused monitor
+            "$mainMod ALT, P, exec, ${./scripts/screenshot.sh} p" # print all monitor outputs
 
-                  # Functional keybinds
-                  ",xf86Sleep, exec, systemctl suspend" # Put computer into sleep mode
-                  ",XF86AudioMicMute,exec,pamixer --default-source -t" # mute mic
-                  ",XF86AudioMute,exec,pamixer -t" # mute audio
-                  ",XF86AudioPlay,exec,playerctl play-pause" # Play/Pause media
-                  ",XF86AudioPause,exec,playerctl play-pause" # Play/Pause media
-                  ",xf86AudioNext,exec,playerctl next" # go to next media
-                  ",xf86AudioPrev,exec,playerctl previous" # go to previous media
+            # Functional keybinds
+            ",xf86Sleep, exec, systemctl suspend" # Put computer into sleep mode
+            ",XF86AudioMicMute,exec,pamixer --default-source -t" # mute mic
+            ",XF86AudioMute,exec,pamixer -t" # mute audio
+            ",XF86AudioPlay,exec,playerctl play-pause" # Play/Pause media
+            ",XF86AudioPause,exec,playerctl play-pause" # Play/Pause media
+            ",xf86AudioNext,exec,playerctl next" # go to next media
+            ",xf86AudioPrev,exec,playerctl previous" # go to previous media
 
-                  # ",xf86AudioNext,exec,${./scripts/MediaCtrl.sh} next" # go to next media
-                  # ",xf86AudioPrev,exec,${./scripts/MediaCtrl.sh} previous" # go to previous media
-                  # ",XF86AudioPlay,exec,${./scripts/MediaCtrl.sh} play-pause" # go to next media
-                  # ",XF86AudioPause,exec,${./scripts/MediaCtrl.sh} play-pause" # go to next media
+            # ",xf86AudioNext,exec,${./scripts/MediaCtrl.sh} next" # go to next media
+            # ",xf86AudioPrev,exec,${./scripts/MediaCtrl.sh} previous" # go to previous media
+            # ",XF86AudioPlay,exec,${./scripts/MediaCtrl.sh} play-pause" # go to next media
+            # ",XF86AudioPause,exec,${./scripts/MediaCtrl.sh} play-pause" # go to next media
 
-                  # to switch between windows in a floating workspace
-                  "$ALT, Tab, cyclenext"
-                  "$ALT, Tab, bringactivetotop"
+            # to switch between windows in a floating workspace
+            "$ALT, Tab, cyclenext"
+            "$ALT, Tab, bringactivetotop"
 
-                  # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
-                  "$mainMod CTRL, right, workspace, r+1"
-                  "$mainMod CTRL, left, workspace, r-1"
+            # Switch workspaces relative to the active workspace with mainMod + CTRL + [←→]
+            "$mainMod CTRL, right, workspace, r+1"
+            "$mainMod CTRL, left, workspace, r-1"
 
-                  "$mainMod, ampersand, workspace, 1"
-                  "$mainMod, eacute, workspace, 2"
-                  "$mainMod, quotedbl, workspace, 3"
-                  "$mainMod, apostrophe, workspace, 4"
-                  "$mainMod, parenleft, workspace, 5"
-                  "$mainMod, minus, workspace, 6"
-                  "$mainMod, egrave, workspace, 7"
-                  "$mainMod, underscore, workspace, 8"
-                  "$mainMod, ccedilla, workspace, 9"
-                  "$mainMod, agrave, workspace, 10"
+            "$mainMod, ampersand, workspace, 1"
+            "$mainMod, eacute, workspace, 2"
+            "$mainMod, quotedbl, workspace, 3"
+            "$mainMod, apostrophe, workspace, 4"
+            "$mainMod, parenleft, workspace, 5"
+            "$mainMod, minus, workspace, 6"
+            "$mainMod, egrave, workspace, 7"
+            "$mainMod, underscore, workspace, 8"
+            "$mainMod, ccedilla, workspace, 9"
+            "$mainMod, agrave, workspace, 10"
 
 
-                  # move to the first empty workspace instantly with mainMod + CTRL + [↓]
-                  "$mainMod CTRL, down, workspace, empty"
+            # move to the first empty workspace instantly with mainMod + CTRL + [↓]
+            "$mainMod CTRL, down, workspace, empty"
 
-                  # Move focus with mainMod + arrow keys
-                  "$mainMod, left, movefocus, l"
-                  "$mainMod, right, movefocus, r"
-                  "$mainMod, up, movefocus, u"
-                  "$mainMod, down, movefocus, d"
-                  # "ALT, Tab, movefocus, d"
+            # Move focus with mainMod + arrow keys
+            "$mainMod, left, movefocus, l"
+            "$mainMod, right, movefocus, r"
+            "$mainMod, up, movefocus, u"
+            "$mainMod, down, movefocus, d"
+            # "ALT, Tab, movefocus, d"
 
-                  # Move focus with mainMod + HJKL keys
-                  "$mainMod, h, movefocus, l"
-                  "$mainMod, l, movefocus, r"
-                  "$mainMod, k, movefocus, u"
-                  "$mainMod, j, movefocus, d"
+            # Move focus with mainMod + HJKL keys
+            "$mainMod, h, movefocus, l"
+            "$mainMod, l, movefocus, r"
+            "$mainMod, k, movefocus, u"
+            "$mainMod, j, movefocus, d"
 
-                  # Go to workspace 6 and 7 with mouse side buttons
-                  "$mainMod, mouse:276, workspace, 5"
-                  "$mainMod, mouse:275, workspace, 6"
-                  "$mainMod SHIFT, mouse:276, movetoworkspace, 5"
-                  "$mainMod SHIFT, mouse:275, movetoworkspace, 6"
-                  "$mainMod CTRL, mouse:276, movetoworkspacesilent, 5"
-                  "$mainMod CTRL, mouse:275, movetoworkspacesilent, 6"
+            # Go to workspace 6 and 7 with mouse side buttons
+            "$mainMod, mouse:276, workspace, 5"
+            "$mainMod, mouse:275, workspace, 6"
+            "$mainMod SHIFT, mouse:276, movetoworkspace, 5"
+            "$mainMod SHIFT, mouse:275, movetoworkspace, 6"
+            "$mainMod CTRL, mouse:276, movetoworkspacesilent, 5"
+            "$mainMod CTRL, mouse:275, movetoworkspacesilent, 6"
 
-                  # Rebuild NixOS with a KeyBind
-                  "$mainMod, U, exec, $term -e rebuild"
+            # Rebuild NixOS with a KeyBind
+            "$mainMod, U, exec, $term -e rebuild"
 
-                  # Scroll through existing workspaces with mainMod + scroll
-                  "$mainMod, mouse_down, workspace, e+1"
-                  "$mainMod, mouse_up, workspace, e-1"
+            # Scroll through existing workspaces with mainMod + scroll
+            "$mainMod, mouse_down, workspace, e+1"
+            "$mainMod, mouse_up, workspace, e-1"
 
-                  # Move active window to a relative workspace with mainMod + CTRL + ALT + [←→]
-                  "$mainMod CTRL ALT, right, movetoworkspace, r+1"
-                  "$mainMod CTRL ALT, left, movetoworkspace, r-1"
-                  "$mainMod SHIFT, ampersand, movetoworkspace, 1"
-                  "$mainMod SHIFT, eacute, movetoworkspace, 2"
-                  "$mainMod SHIFT, quotedbl, movetoworkspace, 3"
-                  "$mainMod SHIFT, apostrophe, movetoworkspace, 4"
-                  "$mainMod SHIFT, parenleft, movetoworkspace, 5"
-                  "$mainMod SHIFT, minus, movetoworkspace, 6"
-                  "$mainMod SHIFT, egrave, movetoworkspace, 7"
-                  "$mainMod SHIFT, underscore, movetoworkspace, 8"
-                  "$mainMod SHIFT, ccedilla, movetoworkspace, 9"
-                  "$mainMod SHIFT, agrave, movetoworkspace, 10"
+            # Move active window to a relative workspace with mainMod + CTRL + ALT + [←→]
+            "$mainMod CTRL ALT, right, movetoworkspace, r+1"
+            "$mainMod CTRL ALT, left, movetoworkspace, r-1"
+            "$mainMod SHIFT, ampersand, movetoworkspace, 1"
+            "$mainMod SHIFT, eacute, movetoworkspace, 2"
+            "$mainMod SHIFT, quotedbl, movetoworkspace, 3"
+            "$mainMod SHIFT, apostrophe, movetoworkspace, 4"
+            "$mainMod SHIFT, parenleft, movetoworkspace, 5"
+            "$mainMod SHIFT, minus, movetoworkspace, 6"
+            "$mainMod SHIFT, egrave, movetoworkspace, 7"
+            "$mainMod SHIFT, underscore, movetoworkspace, 8"
+            "$mainMod SHIFT, ccedilla, movetoworkspace, 9"
+            "$mainMod SHIFT, agrave, movetoworkspace, 10"
 
-                  
-                  # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
-                  "$mainMod SHIFT $CONTROL, left, movewindow, l"
-                  "$mainMod SHIFT $CONTROL, right, movewindow, r"
-                  "$mainMod SHIFT $CONTROL, up, movewindow, u"
-                  "$mainMod SHIFT $CONTROL, down, movewindow, d"
+            
+            # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
+            "$mainMod SHIFT $CONTROL, left, movewindow, l"
+            "$mainMod SHIFT $CONTROL, right, movewindow, r"
+            "$mainMod SHIFT $CONTROL, up, movewindow, u"
+            "$mainMod SHIFT $CONTROL, down, movewindow, d"
 
-                  # Move active window around current workspace with mainMod + SHIFT + CTRL [HLJK]
-                  "$mainMod SHIFT $CONTROL, H, movewindow, l"
-                  "$mainMod SHIFT $CONTROL, L, movewindow, r"
-                  "$mainMod SHIFT $CONTROL, K, movewindow, u"
-                  "$mainMod SHIFT $CONTROL, J, movewindow, d"
+            # Move active window around current workspace with mainMod + SHIFT + CTRL [HLJK]
+            "$mainMod SHIFT $CONTROL, H, movewindow, l"
+            "$mainMod SHIFT $CONTROL, L, movewindow, r"
+            "$mainMod SHIFT $CONTROL, K, movewindow, u"
+            "$mainMod SHIFT $CONTROL, J, movewindow, d"
 
-                  # Special workspaces (scratchpad)
-                  "$mainMod CTRL, S, movetoworkspacesilent, special"
-                  "$mainMod ALT, S, movetoworkspacesilent, special"
-                  "$mainMod, S, togglespecialworkspace,"
-                ]
-                ++ (builtins.concatLists (
-                  builtins.genList (
-                    x:
-                    let
-                      ws =
-                        let
-                          c = (x + 1) / 10;
-                        in
-                        builtins.toString (x + 1 - (c * 10));
-                    in
-                    [
-                      "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
-                      "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-                      "$mainMod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
-                    ]
-                  ) 10
-                ));
-              bindm = [
-                # Move/Resize windows with mainMod + LMB/RMB and dragging
-                "$mainMod, mouse:272, movewindow"
-                "$mainMod, mouse:273, resizewindow"
-              ];
+            # Special workspaces (scratchpad)
+            "$mainMod CTRL, S, movetoworkspacesilent, special"
+            "$mainMod ALT, S, movetoworkspacesilent, special"
+            "$mainMod, S, togglespecialworkspace,"
+          ]
+          ++ (builtins.concatLists (
+            builtins.genList (
+              x:
+              let
+                ws =
+                  let
+                    c = (x + 1) / 10;
+                  in
+                  builtins.toString (x + 1 - (c * 10));
+              in
+              [
+                "$mainMod, ${ws}, workspace, ${toString (x + 1)}"
+                "$mainMod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+                "$mainMod CTRL, ${ws}, movetoworkspacesilent, ${toString (x + 1)}"
+              ]
+            ) 10
+          ));
+          bindm = [
+            # Move/Resize windows with mainMod + LMB/RMB and dragging
+            "$mainMod, mouse:272, movewindow"
+            "$mainMod, mouse:273, resizewindow"
+          ];
 
-              binds = {
-                workspace_back_and_forth = 0;
-                #allow_workspace_cycles=1
-                #pass_mouse_when_bound=0
-              };
-
-              layerrule = blur,waybar
-
-              # Easily plug in any monitor
-
-              # Default setup (when only internal screen is used)
-              monitor=eDP-1,1920x1080@60.01,0x1080,1.0
-              monitor=HDMI-A-1,1920x1080@60.0,0x0,1.0
-
-              # Preferred config when external screen is connecte
-              workspace=1,monitor:eDP-1,default:true
-              workspace=2,monitor:eDP-1
-              workspace=3,monitor:HDMI-A-1,default:true
-              workspace=4,monitor:HDMI-A-1
-              workspace=5,monitor:HDMI-A-1
-              
-              '';
+          binds = {
+            workspace_back_and_forth = 0;
+            #allow_workspace_cycles=1
+            #pass_mouse_when_bound=0
           };
-        }
-      )
-    ];
+
+          # Easily plug in any monitor
+
+          # Default setup (when only internal screen is used)
+          monitor = [
+            "eDP-1,1920x1080@60.01,0x1080,1.0"
+            "HDMI-A-1,1920x1080@60.0,0x0,1.0"
+          ];
+          # Preferred config when external screen is connecte
+          workspace = [
+            "1,monitor:eDP-1,default:true"
+            "2,monitor:eDP-1"
+            "3,monitor:HDMI-A-1,default:true"
+            "4,monitor:HDMI-A-1"
+            "5,monitor:HDMI-A-1"
+            ];
+          };
+        };
+      }
+    )
+  ];
 }
