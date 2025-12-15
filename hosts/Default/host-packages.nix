@@ -6,7 +6,10 @@
     gimp
     zotero
     vlc
-    obsidian
+    qdirstat
+    borgbackup
+    # obsidian
+
 
     # docker-compose
 

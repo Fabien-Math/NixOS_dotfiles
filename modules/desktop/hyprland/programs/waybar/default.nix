@@ -56,13 +56,13 @@ in
               format = "{icon}";
               format-icons = {
                 notification = "<span foreground='red'><sup></sup></span>";
-                none = "";
+                none = " ";
                 dnd-notification = "<span foreground='red'><sup></sup></span>";
-                dnd-none = "";
+                dnd-none = " ";
                 inhibited-notification = "<span foreground='red'><sup></sup></span>";
-                inhibited-none = "";
-                dnd-inhibited-notification = "<span foreground='red'><sup></sup></span>";
-                dnd-inhibited-none = "";
+                inhibited-none = " ";
+                dnd-inhibited-notification = " ";
+                dnd-inhibited-none = " ";
               };
               return-type = "json";
               exec-if = "which swaync-client";

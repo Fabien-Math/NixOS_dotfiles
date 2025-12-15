@@ -247,14 +247,14 @@ in
                   "easeOutExpo, 0.16, 1, 0.3, 1"
                 ];
                 animation = [
-                  "windows, 1, 3, md3_decel, popin 60%"
-                  "border, 1, 10, default"
-                  "fade, 1, 2.5, md3_decel"
+                  "windows, 1, 1.5, md3_decel, popin 60%"
+                  "border, 1, 5, default"
+                  "fade, 1, 1.2, md3_decel"
                   # "workspaces, 1, 3.5, md3_decel, slide"
-                  "workspaces, 1, 3.5, easeOutExpo, slide"
+                  "workspaces, 1, 1.2, easeOutExpo, slide"
                   # "workspaces, 1, 7, fluent_decel, slidefade 15%"
                   # "specialWorkspace, 1, 3, md3_decel, slidefadevert 15%"
-                  "specialWorkspace, 1, 3, md3_decel, slidevert"
+                  "specialWorkspace, 1, 1.5, md3_decel, slidevert"
                 ];
               };
               render = {
