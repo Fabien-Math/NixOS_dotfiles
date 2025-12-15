@@ -4,15 +4,6 @@
     (
       { config, ... }:
       {
-        # Set wallpaper
-        services.hyprpaper = {
-          enable = true;
-          settings = {
-            preload = [ "${../wallpapers/moon.jxl}" ];
-            wallpaper = [ ",${../wallpapers/moon.jxl}" ];
-          };
-        };
-
         dconf.settings = {
           "org/gnome/desktop/interface" = {
             gtk-theme = "Dracula";
@@ -40,6 +31,7 @@
 
         gtk = {
           enable = true;
+          gtk2.force = true;
 
           theme = {
             name = "Dracula";
@@ -63,6 +55,10 @@
           #  name = "Sans";
           #  size = 11;
           #};
+        };
+
+        home.sessionVariables = {
+          ADW_COLOR_SCHEME = "prefer-dark"; # Libadwaita
         };
 
         xdg.configFile = {

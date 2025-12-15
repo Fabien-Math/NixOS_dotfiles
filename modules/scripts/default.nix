@@ -12,6 +12,7 @@ let
   # Define your custom args once
   scriptArgs = {
     inherit
+      host
       pkgs
       lib
       config
@@ -21,7 +22,9 @@ let
 
   scripts = [
     (import ./rebuild.nix scriptArgs)
+    (import ./rollback.nix scriptArgs)
     (import ./launcher.nix scriptArgs)
+    (import ./network.nix scriptArgs)
     (import ./tmux-sessionizer.nix scriptArgs)
     (import ./extract.nix scriptArgs)
     (import ./driverinfo.nix scriptArgs)

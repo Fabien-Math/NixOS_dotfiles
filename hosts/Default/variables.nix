@@ -1,19 +1,25 @@
 {
   # User Configuration
   username = "fabien"; # Your username (auto-set with install.sh, live-install.sh, rebuild)
+
+  # Desktop Environment
   desktop = "hyprland"; # Option: hyprland
+
+  # Theme & Appearance
+  sddmTheme = "astronaut"; # Options: astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
+  hyprlockWallpaper = "landscape.jxl";
+  defaultWallpaper = "landscape.jxl"; # Change with SUPER + SHIFT + W
+  wallpaper = "moon"; # See modules/themes/wallpapers for options
+
+  # Default Applications
+  shell = "bash"; # Options: zsh, bash
   terminal = "kitty"; # Option: kitty
   editor = "vscode"; # Options: vscode, nvchad, neovim
   browser = "firefox"; # Option: firefox
   tuiFileManager = "yazi"; # Option: yazi
-  sddmTheme = "purple_leaves"; # Options: astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
-  sddmWallpaper = "cyberpunk_streets";
-  lockWallpaper = "dark_forest";
-  wallpaper = "moon"; # See modules/themes/wallpapers for options
-  shell = "bash"; # Options: zsh, bash
-  games = true; # Whether to enable the gaming module
+  games = false; # Whether to enable the gaming module
 
-  # Hardware Configuration
+  # Hardware
   videoDriver = "amdgpu"; # CRITICAL: Choose your GPU driver (nvidia, amdgpu, intel)
   hostname = "fabien"; # Your system hostname
 

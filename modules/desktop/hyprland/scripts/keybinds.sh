@@ -43,6 +43,7 @@ yad \
   "CTRL ALT Delete" "Open system monitor" "$_terminal -e 'btop'" \
   "SUPER A" "Launch application menu" "scripts/launcher drun" \
   "SUPER SPACE" "Launch application menu" "scripts/launcher drun" \
+  "SUPER SHIFT W" "Launch wallpaper menu" "scripts/launcher wallpaper" \
   "SUPER SHIFT T" "Launch tmux sessions" "scripts/launcher tmux" \
   "SUPER G" "Game launcher" "scripts/launcher games" \
   "SUPER F9" "Enable night mode" "hyprsunset --temperature 2500" \
@@ -85,6 +86,8 @@ yad \
   "SUPER ALT G" "Enable game mode" "scripts/gamemode.sh" \
   "SUPER V" "Clipboard manager" "scripts/ClipManager.sh" \
   "SUPER M" "Online music" "scripts/rofimusic.sh" \
+  "SUPER SHIFT R" "Screen record (select area)" "scripts/screen-record.sh a" \
+  "SUPER CTRL R" "Screen record (select monitor)" "scripts/screen-record.sh m" \
   "SUPER P" "Screenshot (select area)" "scripts/screenshot.sh s" \
   "SUPER CTRL P" "Screenshot (frozen screen)" "scripts/screenshot.sh sf" \
   "SUPER Print" "Screenshot (current monitor)" "scripts/screenshot.sh m" \

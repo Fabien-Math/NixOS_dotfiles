@@ -1,8 +1,30 @@
 {
+  lib,
   pkgs,
   terminal,
   ...
 }:
+let
+  wallpaperDir = "${../themes/wallpapers}";
+  wallpaperThumbs =
+    pkgs.runCommand "wallpaper-thumbnails"
+      {
+        buildInputs = [ pkgs.imagemagick ];
+      }
+      ''
+        mkdir -p $out
+        for wallpaper in "${wallpaperDir}"/*.{webp,jxl,jpg,jpeg,png,gif}; do
+          if [ -f "$wallpaper" ]; then
+            wallpaper_name=$(basename "$wallpaper")
+            wallpaper_name="''${wallpaper_name%.*}"
+            thumbnail_size="320x180"
+            if [ ! -f "$out/''${wallpaper_name}.jpg" ]; then
+              magick "$wallpaper[0]" -strip -gravity center -thumbnail "''${thumbnail_size}^" -extent "$thumbnail_size" "$out/''${wallpaper_name}.jpg"
+            fi
+          fi
+        done
+      '';
+in
 pkgs.writeShellScriptBin "launcher" ''
   # check if rofi is already running
   if pidof rofi >/dev/null; then
@@ -42,6 +64,30 @@ pkgs.writeShellScriptBin "launcher" ''
       ${terminal} --hold -e tmux attach -t $sessions
     fi
     ;;
+  wallpaper)
+    rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/wallpaper-select.rasi"
+    r_override="entry{placeholder:'Search Wallpapers...';}"
+    # rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
+    # r_override="entry{placeholder:'Search Wallpapers...';}listview{lines:15;}"
+
+    CACHE_DIR=${wallpaperThumbs}
+    WALLPAPER_DIR="${wallpaperDir}"
+
+    rofi_cmd() {
+      rofi -dmenu \
+        -i \
+        -theme-str "$r_override" \
+        -theme "$rofi_theme"
+    }
+
+    CHOICE=$(${lib.getExe pkgs.fd} --type f . "''${WALLPAPER_DIR}" \
+      | sed 's/.*\///' \
+      | while read -r A ; do echo -en "$A\x00icon\x1f""''${CACHE_DIR}"/"''${A%.*}.jpg\n" ; done \
+      | rofi_cmd)
+    [ -z "$CHOICE" ] && exit 0
+
+    swww img "$WALLPAPER_DIR/$CHOICE" --transition-step 90 --transition-duration 1 --transition-fps 60 --transition-type wipe
+    ;;
   emoji)
     rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
     r_override="entry{placeholder:'Search Emojis...';}listview{lines:15;}"
@@ -63,6 +109,7 @@ pkgs.writeShellScriptBin "launcher" ''
     echo "  window       Switch between open windows"
     echo "  file         Browse and search files"
     echo "  tmux         Search active tmux sessions"
+    echo "  wallpaper    Search and set wallpapers"
     echo "  emoji        Search and insert emojis"
     echo "  games        Launch games menu"
     echo "  help         Display this help message"

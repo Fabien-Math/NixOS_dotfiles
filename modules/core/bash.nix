@@ -22,7 +22,7 @@
           bashrcExtra = ''
             export TERM="xterm-256color" # Get correct colour
             alias control_sim="cd /home/fabien/thesis/codes/control_sim/ && nix develop . --command code . && exit"
-            alias ivbs_sim="cd /home/fabien/thesis/codes/ivbs_sim/ && nix develop . --command code . && exit"
+            alias ibvs_sim="cd /home/fabien/thesis/codes/ibvs_sim/ && nix develop . --command code . && exit"
           '';
           shellOptions = [
             "autocd" # change to named directory
@@ -89,6 +89,7 @@
             vc = "code --disable-gpu"; # gui code editor
             nv = "nvim";
             nf = "${pkgs.microfetch}/bin/microfetch";
+            ff = "fastfetch";
             cp = "cp -iv";
             mv = "mv -iv";
             rm = "rm -vI";
@@ -100,7 +101,7 @@
             pokemon = "pokego --random 1-8 --no-title";
 
             # Nixos
-            list-gens = "sudo nix-env --list-generations --profile /nix/var/nix/profiles/system/";
+            list-gens = "nixos-rebuild list-generations";
             find-store-path = ''function { nix-shell -p $1 --command "nix eval -f \"<nixpkgs>\" --raw $1" }'';
             update-input = "nix flake update $@";
             sysup = "nix flake update --flake ~/NixOS && rebuild";

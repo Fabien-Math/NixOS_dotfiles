@@ -76,7 +76,7 @@
   ExtensionSettings = {
     "*" = {
       blocked_install_message = "Addon is not added in the nix config";
-      installation_mode = "blocked";
+      installation_mode = "allowed";
     };
     "uBlock0@raymondhill.net" = {
       private_browsing = true;
@@ -118,6 +118,11 @@
       private_browsing = true;
       installation_mode = "force_installed";
       install_url = "https://addons.mozilla.org/firefox/downloads/latest/catppuccin-mocha-lavender-git/latest.xpi";
+    };
+    "{d7742d87-e61d-4b78-b8a1-b46984213fa}" = {
+      private_browsing = true;
+      installation_mode = "force_installed";
+      install_url = "https://addons.mozilla.org/firefox/downloads/file/4618554/vimium_ff-2.3.1.xpi";
     };
     # View Xpi Id's in Firefox Extension Store
     "queryamoid@kaply.com" = {

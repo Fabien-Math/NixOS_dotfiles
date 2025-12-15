@@ -1,6 +1,5 @@
 { host, pkgs, ... }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix) wallpaper;
   variant = "mocha";
   accent = "mauve";
   catppuccin-kvantum-pkg = pkgs.catppuccin-kvantum.override { inherit variant accent; };
@@ -20,6 +19,7 @@ in
         };
         gtk = {
           enable = true;
+          gtk2.force = true;
           theme = {
             name = "${catppuccin}-compact";
             package = pkgs.catppuccin-gtk.override {
@@ -42,13 +42,8 @@ in
           };
         };
 
-        # Set wallpaper
-        services.hyprpaper = {
-          enable = true;
-          settings = {
-            preload = [ "${../wallpapers/${wallpaper}.jxl}" ];
-            wallpaper = [ ",${../wallpapers/${wallpaper}.jxl}" ];
-          };
+        home.sessionVariables = {
+          ADW_COLOR_SCHEME = "prefer-dark"; # Libadwaita
         };
 
         dconf.settings = {
@@ -66,12 +61,18 @@ in
         };
 
         xdg.configFile = {
-          "gtk-4.0/assets".source =
-            "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
-          "gtk-4.0/gtk.css".source =
-            "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
-          "gtk-4.0/gtk-dark.css".source =
-            "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+          "gtk-4.0/assets" = {
+            force = true;
+            source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/assets";
+          };
+          "gtk-4.0/gtk.css" = {
+            force = true;
+            source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk.css";
+          };
+          "gtk-4.0/gtk-dark.css" = {
+            force = true;
+            source = "${config.gtk.theme.package}/share/themes/${config.gtk.theme.name}/gtk-4.0/gtk-dark.css";
+          };
           "Kvantum/${catppuccin}".source = "${catppuccin-kvantum-pkg}/share/Kvantum/${catppuccin}";
           "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini { }).generate "kvantum.kvconfig" {
             General.theme = catppuccin;

@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.05";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-flatpak.url = "github:gmodena/nix-flatpak?ref=latest";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -13,6 +13,14 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-doom-emacs-unstraightened = {
+      url = "github:marienz/nix-doom-emacs-unstraightened";
+      inputs.nixpkgs.follows = ""; # Doesn't use nixpkgs
+    };
+    doom-config = {
+      url = "github:Sly-Harvey/doom";
+      flake = false;
+    };
     nixvim = {
       url = "github:Sly-Harvey/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +28,11 @@
     neovim = {
       url = "github:Sly-Harvey/nvim";
       flake = false;
+    };
+    plasma-manager = {
+      url = "github:nix-community/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -66,7 +79,6 @@
             ./hosts/${host}/configuration.nix
           ];
           specialArgs = {
-            # inherit self inputs outputs;
             overlays = import ./overlays { inherit inputs host; };
             inherit
               self

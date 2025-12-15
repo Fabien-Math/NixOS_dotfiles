@@ -1,12 +1,10 @@
 { host, ... }:
 let
-  inherit (import ../../../../../hosts/${host}/variables.nix) lockWallpaper;
+  inherit (import ../../../../../hosts/${host}/variables.nix) hyprlockWallpaper;
 in
 {
   home-manager.sharedModules = [
-    (
-      { config, ... }:
-      {
+    (_: {
       programs.hyprlock = {
         enable = true;
         settings = {
@@ -18,12 +16,12 @@ in
             {
               monitor = "";
               color = "rgb(36, 39, 58)";
-              path = "${../../../../themes/wallpapers/dark-forest.jxl}";
+              path = "${../../../../themes/wallpapers/${hyprlockWallpaper}}";
 
               new_optimizations = true;
-              blur_size = 3;
-              blur_passes = 2;
-              noise = 0.0117;
+              # blur_size = 3;
+              # blur_passes = 2;
+              # noise = 0.0117;
               contrast = 1.000;
               brightness = 1.0000;
               vibrancy = 0.2100;
@@ -36,9 +34,9 @@ in
               monitor = "";
               size = "250, 50";
               outline_thickness = 3;
-              outer_color = "rgb(198, 160, 246)";
+              outer_color = "rgba(160, 206, 246, 1)";
               inner_color = "rgb(36, 39, 58)";
-              font_color = "rgb(198, 160, 246)";
+              font_color = "rgba(160, 206, 246, 1)";
               fail_color = "rgb(237, 135, 150)";
               fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
               fail_transition = 300;
@@ -59,39 +57,35 @@ in
               # text = "cmd[update:1000] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
               text = "$TIME";
               font_size = 64;
-              font_family = "JetBrains Mono Nerd Font 10";
-              color = "rgb(198, 160, 246)";
-              position = "0, 16";
+              color = "rgb(160, 206, 246)";
+              position = "0, 36";
               valign = "center";
               halign = "center";
             }
             {
               monitor = "";
               text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
-              color = "rgb(198, 160, 246)";
+              color = "rgb(160, 206, 246)";
               font_size = 20;
-              font_family = "JetBrains Mono Nerd Font 10";
-              position = "0, 100";
+              position = "0, 120";
               halign = "center";
               valign = "center";
             }
-            {
-              monitor = "";
-              text = "Current Layout : $LAYOUT";
-              color = "rgb(198, 160, 246)";
-              font_size = 14;
-              font_family = "JetBrains Mono Nerd Font 10";
-              position = "0, 20";
-              halign = "center";
-              valign = "bottom";
-            }
+            # {
+            #   monitor = "";
+            #   text = "Current Layout : $LAYOUT";
+            #   color = "rgb(160, 206, 246)";
+            #   font_size = 14;
+            #   position = "0, 20";
+            #   halign = "center";
+            #   valign = "bottom";
+            # }
             /*
                  {
                 monitor = "";
                 text = "Enter your password to unlock.";
                 color = "rgb(198, 160, 246)";
                 font_size = 14;
-                font_family = "JetBrains Mono Nerd Font 10";
                 position = "0, 60";
                 halign = "center";
                 valign = "bottom";

@@ -16,6 +16,7 @@ in
     ../../modules/core/fonts.nix
     ../../modules/core/hardware.nix
     ../../modules/core/network.nix
+    ../../modules/core/dns.nix
     ../../modules/core/nh.nix
     ../../modules/core/packages.nix
     ../../modules/core/printing.nix
@@ -41,6 +42,7 @@ in
     ../../modules/programs/cli/direnv
     ../../modules/programs/cli/lazygit
     ../../modules/programs/cli/cava
+    ../../modules/programs/cli/fastfetch
     ../../modules/programs/cli/btop
     ../../modules/programs/media/discord
     ../../modules/programs/media/spicetify
