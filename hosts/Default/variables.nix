@@ -7,9 +7,8 @@
 
   # Theme & Appearance
   sddmTheme = "astronaut"; # Options: astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
-  hyprlockWallpaper = "landscape.jxl";
-  defaultWallpaper = "landscape.jxl"; # Change with SUPER + SHIFT + W
-  wallpaper = "moon"; # See modules/themes/wallpapers for options
+  hyprlockWallpaper = "train-sideview.webp";
+  defaultWallpaper = "train-sideview.webp"; # Change with SUPER + SHIFT + W
 
   # Default Applications
   shell = "bash"; # Options: zsh, bash
