@@ -29,48 +29,60 @@ in
             }
           ];
 
-          input-field = [
-            {
-              monitor = "";
-              size = "250, 50";
-              outline_thickness = 3;
-              outer_color = "rgba(160, 206, 246, 1)";
-              inner_color = "rgb(36, 39, 58)";
-              font_color = "rgba(160, 206, 246, 1)";
-              fail_color = "rgb(237, 135, 150)";
-              fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-              fail_transition = 300;
-              fade_on_empty = false;
-              placeholder_text = "Password...";
-              dots_size = 0.2;
-              dots_spacing = 0.64;
-              dots_center = true;
-              position = "0, 140";
-              halign = "center";
-              valign = "bottom";
-            }
-          ];
+          # input-field = [
+          #   {
+          #     monitor = "";
+          #     size = "100, 20";
+          #     outline_thickness = 2;
+          #     rounding = 20;
+          #     outer_color = "rgba(160, 160, 160, 1)";
+          #     inner_color = "rgba(46, 46, 46, 1)";
+          #     font_color = "rgba(160, 160, 160, 1)";
+          #     fail_color = "rgb(237, 135, 150)";
+          #     fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+          #     fail_transition = 300;
+          #     fade_on_empty = false;
+          #     placeholder_text = "Password...";
+          #     dots_size = 0.1;
+          #     dots_spacing = 0.64;
+          #     dots_center = true;
+          #     position = "0, 10";
+          #     halign = "center";
+          #     valign = "bottom";
+          #   }
+          # ];
 
           label = [
             {
               monitor = "";
               # text = "cmd[update:1000] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
               text = "$TIME";
-              font_size = 64;
-              color = "rgb(160, 206, 246)";
-              position = "0, 36";
+              font_size = 50;
+              color = "rgba(216, 222, 233, 0.70)";
+              position = "0, 100";
               valign = "center";
               halign = "center";
             }
+
             {
-              monitor = "";
-              text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
-              color = "rgb(160, 206, 246)";
-              font_size = 20;
-              position = "0, 120";
-              halign = "center";
-              valign = "center";
+                monitor = "";
+                text = "cmd[update:1000] echo -e \"$(date +\"%d %B\")\"";
+                color = "rgba(216, 222, 233, 0.70)";
+                font_size = 40;
+                position = "0, 20";
+                halign = "center";
+                valign = "center";
             }
+
+            # {
+            #   monitor = "";
+            #   text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
+            #   color = "rgb(160, 206, 246)";
+            #   font_size = 20;
+            #   position = "0, 120";
+            #   halign = "center";
+            #   valign = "center";
+            # }
             # {
             #   monitor = "";
             #   text = "Current Layout : $LAYOUT";

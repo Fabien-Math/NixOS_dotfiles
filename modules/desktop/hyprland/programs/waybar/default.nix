@@ -57,7 +57,7 @@ in
               format-icons = {
                 notification = "<span foreground='red'><sup></sup></span>";
                 none = " ";
-                dnd-notification = "<span foreground='red'><sup></sup></span>";
+                dnd-notification = " ";
                 dnd-none = " ";
                 inhibited-notification = "<span foreground='red'><sup></sup></span>";
                 inhibited-none = " ";
