@@ -13,7 +13,7 @@
   # Default Applications
   shell = "bash"; # Options: zsh, bash
   terminal = "kitty"; # Option: kitty
-  editor = "zeditor"; # Options: vscode, nvchad, neovim
+  editor = "zeditor"; # Options: vscode, nvchad, neovim, zeditor
   secondaryEditor = "vscode"; # Options: vscode, nvchad, neovim, zeditor
   browser = "firefox"; # Option: firefox
   tuiFileManager = "yazi"; # Option: yazi

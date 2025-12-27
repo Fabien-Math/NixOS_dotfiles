@@ -12,6 +12,8 @@ let
     kbdLayout
     kbdVariant
     defaultWallpaper
+    editor
+    secondaryEditor
     ;
 in
 {
@@ -123,9 +125,9 @@ in
             settings = {
               "$mainMod" = "SUPER";
               "$term" = "${getExe pkgs.${terminal}}";
-              "$editor" = "code --disable-gpu";
               "$fileManager" = "$term --class \"tuiFileManager\" -e ${tuiFileManager}";
               "$browser" = browser;
+              "$code_editor" = "code --disable-gpu";
 
               env = [
                 "XDG_CURRENT_DESKTOP,Hyprland"
@@ -436,7 +438,8 @@ in
             "$mainMod, Return, exec, $term"
             "$mainMod, T, exec, $term"
             "$mainMod, E, exec, $fileManager"
-            "$mainMod, C, exec, $secondaryEditor" # Launch secondary editor
+            "$mainMod, Z, exec, ${editor}" # launch editor
+            "$mainMod, C, exec, $code_editor"
             "$mainMod, F, exec, $browser"
             "$mainMod SHIFT, S, exec, spotify"
             "$mainMod SHIFT, Y, exec, youtube-music"
@@ -447,7 +450,6 @@ in
             "$mainMod, SPACE, exec, launcher drun" # launch desktop applications
             "$mainMod SHIFT, W, exec, launcher wallpaper" # launch wallpaper switcher
             "$mainMod SHIFT, Z, exec, launcher emoji" # launch emoji picker
-            "$mainMod, Z, exec, $editor" # launch editor
             "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
             "$mainMod, G, exec, launcher games" # game launcher
             "$mainMod, tab, exec, launcher window" # switch between desktop applications
@@ -546,7 +548,6 @@ in
             "$mainMod SHIFT, ccedilla, movetoworkspace, 9"
             "$mainMod SHIFT, agrave, movetoworkspace, 10"
 
-            
             # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
             "$mainMod SHIFT $CONTROL, left, movewindow, l"
             "$mainMod SHIFT $CONTROL, right, movewindow, r"

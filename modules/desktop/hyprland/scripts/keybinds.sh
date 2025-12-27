@@ -13,8 +13,8 @@ fi
 # }
 get_nix_value() {
     awk '
-    /settings = {/ {inside_settings=1; next} 
-    inside_settings && /}/ {inside_settings=0} 
+    /settings = {/ {inside_settings=1; next}
+    inside_settings && /}/ {inside_settings=0}
     inside_settings && $0 ~ key {print gensub(/.*"([^"]+)".*/, "\\1", "g", $0)}
     ' key="$1" "$HOME/NixOS/flake.nix"
 }
@@ -23,6 +23,8 @@ get_nix_value() {
 _browser=$(get_nix_value "browser =")
 _terminal=$(get_nix_value "terminal =")
 _terminal_FM=$(get_nix_value "tuiFileManager =")
+_editor=$(get_nix_value "editor =")
+_secondary_editor=$(get_nix_value "secondaryEditor =")
 
 yad \
   --center \
@@ -39,6 +41,8 @@ yad \
   "SUPER T" "Launch terminal" "$_terminal" \
   "SUPER E" "Launch file manager" "$_terminal_FM" \
   "SUPER F" "Launch browser" "$_browser" \
+  "SUPER Z" "Launch primary editor" "$_editor" \
+  "SUPER C" "Launch secondary editor" "$_secondary_editor" \
   "SUPER SHIFT S" "Launch spotify" "spotify" \
   "CTRL ALT Delete" "Open system monitor" "$_terminal -e 'btop'" \
   "SUPER A" "Launch application menu" "scripts/launcher drun" \
@@ -80,7 +84,7 @@ yad \
   "SUPER SHIFT Q" "Open notification panel" "swaync-client -t -sw" \
   "SUPER Q" "Close active window" "scripts/dontkillsteam.sh" \
   "ALT F4" "Close active window" "scripts/dontkillsteam.sh" \
-  "SUPER Z" "Launch emoji picker" "scripts/launcher emoji" \
+  "SUPER SHIFT Z" "Launch emoji picker" "scripts/launcher emoji" \
   "SUPER ALT K" "Change keyboard layout" "scripts/keyboardswitch.sh" \
   "SUPER U" "Rebuild system" "$_terminal -e rebuild" \
   "SUPER ALT G" "Enable game mode" "scripts/gamemode.sh" \
