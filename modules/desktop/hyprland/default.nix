@@ -436,7 +436,7 @@ in
             "$mainMod, Return, exec, $term"
             "$mainMod, T, exec, $term"
             "$mainMod, E, exec, $fileManager"
-            "$mainMod, C, exec, $editor"
+            "$mainMod, C, exec, $secondaryEditor" # Launch secondary editor
             "$mainMod, F, exec, $browser"
             "$mainMod SHIFT, S, exec, spotify"
             "$mainMod SHIFT, Y, exec, youtube-music"
@@ -446,7 +446,8 @@ in
             "$mainMod, A, exec, launcher drun" # launch desktop applications
             "$mainMod, SPACE, exec, launcher drun" # launch desktop applications
             "$mainMod SHIFT, W, exec, launcher wallpaper" # launch wallpaper switcher
-            "$mainMod, Z, exec, launcher emoji" # launch emoji picker
+            "$mainMod SHIFT, Z, exec, launcher emoji" # launch emoji picker
+            "$mainMod, Z, exec, $editor" # launch editor
             "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
             "$mainMod, G, exec, launcher games" # game launcher
             "$mainMod, tab, exec, launcher window" # switch between desktop applications

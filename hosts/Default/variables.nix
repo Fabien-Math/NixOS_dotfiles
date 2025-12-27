@@ -13,7 +13,8 @@
   # Default Applications
   shell = "bash"; # Options: zsh, bash
   terminal = "kitty"; # Option: kitty
-  editor = "vscode"; # Options: vscode, nvchad, neovim
+  editor = "zeditor"; # Options: vscode, nvchad, neovim
+  secondaryEditor = "vscode"; # Options: vscode, nvchad, neovim, zeditor
   browser = "firefox"; # Option: firefox
   tuiFileManager = "yazi"; # Option: yazi
   games = false; # Whether to enable the gaming module
