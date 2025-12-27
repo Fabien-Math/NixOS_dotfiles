@@ -1,21 +1,23 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    # Utils
+    #####   Utils   #####
     inkscape
     gimp
     zotero
+    onlyoffice-desktopeditors
     vlc
+    # Disk space analyser
     qdirstat
+    # Backup tool
     borgbackup
-    # obsidian
+    # Color generation and manipulator
+    pastel
 
-
-    # docker-compose
-
-    # Modeling
+    #####   Modeling   #####
     blender
     freecad
+
     calculix-ccx
     bambu-studio
 
@@ -43,13 +45,7 @@
     python313Packages.matplotlib
     python313Packages.tqdm
 	  python313Packages.scipy
-	  python313Packages.seaborn
     python313Packages.pyyaml
-    # Python opengl
-    python313Packages.pyopengl
-	  python313Packages.pyglm
-    python313Packages.glfw
-
-    # pokego # Overlayed
+    
   ];
 }
