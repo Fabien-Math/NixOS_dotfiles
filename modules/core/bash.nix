@@ -22,6 +22,7 @@
           bashrcExtra = ''
             export TERM="xterm-256color" # Get correct colour
             alias control_sim="cd /home/fabien/thesis/codes/control_sim/ && nix develop . --command code . && exit"
+            alias config_nixos="zeditor ~/NixOS && exit"
             alias ibvs_sim="cd /home/fabien/thesis/codes/ibvs_sim/ && nix develop . --command code . && exit"
           '';
           shellOptions = [
