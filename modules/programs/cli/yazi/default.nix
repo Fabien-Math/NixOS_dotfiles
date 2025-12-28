@@ -8,7 +8,7 @@
         enableZshIntegration = true;
         settings = {
           mgr = {
-            show_hidden = true;
+            show_hidden = false;
             show_symlink = true;
             sort_dir_first = true;
             linemode = "size"; # or size, permissions, owner, mtime
