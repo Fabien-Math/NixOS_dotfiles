@@ -53,7 +53,13 @@
             line_height = "comfortable";
             option_as_meta = false;
             button = false;
-            shell = "system";
+            shell = {
+              with_arguments = {
+                program = "bash";
+                args = [ "-i" ];
+                title_override = null;
+              };
+            };
 
             toolbar = {
               title = true;
@@ -75,20 +81,86 @@
             inactive_opacity = 0.8;
           };
 
+          collaboration_panel = {
+            button = false;
+          };
+
+          tabs = {
+	          activate_on_close = "history";
+	          show_close_button = "hover";
+	          close_position = "right";
+	          file_icons = false;
+	            git_status = true;
+          };
+
+          title_bar = {
+            show_sign_in = false;
+            show_user_picture = false;
+            show_onboarding_banner = false;
+            show_branch_icon = false;
+            show_project_items = true;
+            show_branch_name = true;
+          };
+
+          search = {
+            button = false;
+          };
+
+          debugger = {
+            button = false;
+          };
+
+          status_bar = {
+            cursor_position_button = true;
+            active_language_button = false;
+          };
+
+          project_panel = {
+            sort_mode = "directories_first";
+            hide_hidden = false;
+            hide_root = true;
+            indent_guides = {
+              show = "never";
+            };
+            sticky_scroll = true;
+            auto_fold_dirs = true;
+            show_diagnostics = "errors";
+          };
+
+          diagnostics = {
+            button = false;
+            lsp_pull_diagnostics = {
+              enabled = false;
+            };
+            inline = {
+              enabled = false;
+            };
+            include_warnings = false;
+          };
+
+          scrollbar = {
+            search_results = true;
+            git_diff = true;
+            cursors = true;
+            diagnostics = "none";
+          };
+
+          tab_bar = {
+            show_nav_history_buttons = false;
+          };
+
           # direnv + flakes
           load_direnv = "shell_hook";
           base_keymap = "VSCode";
 
-          lsp = {
-            nix = {
-              binary = {
-                path_lookup = true;
-              };
-            };
-          };
-
           vim_mode = false;
           show_whitespaces = "none";
+
+          disable_ai = true;
+          soft_wrap = "editor_width";
+          relative_line_numbers = "enabled";
+          hard_tabs = true;
+          colorize_brackets = true;
 
           hour_format = "hour24";
           auto_update = false;
@@ -113,12 +185,36 @@
               "ctrl-shift-t" = "workspace::NewTerminal";
               "ctrl-k ctrl-o" = "workspace::Open";
               "ctrl-o" = "workspace::OpenFiles";
+              "ctrl-shift-q" = "zed::Quit";
+              "alt-e" = "project_panel::ToggleFocus";
             };
           }
+
           {
             context = "Editor";
             bindings = {
               "ctrl-:" = "editor::ToggleComments";
+            };
+          }
+
+          {
+            context = "!ContextEditor > (Editor && mode == full)";
+            bindings = {
+              "alt-e" = "pane::RevealInProjectPanel";
+            };
+          }
+
+          {
+            context = "SettingsWindow";
+            bindings = {
+              "alt-e" = "settings_editor::ToggleFocusNav";
+            };
+          }
+
+          {
+            context = "(ProjectPanel && not_editing)";
+            bindings = {
+              "enter" = "project_panel::Open";
             };
           }
         ];
