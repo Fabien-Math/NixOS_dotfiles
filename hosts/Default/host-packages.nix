@@ -13,6 +13,8 @@
     borgbackup
     # Color generation and manipulator
     pastel
+    # Ensure bash is interactive
+    bashInteractive
 
     #####   Modeling   #####
     blender
@@ -23,7 +25,7 @@
 
     # Code
     # Latex
-    texliveFull 
+    texliveFull
     # C
     glib
     # OpenGL related
@@ -46,6 +48,6 @@
     python313Packages.tqdm
 	  python313Packages.scipy
     python313Packages.pyyaml
-    
+
   ];
 }
