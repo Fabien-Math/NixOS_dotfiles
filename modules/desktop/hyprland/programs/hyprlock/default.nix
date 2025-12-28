@@ -74,34 +74,34 @@ in
                 valign = "center";
             }
 
-            # {
-            #   monitor = "";
-            #   text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
-            #   color = "rgb(160, 206, 246)";
-            #   font_size = 20;
-            #   position = "0, 120";
-            #   halign = "center";
-            #   valign = "center";
-            # }
-            # {
-            #   monitor = "";
-            #   text = "Current Layout : $LAYOUT";
-            #   color = "rgb(160, 206, 246)";
-            #   font_size = 14;
-            #   position = "0, 20";
-            #   halign = "center";
-            #   valign = "bottom";
-            # }
             /*
-                 {
-                monitor = "";
-                text = "Enter your password to unlock.";
-                color = "rgb(198, 160, 246)";
-                font_size = 14;
-                position = "0, 60";
-                halign = "center";
-                valign = "bottom";
-              }
+            {
+              monitor = "";
+              text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
+              color = "rgb(160, 206, 246)";
+              font_size = 20;
+              position = "0, 120";
+              halign = "center";
+              valign = "center";
+            }
+            {
+              monitor = "";
+              text = "Current Layout : $LAYOUT";
+              color = "rgb(160, 206, 246)";
+              font_size = 14;
+              position = "0, 20";
+              halign = "center";
+              valign = "bottom";
+            }
+            {
+              monitor = "";
+              text = "Enter your password to unlock.";
+              color = "rgb(198, 160, 246)";
+              font_size = 14;
+              position = "0, 60";
+              halign = "center";
+              valign = "bottom";
+            }
             */
           ];
         };

@@ -190,18 +190,15 @@ in
                 force_no_accel = true;
               };
               general = {
-                gaps_in = 4;
-                gaps_out = 9;
-                border_size = 2;
-                "col.active_border" = "rgba(ca9ee6ff) rgba(f2d5cfff) 45deg";
-                "col.inactive_border" = "rgba(b4befecc) rgba(6c7086cc) 45deg";
+                gaps_in = 2;
+                gaps_out = 5;
                 resize_on_border = true;
                 layout = "dwindle"; # dwindle or master
                 # allow_tearing = true; # Allow tearing for games (use immediate window rules for specific games or all titles)
               };
               decoration = {
                 shadow.enabled = false;
-                rounding = 10;
+                rounding = 5;
                 dim_special = 0.3;
                 blur = {
                   enabled = true;
@@ -221,7 +218,7 @@ in
               };
               layerrule = [
                 "blur, rofi"
-                "blur, waybar"
+                # "blur, waybar"
                 "ignorezero, rofi"
                 "ignorealpha 0.7, rofi"
 
@@ -234,7 +231,7 @@ in
                 # "dimaround, swaync-control-center"
               ];
               animations = {
-                enabled = true;
+                enabled = false;
                 bezier = [
                   "linear, 0, 0, 1, 1"
                   "md3_standard, 0.2, 0, 0, 1"

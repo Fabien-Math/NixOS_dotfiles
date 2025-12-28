@@ -17,7 +17,7 @@ in
             layer = "top";
             position = "top";
             mode = "dock"; # Fixes fullscreen issues
-            height = 32; # 35
+            height = 30; # 35
             exclusive = true;
             passthrough = false;
             gtk-layer-shell = true;
@@ -150,7 +150,6 @@ in
               };
               ignored-players = [
                 "firefox"
-                "chromium"
               ];
               max-length = 25;
             };
@@ -377,7 +376,7 @@ in
         style = ''
           * {
             font-family: "JetBrainsMono Nerd Font";
-            font-size: 14px;
+            font-size: 12px;
             font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
             margin: 0px;
             padding: 0px;
@@ -419,8 +418,8 @@ in
             transition-duration: 0.5s;
             background: transparent;
             /*border: 2px solid @overlay0;*/
-            /*background: @theme_base_color;*/
-            border-radius: 10px;
+            background: @base;
+            border-radius: 5px;
           }
 
           window#waybar.hidden {
@@ -429,7 +428,7 @@ in
 
           tooltip {
             background: #1e1e2e;
-            border-radius: 8px;
+            border-radius: 5px;
           }
 
           tooltip label {
