@@ -24,6 +24,7 @@
             alias control_sim="cd /home/fabien/thesis/codes/control_sim/ && nix develop . --command zeditor . && exit"
             alias config_nixos="zeditor ~/NixOS && exit"
             alias ibvs_sim="cd /home/fabien/thesis/codes/ibvs_sim/ && nix develop . --command zeditor . && exit"
+            alias compress_pdf="/home/fabien/NixOS/modules/desktop/hyprland/scripts/compress-pdf.sh"
           '';
           shellOptions = [
             "autocd" # change to named directory

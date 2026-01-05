@@ -15,6 +15,8 @@
     pastel
     # Ensure bash is interactive
     bashInteractive
+    # A set of tool for PostScript and PDF (like compression)
+    ghostscript
 
     #####   Modeling   #####
     blender
