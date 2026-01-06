@@ -7,6 +7,8 @@
     zotero
     onlyoffice-desktopeditors
     vlc
+    # Better file diff
+    meld
     # Disk space analyser
     qdirstat
     # Backup tool

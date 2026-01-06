@@ -279,7 +279,8 @@ in
             };
 
             "network" = {
-              on-click = "nm-connection-editor";
+              on-click = "nmtui-connect";
+              on-click-right = "nm-connection-editor";
               # "interface" = "wlp2*"; # (Optional) To force the use of this interface
               format-wifi = "󰤨 Wi-Fi";
               # format-wifi = " {bandwidthDownBits}  {bandwidthUpBits}";
