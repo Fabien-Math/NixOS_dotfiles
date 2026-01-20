@@ -250,6 +250,8 @@ in
                 "▇"
                 "█"
               ];
+              on-click-right = "kitty btop";
+              on-click-middle = "kitty";
             };
 
             "memory" = {
@@ -279,8 +281,9 @@ in
             };
 
             "network" = {
-              on-click = "nmtui-connect";
-              on-click-right = "nm-connection-editor";
+              on-click = "nmcli device wifi rescan";
+              on-click-right = "kitty nmtui-connect";
+              on-click-middle = "nm-connection-editor";
               # "interface" = "wlp2*"; # (Optional) To force the use of this interface
               format-wifi = "󰤨 Wi-Fi";
               # format-wifi = " {bandwidthDownBits}  {bandwidthUpBits}";

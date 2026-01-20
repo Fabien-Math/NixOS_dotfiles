@@ -154,11 +154,11 @@
           base_keymap = "VSCode";
 
           vim_mode = false;
-          show_whitespaces = "none";
+          show_whitespaces = "selection";
 
           disable_ai = true;
           soft_wrap = "editor_width";
-          relative_line_numbers = "enabled";
+          relative_line_numbers = "disabled";
           hard_tabs = true;
           colorize_brackets = true;
 
@@ -182,7 +182,7 @@
           {
             context = "Workspace";
             bindings = {
-              "ctrl-shift-t" = "workspace::NewTerminal";
+              "ctrl-alt-t" = "workspace::NewTerminal";
               "ctrl-k ctrl-o" = "workspace::Open";
               "ctrl-o" = "workspace::OpenFiles";
               "ctrl-shift-q" = "zed::Quit";
@@ -194,6 +194,17 @@
             context = "Editor";
             bindings = {
               "ctrl-:" = "editor::ToggleComments";
+              "alt-shift-up" = "editor::SelectPrevious";
+              "alt-shift-down" = "editor::SelectNext";
+              "ctrl-shift-down" = "editor::AddSelectionBelow";
+              "ctrl-shift-up" = "editor::AddSelectionAbove";
+            };
+          }
+
+          {
+          	context = "Pane";
+           	bindings = {
+            	"ctrl-shift-w" = "pane::CloseOtherItems";
             };
           }
 

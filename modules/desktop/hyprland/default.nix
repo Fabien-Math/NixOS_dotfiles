@@ -314,6 +314,7 @@ in
                 "opacity 0.80 0.80,class:^(VSCodium)$"
                 "opacity 0.80 0.80,class:^(codium-url-handler)$"
                 "opacity 0.95 0.95,class:^(code)$"
+                "opacity 0.95 0.95,class:^(zeditor)$"
                 "opacity 0.80 0.80,class:^(code-url-handler)$"
                 "opacity 0.80 0.80,class:^(tuiFileManager)$"
                 "opacity 0.80 0.80,class:^(org.kde.dolphin)$"
@@ -534,6 +535,7 @@ in
             # Move active window to a relative workspace with mainMod + CTRL + ALT + [←→]
             "$mainMod CTRL ALT, right, movetoworkspace, r+1"
             "$mainMod CTRL ALT, left, movetoworkspace, r-1"
+
             "$mainMod SHIFT, ampersand, movetoworkspace, 1"
             "$mainMod SHIFT, eacute, movetoworkspace, 2"
             "$mainMod SHIFT, quotedbl, movetoworkspace, 3"
@@ -544,6 +546,16 @@ in
             "$mainMod SHIFT, underscore, movetoworkspace, 8"
             "$mainMod SHIFT, ccedilla, movetoworkspace, 9"
             "$mainMod SHIFT, agrave, movetoworkspace, 10"
+            "$mainMod CTRL, ampersand, movetoworkspacesilent, 1"
+            "$mainMod CTRL, eacute, movetoworkspacesilent, 2"
+            "$mainMod CTRL, quotedbl, movetoworkspacesilent, 3"
+            "$mainMod CTRL, apostrophe, movetoworkspacesilent, 4"
+            "$mainMod CTRL, parenleft, movetoworkspacesilent, 5"
+            "$mainMod CTRL, minus, movetoworkspacesilent, 6"
+            "$mainMod CTRL, egrave, movetoworkspacesilent, 7"
+            "$mainMod CTRL, underscore, movetoworkspacesilent, 8"
+            "$mainMod CTRL, ccedilla, movetoworkspacesilent, 9"
+            "$mainMod CTRL, agrave, movetoworkspacesilent, 10"
 
             # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
             "$mainMod SHIFT $CONTROL, left, movewindow, l"
@@ -595,8 +607,9 @@ in
 
           # Default setup (when only internal screen is used)
           monitor = [
-            "eDP-1,1920x1080@60.01,0x1080,1.0"
-            "HDMI-A-1,1920x1080@60.0,0x0,1.0"
+            "eDP-1,1920x1080@60.01,0x0,1.0"
+            # "HDMI-A-1,2560x1440@60.0,auto-center-up,1.0"
+            "desc:Lenovo Group Limited P24QD-40 VKVK5787,1920x1080@60.0,auto-center-up,1.0"
           ];
           # Preferred config when external screen is connecte
           workspace = [

@@ -40,6 +40,11 @@
               on = [ "d" ];
               run = "remove --force";
             }
+            {
+            	on = [ "T" ];
+            	run = "reveal";
+             	desc = "Open terminal at current dir";
+            }
           ];
         };
         theme = {
