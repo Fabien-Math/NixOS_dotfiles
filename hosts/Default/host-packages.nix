@@ -9,6 +9,8 @@
     vlc
     # Better file diff
     meld
+    # Basic terminal calculator
+    bc
     # Disk space analyser
     qdirstat
     # Backup tool
