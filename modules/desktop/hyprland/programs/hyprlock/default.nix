@@ -29,28 +29,28 @@ in
             }
           ];
 
-          # input-field = [
-          #   {
-          #     monitor = "";
-          #     size = "100, 20";
-          #     outline_thickness = 2;
-          #     rounding = 20;
-          #     outer_color = "rgba(160, 160, 160, 1)";
-          #     inner_color = "rgba(46, 46, 46, 1)";
-          #     font_color = "rgba(160, 160, 160, 1)";
-          #     fail_color = "rgb(237, 135, 150)";
-          #     fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-          #     fail_transition = 300;
-          #     fade_on_empty = false;
-          #     placeholder_text = "Password...";
-          #     dots_size = 0.1;
-          #     dots_spacing = 0.64;
-          #     dots_center = true;
-          #     position = "0, 10";
-          #     halign = "center";
-          #     valign = "bottom";
-          #   }
-          # ];
+          input-field = [
+            {
+              monitor = "";
+              size = "100, 20";
+              outline_thickness = 0;
+              rounding = 0;
+              outer_color = "rgba(0, 0, 0, 0)";
+              inner_color = "rgba(0, 0, 0, 0)";
+              font_color = "rgba(160, 160, 160, 1)";
+              fail_color = "rgb(237, 135, 150)";
+              fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
+              fail_transition = 100;
+              fade_on_empty = false;
+              placeholder_text = "";
+              dots_size = 0.2;
+              dots_spacing = 0.64;
+              dots_center = true;
+              position = "0, 10";
+              halign = "center";
+              valign = "bottom";
+            }
+          ];
 
           label = [
             {
