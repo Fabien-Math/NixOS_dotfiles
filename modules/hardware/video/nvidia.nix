@@ -5,7 +5,7 @@
   ...
 }:
 let
-  nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.latest; # stable, latest, beta, etc.
+  nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.stable; # stable, latest, beta, etc.
 in
 {
   environment.sessionVariables = lib.optionalAttrs config.programs.hyprland.enable {
@@ -61,11 +61,5 @@ in
         "nvidia-settings"
         "nvidia-x11"
       ];
-  };
-  nix.settings = {
-    substituters = [ "https://cuda-maintainers.cachix.org" ];
-    trusted-public-keys = [
-      "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
-    ];
   };
 }
