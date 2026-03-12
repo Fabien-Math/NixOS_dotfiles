@@ -29,15 +29,9 @@ in
       home = {
         username = "${username}";
         homeDirectory = "/home/${username}";
-        stateVersion = "23.11"; # Do not change!
+        stateVersion = "26.05"; # Do not change!
         sessionVariables = {
-          EDITOR =
-            if (editor == "nixvim" || editor == "neovim" || editor == "nvchad") then
-              "nvim"
-            else if editor == "vscode" then
-              "code"
-            else
-              "nano";
+          EDITOR = "${editor}";
           BROWSER = "${browser}";
           TERMINAL = "${terminal}";
         };
@@ -48,6 +42,7 @@ in
     mutableUsers = true;
     users.${username} = {
       isNormalUser = true;
+      initialPassword = "123";
       extraGroups = [
         "wheel" # sudo access
         "input"

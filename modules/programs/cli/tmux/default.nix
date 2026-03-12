@@ -78,10 +78,10 @@ in
           bind z resize-pane -Z
 
           # Select panes
-          bind h select-pane -L
-          bind l select-pane -R
-          bind k select-pane -U
-          bind j select-pane -D
+          bind -n S-Left select-pane -L
+          bind -n S-Right select-pane -R
+          bind -n S-Up select-pane -U
+          bind -n S-Down select-pane -D
 
           # Resize panes
           # bind -n M-h resize-pane -L 2
@@ -94,15 +94,15 @@ in
           bind -n M-Down resize-pane -D 2
 
           # Splits
-          bind | split-window -h -c "#{pane_current_path}"
-          bind [ split-window -h -c "#{pane_current_path}"
+          bind ) split-window -h -c "#{pane_current_path}"
+          bind ( split-window -h -c "#{pane_current_path}"
           bind - split-window -v -c "#{pane_current_path}"
-          bind ] split-window -v -c "#{pane_current_path}"
-          bind c new-window -c "#{pane_current_path}"
+          bind _ split-window -v -c "#{pane_current_path}"
+          bind n new-window -c "#{pane_current_path}"
 
           # Select windows
-          bind -n S-Left  previous-window
-          bind -n S-Right next-window
+          bind -n C-S-Left  previous-window
+          bind -n C-S-Right next-window
 
           bind -n C-M-h  previous-window
           bind -n C-M-l next-window

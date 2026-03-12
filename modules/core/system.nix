@@ -71,7 +71,7 @@ in
       keep-derivations = true;
     };
     optimise.automatic = true;
-    package = pkgs.stable.nix;
+    package = pkgs.nix;
   };
   time.timeZone = "${timezone}";
   i18n.defaultLocale = "${locale}";
@@ -107,5 +107,5 @@ in
       # allowUnfreePredicate = _: true;
     };
   };
-  system.stateVersion = "23.11"; # Do not change!
+  system.stateVersion = "26.05"; # Do not change!
 }

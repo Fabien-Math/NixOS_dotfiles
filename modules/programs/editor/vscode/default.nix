@@ -9,7 +9,7 @@
     (_: {
       programs.vscode = {
         enable = true;
-        # mutableExtensionsDir = true; # TODO: test with home-manager
+        mutableExtensionsDir = true;
         # package = pkgs.vscodium;
         package = pkgs.vscode;
         profiles.default = {
@@ -23,17 +23,17 @@
             catppuccin.catppuccin-vsc-icons
             # asvetliakov.vscode-neovim
             # vscodevim.vim
-            tamasfe.even-better-toml
-            #jnoortheen.nix-ide
+            # tamasfe.even-better-toml
+            jnoortheen.nix-ide
             # redhat.vscode-yaml
             # vadimcn.vscode-lldb
-            rust-lang.rust-analyzer
-            ms-vscode.cpptools
-            ms-vscode.cmake-tools
-            ms-vscode.makefile-tools
-            ziglang.vscode-zig
+            # rust-lang.rust-analyzer
+            # ms-vscode.cpptools
+            # ms-vscode.cmake-tools
+            # ms-vscode.makefile-tools
+            # ziglang.vscode-zig
             # ms-dotnettools.csharp
-            ms-python.python
+            # ms-python.python
             # pkief.material-icon-theme
             # equinusocio.vsc-material-theme
             # dracula-theme.theme-dracula
@@ -55,8 +55,6 @@
             "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
             "window.menuBarVisibility" = "classic";
             "window.zoomLevel" = 0.5;
-            "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
-            "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
             "editor.fontSize" = 14;
             "workbench.colorTheme" = "Catppuccin Mocha";
             "workbench.iconTheme" = "catppuccin-mocha";

@@ -1,9 +1,14 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
+let
+  # Reference unstable pkgs from your flake inputs
+  unstable = inputs.nixpkgs.legacyPackages.x86_64-linux;
+in
 {
   environment.systemPackages = with pkgs; [
     #####   Utils   #####
     inkscape
     gimp
+    qimgv
     zotero
     onlyoffice-desktopeditors
     vlc
@@ -21,39 +26,34 @@
     bashInteractive
     # A set of tool for PostScript and PDF (like compression)
     ghostscript
+    # Utility for bidirectional data transfer between two independent data channels (Check Hyprland monitors changes)
+    socat
+    # Note system
+    unstable.affine
 
     #####   Modeling   #####
     blender
-    freecad
 
+    freecad
     calculix-ccx
-    bambu-studio
 
     # Code
     # Latex
     texliveFull
     # C
     glib
-    # OpenGL related
-    mesa
-    libGL
-    glfw
-    freetype
-    fontconfig
-    xorg.libX11
-    libxkbcommon
     # Compression tool
     zlib
     # Simple interprocess messaging system
     dbus
     # Python
-    python313
-    python313Packages.numpydoc
-    python313Packages.numpy
-    python313Packages.matplotlib
-    python313Packages.tqdm
-	  python313Packages.scipy
-    python313Packages.pyyaml
-
+    (python313.withPackages (ps: with ps; [
+      numpy
+      scipy
+      matplotlib
+      tqdm
+      pyyaml
+      numpydoc
+    ]))
   ];
 }

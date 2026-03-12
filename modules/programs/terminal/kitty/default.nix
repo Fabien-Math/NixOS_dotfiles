@@ -54,8 +54,11 @@
           # Tmux
           "ctrl+t" = "launch --cwd=current --type=overlay tmux-sessionizer";
           # "ctrl+t" = "launch --cwd=current --title tmux-sessionizer tmux-sessionizer";
-          "ctrl+shift+left" = "no_op";
-          "ctrl+shift+right" = "no_op";
+          "ctrl+shift+left" = "previous_window";
+          "ctrl+shift+right" = "next_window";
+          "ctrl+shift+enter" = "new_window";
+          "ctrl+shift+space" = "new_window";
+          "ctrl+shift+m" = "toggle_maximized";
         };
       };
     })

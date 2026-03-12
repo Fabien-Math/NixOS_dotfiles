@@ -20,13 +20,6 @@ in
   "privacy.userContext.ui.enabled" = true;
   "privacy.userContext.longPressBehavior" = 2;
 
-  # Performance settings
-  # "gfx.webrender.all" = true; # Force enable GPU acceleration
-  # "media.ffmpeg.vaapi.enabled" = true;
-  # "widget.dmabuf.force-enabled" = true; # Required in recent Firefoxes
-  # "reader.parse-on-load.force-enabled" = true;
-  # "privacy.webrtc.legacyGlobalIndicator" = false;
-
   # Smooth Scroll
   "general.smoothScroll" = true;
   "general.smoothScroll.lines.durationMaxMS" = 125;
@@ -45,10 +38,10 @@ in
   "toolkit.scrollbox.horizontalScrollDistance" = 6;
   "toolkit.scrollbox.verticalScrollDistance" = 2;
 
-  # Use cloudflare for better security/privacy
-  "network.trr.mode" = 3; # 2 if your havng DNS problems
-  "network.trr.custom_uri" = "https://dns.quad9.net/dns-query";
-  "network.trr.uri" = "https://dns.quad9.net/dns-query";
+  # Commented because we are using adguard + cloudflare dns in modules/core/dns.nix
+  # "network.trr.mode" = 3; # 2 if your havng DNS problems
+  # "network.trr.custom_uri" = "https://dns.quad9.net/dns-query";
+  # "network.trr.uri" = "https://dns.quad9.net/dns-query";
 
   # Remove trackers
   "privacy.purge_trackers.enabled" = lock-true;
