@@ -1,0 +1,176 @@
+# --- GREEK LOWERCASE ---
+α greek alpha
+β greek beta
+γ greek gamma
+δ greek delta
+ε greek epsilon
+ζ greek zeta
+η greek eta
+θ greek theta
+ι greek iota
+κ greek kappa
+λ greek lambda
+μ greek mu
+ν greek nu
+ξ greek xi
+ο greek omicron
+π greek pi
+ρ greek rho
+σ greek sigma
+τ greek tau
+υ greek upsilon
+φ greek phi
+χ greek chi
+ψ greek psi
+ω greek omega
+
+# --- GREEK UPPERCASE ---
+Α greek Alpha
+Β greek Beta
+Γ greek Gamma
+Δ greek Delta
+Ε greek Epsilon
+Ζ greek Zeta
+Η greek Eta
+Θ greek Theta
+Ι greek Iota
+Κ greek Kappa
+Λ greek Lambda
+Μ greek Mu
+Ν greek Nu
+Ξ greek Xi
+Ο greek Omicron
+Π greek Pi
+Ρ greek Rho
+Σ greek Sigma
+Τ greek Tau
+Υ greek Upsilon
+Φ greek Phi
+Χ greek Chi
+Ψ greek Psi
+Ω greek Omega
+
+# --- MATH OPERATORS ---
+± plus minus
+× multiplication times
+÷ division divide
+∗ asterisk operator
+∙ dot operator
+√ square root
+∛ cube root
+∑ summation sum
+∏ product
+∫ integral
+∬ double integral
+∭ triple integral
+∞ infinity
+∝ proportional
+≈ approximately
+≠ not equal
+≡ equivalent identical
+≤ less equal
+≥ greater equal
+≪ much less
+≫ much greater
+
+# --- SET THEORY / LOGIC ---
+∈ element of
+∉ not element of
+⊂ subset
+⊃ superset
+⊆ subset equal
+⊇ superset equal
+∪ union
+∩ intersection
+∅ empty set
+∀ for all
+∃ exists
+¬ not logical
+∧ and logical
+∨ or logical
+⇒ implies
+⇔ iff equivalent
+
+# --- ARROWS ---
+← arrow left
+→ arrow right
+↑ arrow up
+↓ arrow down
+↔ arrow left right
+↕ arrow up down
+⇒ arrow implies
+⇐ arrow reverse implies
+⇑ arrow double up
+⇓ arrow double down
+
+# --- SUPERSCRIPTS ---
+⁰ superscript 0
+¹ superscript 1
+² superscript 2
+³ superscript 3
+⁴ superscript 4
+⁵ superscript 5
+⁶ superscript 6
+⁷ superscript 7
+⁸ superscript 8
+⁹ superscript 9
+⁺ superscript plus
+⁻ superscript minus
+⁼ superscript equals
+⁽ superscript (
+⁾ superscript )
+
+# --- SUBSCRIPTS ---
+₀ subscript 0
+₁ subscript 1
+₂ subscript 2
+₃ subscript 3
+₄ subscript 4
+₅ subscript 5
+₆ subscript 6
+₇ subscript 7
+₈ subscript 8
+₉ subscript 9
+₊ subscript plus
+₋ subscript minus
+₌ subscript equals
+₍ subscript (
+₎ subscript )
+
+# --- LATIN EXTENDED ---
+á latin a acute
+à latin a grave
+ä latin a umlaut
+â latin a circumflex
+ç latin c cedilla
+é latin e acute
+è latin e grave
+ê latin e circumflex
+ë latin e umlaut
+í latin i acute
+ì latin i grave
+î latin i circumflex
+ï latin i umlaut
+ñ latin n tilde
+ó latin o acute
+ò latin o grave
+ô latin o circumflex
+ö latin o umlaut
+ú latin u acute
+ù latin u grave
+û latin u circumflex
+ü latin u umlaut
+ß sharp s german
+
+# --- MISC SYMBOLS ---
+° degree
+§ section
+¶ paragraph
+† dagger
+‡ double dagger
+• bullet
+… ellipsis
+‰ per mille
+© copyright
+® registered
+™ trademark
