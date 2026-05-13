@@ -15,8 +15,8 @@ in
 
       # Protect Wi-Fi (default deny)
       interfaces."wlp4s0" = {
-        allowedTCPPorts = [ ];
-        allowedUDPPorts = [ ];
+        allowedTCPPorts = [ 53317 ];
+        allowedUDPPorts = [ 53317 ];
       };
 
       interfaces."enp6s0f4u1" = {

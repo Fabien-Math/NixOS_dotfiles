@@ -63,8 +63,8 @@
             name = ".";
             forward-tls-upstream = "yes";
             forward-addr = [
-              "9.9.9.9#dns.quad9.net"
-              "149.112.112.112#dns.quad9.net"
+              "9.9.9.9@853#dns.quad9.net"
+              "149.112.112.112@853#dns.quad9.net"
 
               # "1.1.1.1@853#cloudflare-dns.com"
               # "1.0.0.1@853#cloudflare-dns.com"
@@ -126,3 +126,15 @@
     };
   };
 }
+
+
+
+### Debug
+#
+# resolvectl status
+# cat /etc/resolv.conf
+# ss -tpn | grep 853
+# drill google.com
+# dig google.com @9.9.9.9
+# dig 8.8.8.8 @9.9.9.9
+# dig google.com @127.0.0.1 -p 5335
