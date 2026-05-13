@@ -14,33 +14,50 @@
         package = pkgs.vscode;
         profiles.default = {
           extensions = with pkgs.vscode-extensions; [
-            bbenoist.nix
-            # arrterian.nix-env-selector
-            eamodio.gitlens
-            github.vscode-github-actions
-            yzhang.markdown-all-in-one
+            # Themes
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
-            # asvetliakov.vscode-neovim
-            # vscodevim.vim
-            # tamasfe.even-better-toml
+
+            # Utils
+            hediet.vscode-drawio
+            yzhang.markdown-all-in-one
+
+            # Latex
+            james-yu.latex-workshop
+
+            # Python
+            ms-python.python
+            ms-python.vscode-pylance
+            ms-python.debugpy
+
+            # C / C++
+            ms-vscode.cpptools
+
+            # Docker
+            ms-vscode-remote.remote-containers
+
+            # Nix
+            bbenoist.nix
             jnoortheen.nix-ide
-            # redhat.vscode-yaml
-            # vadimcn.vscode-lldb
-            # rust-lang.rust-analyzer
-            # ms-vscode.cpptools
-            # ms-vscode.cmake-tools
-            # ms-vscode.makefile-tools
-            # ziglang.vscode-zig
-            # ms-dotnettools.csharp
-            # ms-python.python
-            # pkief.material-icon-theme
-            # equinusocio.vsc-material-theme
-            # dracula-theme.theme-dracula
+            arrterian.nix-env-selector
+
+            # Git
+            mhutchie.git-graph
+            eamodio.gitlens
           ];
           keybindings = [
+	          {
+	            key = "ctrl+shift+[Period]";
+	            command = "-editor.action.commentLine";
+	            when = "editorTextFocus && !editorReadonly";
+	          }
+	          {
+	            key = "ctrl+[Period]";
+	            command = "-breadcrumbs.focus";
+	            when = "breadcrumbsPossible && breadcrumbsVisible";
+	          }
             {
-              key = "ctrl+:";
+              key = "ctrl+[Period]";
               command = "editor.action.commentLine";
               when = "editorTextFocus && !editorReadonly";
             }
@@ -48,8 +65,18 @@
               key = "ctrl+s";
               command = "workbench.action.files.saveFiles";
             }
+            {
+              key = "ctrl+q";
+              command = "-workbench.action.quit";
+            }
+		        {
+		          key = "ctrl+shift+q";
+		          command = "workbench.action.quit";
+		        }
           ];
           userSettings = {
+            "chat.disableAIFeatures" = true;
+
             "update.mode" = "none";
             # "extensions.autoUpdate" = false; # Fixes vscode freaking out when theres an update
             "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
@@ -65,6 +92,8 @@
             "workbench.startupEditor" = "none";
             "telemetry.enableCrashReporter" = false;
             "telemetry.enableTelemetry" = false;
+
+
 
             "security.workspace.trust.untrustedFiles" = "open";
 
@@ -99,12 +128,12 @@
             "explorer.openEditors.visible" = 0;
             "breadcrumbs.enabled" = true;
             "editor.renderControlCharacters" = false;
-            "editor.stickyScroll.enabled" = false; # Top code preview
-            "editor.scrollbar.verticalScrollbarSize" = 2;
-            "editor.scrollbar.horizontalScrollbarSize" = 2;
-            "editor.scrollbar.vertical" = "hidden";
-            "editor.scrollbar.horizontal" = "hidden";
-            "workbench.layoutControl.enabled" = false;
+            "editor.stickyScroll.enabled" = true; # Top code preview
+            "editor.scrollbar.verticalScrollbarSize" = 5;
+            "editor.scrollbar.horizontalScrollbarSize" = 5;
+            "editor.scrollbar.vertical" = "visible";
+            "editor.scrollbar.horizontal" = "visible";
+            "workbench.layoutControl.enabled" = true;
 
             "editor.mouseWheelZoom" = true;
 
