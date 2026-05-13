@@ -13,12 +13,12 @@ in
         enable = true;
         systemd = {
           enable = false;
-          target = "graphical-session.target";
+          targets = "graphical-session.target";
         };
         settings = [
           {
-            layer = "top";
-            position = "top";
+            layer = "bottom";
+            position = "bottom";
             mode = "dock"; # Fixes fullscreen issues
             height = 30; # 35
             exclusive = true;
@@ -26,9 +26,9 @@ in
             gtk-layer-shell = true;
             ipc = true;
             fixed-center = true;
-            margin-top = 5;
-            margin-left = 5;
-            margin-right = 5;
+            margin-top = 0;
+            margin-left = 0;
+            margin-right = 0;
             margin-bottom = 0;
 
             modules-left = [
@@ -389,11 +389,11 @@ in
             padding: 0px;
           }
 
-          @define-color base   #1e1e2e;
+          @define-color base   #000000;
           @define-color mantle #181825;
           @define-color crust  #11111b;
 
-          @define-color text     #cdd6f4;
+          @define-color text     #6597cA;
           @define-color subtext0 #a6adc8;
           @define-color subtext1 #bac2de;
 
@@ -426,7 +426,7 @@ in
             background: transparent;
             /*border: 2px solid @overlay0;*/
             background: @base;
-            border-radius: 5px;
+            border-radius: 0px;
           }
 
           window#waybar.hidden {
@@ -503,27 +503,27 @@ in
           }
 
           #idle_inhibitor {
-            color: @blue;
+            color: @text;
           }
 
           #bluetooth,
           #backlight {
-            color: @blue;
+            color: @text;
           }
 
           #battery {
-            color: @blue;
+            color: @text;
           }
 
           @keyframes blink {
             to {
-              color: @surface0;
+              color: @text;
             }
           }
 
           #battery.critical:not(.charging) {
-            background-color: @red;
-            color: @theme_text_color;
+            background-color: @base;
+            color: @red;
             animation-name: blink;
             animation-duration: 0.5s;
             animation-timing-function: linear;
@@ -533,47 +533,47 @@ in
           }
 
           #custom-updates {
-            color: @blue;
+            color: @text;
           }
 
           #custom-notification {
-            color: #89b4fa;
+            color: @text;
             padding: 0px 5px;
             border-radius: 5px;
           }
 
           #language {
-            color: @blue;
+            color: @text;
           }
 
           #clock {
-            color: @blue;
+            color: @text;
           }
 
           #custom-icon {
             font-size: 15px;
-            color: #89b4fa;
+            color: @text;
           }
 
           #custom-gpuinfo {
-            color: @blue;
+            color: @text;
           }
 
           #cpu {
-            color: @blue;
+            color: @text;
           }
 
           #custom-keyboard,
           #memory {
-            color: @blue;
+            color: @text;
           }
 
           #disk {
-            color: @blue;
+            color: @text;
           }
 
           #temperature {
-            color: @teal;
+            color: @text;
           }
 
           #temperature.critical {
@@ -588,7 +588,7 @@ in
           }
 
           #keyboard-state {
-            color: @flamingo;
+            color: @text;
           }
 
           #workspaces button {
@@ -618,7 +618,7 @@ in
           }
 
           #workspaces button.active {
-          	color: @blue;
+          	color: @text;
             	border-radius: 10px;
               padding-left: 8px;
               padding-right: 8px;
@@ -646,19 +646,19 @@ in
           }
 
           #custom-cava_mviz {
-          	color: @blue;
+          	color: @text;
           }
 
           #cava {
-          	color: @blue;
+          	color: @text;
           }
 
           #mpris {
-          	color: @blue;
+          	color: @text;
           }
 
           #custom-menu {
-            color: @rosewater;
+            color: @text;
           }
 
           #custom-power {
@@ -666,42 +666,42 @@ in
           }
 
           #custom-updater {
-            color: @red;
+            color: @text;
           }
 
           #custom-light_dark {
-            color: @blue;
+            color: @text;
           }
 
           #custom-weather {
-            color: @lavender;
+            color: @text;
           }
 
           #custom-lock {
-            color: @maroon;
+            color: @text;
           }
 
           #pulseaudio {
-            color: @lavender;
+            color: @text;
           }
 
           #pulseaudio.bluetooth {
-            color: @blue;
+            color: @text;
           }
           #pulseaudio.muted {
             color: @red;
           }
 
           #window {
-            color: @mauve;
+            color: @text;
           }
 
           #custom-waybar-mpris {
-            color:@lavender;
+            color:@text;
           }
 
           #network {
-            color: @blue;
+            color: @text;
           }
           #network.disconnected,
           #network.disabled {
