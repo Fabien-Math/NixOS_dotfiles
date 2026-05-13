@@ -86,7 +86,7 @@ pkgs.writeShellScriptBin "launcher" ''
       | rofi_cmd)
     [ -z "$CHOICE" ] && exit 0
 
-    swww img "$WALLPAPER_DIR/$CHOICE" --transition-step 90 --transition-duration 1 --transition-fps 60 --transition-type wipe
+    awww img "$WALLPAPER_DIR/$CHOICE" --transition-step 90 --transition-duration 1 --transition-fps 60 --transition-type wipe
     ;;
   emoji)
     rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
@@ -94,6 +94,18 @@ pkgs.writeShellScriptBin "launcher" ''
 
     rofi -modi emoji -show emoji -theme "''${rofi_theme}" -theme-str "$r_override"
     ;;
+  symbols)
+     rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-4/style-4.rasi"
+     r_override="entry{placeholder:'Search Symbols...';}listview{lines:15;}"
+     SYMBOLS_FILE="$HOME/NixOS/modules/desktop/hyprland/scripts/symbols.txt"
+
+     choice=$(grep -v '^#' "$SYMBOLS_FILE" \
+       | rofi -dmenu -i -theme "$rofi_theme" -theme-str "$r_override" \
+       | awk '{print $1}')
+
+     [ -z "$choice" ] && exit 0
+     [ -n "$choice" ] && printf "%s" "$choice" | wl-copy
+     ;;
   games)
     r_override="entry{placeholder:'Search Games...';}listview{lines:15;}"
     rofi_theme="''${XDG_CONFIG_HOME:-$HOME/.config}/rofi/launchers/type-1/style-5.rasi"
@@ -111,6 +123,7 @@ pkgs.writeShellScriptBin "launcher" ''
     echo "  tmux         Search active tmux sessions"
     echo "  wallpaper    Search and set wallpapers"
     echo "  emoji        Search and insert emojis"
+    echo "  symbols      Search and insert symbols"
     echo "  games        Launch games menu"
     echo "  help         Display this help message"
     echo "  --help       Same as 'help'"

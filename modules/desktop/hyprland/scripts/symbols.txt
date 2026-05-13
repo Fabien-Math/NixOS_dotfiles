@@ -1,176 +1,634 @@
-# --- GREEK LOWERCASE ---
-α greek alpha
-β greek beta
-γ greek gamma
-δ greek delta
-ε greek epsilon
-ζ greek zeta
-η greek eta
-θ greek theta
-ι greek iota
-κ greek kappa
-λ greek lambda
-μ greek mu
-ν greek nu
-ξ greek xi
-ο greek omicron
-π greek pi
-ρ greek rho
-σ greek sigma
-τ greek tau
-υ greek upsilon
-φ greek phi
-χ greek chi
-ψ greek psi
-ω greek omega
+# =========================================================
+# GREEK LETTERS — LOWERCASE
+# =========================================================
+α  greek alpha
+β  greek beta
+γ  greek gamma
+δ  greek delta
+ε  greek epsilon
+ϵ  greek lunate epsilon
+ζ  greek zeta
+η  greek eta
+θ  greek theta
+ϑ  greek theta symbol
+ι  greek iota
+κ  greek kappa
+λ  greek lambda
+μ  greek mu
+ν  greek nu
+ξ  greek xi
+ο  greek omicron
+π  greek pi
+ϖ  greek pi symbol
+ρ  greek rho
+ϱ  greek rho symbol
+σ  greek sigma
+ς  greek final sigma
+τ  greek tau
+υ  greek upsilon
+φ  greek phi
+ϕ  greek phi symbol
+χ  greek chi
+ψ  greek psi
+ω  greek omega
 
-# --- GREEK UPPERCASE ---
-Α greek Alpha
-Β greek Beta
-Γ greek Gamma
-Δ greek Delta
-Ε greek Epsilon
-Ζ greek Zeta
-Η greek Eta
-Θ greek Theta
-Ι greek Iota
-Κ greek Kappa
-Λ greek Lambda
-Μ greek Mu
-Ν greek Nu
-Ξ greek Xi
-Ο greek Omicron
-Π greek Pi
-Ρ greek Rho
-Σ greek Sigma
-Τ greek Tau
-Υ greek Upsilon
-Φ greek Phi
-Χ greek Chi
-Ψ greek Psi
-Ω greek Omega
+# =========================================================
+# GREEK LETTERS — UPPERCASE
+# =========================================================
+Α  greek Alpha
+Β  greek Beta
+Γ  greek Gamma
+Δ  greek Delta
+Ε  greek Epsilon
+Ζ  greek Zeta
+Η  greek Eta
+Θ  greek Theta
+Ι  greek Iota
+Κ  greek Kappa
+Λ  greek Lambda
+Μ  greek Mu
+Ν  greek Nu
+Ξ  greek Xi
+Ο  greek Omicron
+Π  greek Pi
+Ρ  greek Rho
+Σ  greek Sigma
+Τ  greek Tau
+Υ  greek Upsilon
+Φ  greek Phi
+Χ  greek Chi
+Ψ  greek Psi
+Ω  greek Omega
 
-# --- MATH OPERATORS ---
-± plus minus
-× multiplication times
-÷ division divide
-∗ asterisk operator
-∙ dot operator
-√ square root
-∛ cube root
-∑ summation sum
-∏ product
-∫ integral
-∬ double integral
-∭ triple integral
-∞ infinity
-∝ proportional
-≈ approximately
-≠ not equal
-≡ equivalent identical
-≤ less equal
-≥ greater equal
-≪ much less
-≫ much greater
+# =========================================================
+# MATHEMATICAL OPERATORS
+# =========================================================
++  plus
+−  minus
+±  plus minus
+∓  minus plus
+×  multiplication times
+÷  division divide
+∗  asterisk operator
+∙  dot operator
+⋅  multiplication dot
+/  slash divide
+√  square root
+∛  cube root
+∜  fourth root
+∑  summation
+∏  product
+∐  coproduct
+∫  integral
+∬  double integral
+∭  triple integral
+∮  contour integral
+∞  infinity
+∝  proportional to
+∂  partial derivative
+∇  nabla del
+∴  therefore
+∵  because
+≈  approximately equal
+≃  asymptotically equal
+≅  congruent
+≡  identical equivalent
+≠  not equal
+<  less than
+>  greater than
+≤  less than or equal
+≥  greater than or equal
+≪  much less than
+≫  much greater than
+⊥  perpendicular
+∥  parallel
+°  degree
 
-# --- SET THEORY / LOGIC ---
-∈ element of
-∉ not element of
-⊂ subset
-⊃ superset
-⊆ subset equal
-⊇ superset equal
-∪ union
-∩ intersection
-∅ empty set
-∀ for all
-∃ exists
-¬ not logical
-∧ and logical
-∨ or logical
-⇒ implies
-⇔ iff equivalent
+# =========================================================
+# SET THEORY & LOGIC
+# =========================================================
+∈  element of
+∉  not element of
+∋  contains element
+⊂  subset
+⊃  superset
+⊆  subset or equal
+⊇  superset or equal
+∪  union
+∩  intersection
+∖  set minus
+∅  empty set
+ℕ  natural numbers
+ℤ  integers
+ℚ  rational numbers
+ℝ  real numbers
+ℂ  complex numbers
+∀  for all
+∃  exists
+∄  does not exist
+¬  logical not
+∧  logical and
+∨  logical or
+⊕  exclusive or
+⇒  implies
+⇔  iff equivalent
+⊢  proves
+⊨  models satisfies
 
-# --- ARROWS ---
-← arrow left
-→ arrow right
-↑ arrow up
-↓ arrow down
-↔ arrow left right
-↕ arrow up down
-⇒ arrow implies
-⇐ arrow reverse implies
-⇑ arrow double up
-⇓ arrow double down
+# =========================================================
+# ARROWS
+# =========================================================
+←  left arrow
+→  right arrow
+↑  up arrow
+↓  down arrow
+↔  left right arrow
+↕  up down arrow
+↖  upper left arrow
+↗  upper right arrow
+↘  lower right arrow
+↙  lower left arrow
+⇒  implies right
+⇐  implies left
+⇔  double implication
+⇑  double up arrow
+⇓  double down arrow
+↦  mapsto
+⟶  long right arrow
 
-# --- SUPERSCRIPTS ---
-⁰ superscript 0
-¹ superscript 1
-² superscript 2
-³ superscript 3
-⁴ superscript 4
-⁵ superscript 5
-⁶ superscript 6
-⁷ superscript 7
-⁸ superscript 8
-⁹ superscript 9
-⁺ superscript plus
-⁻ superscript minus
-⁼ superscript equals
-⁽ superscript (
-⁾ superscript )
+# =========================================================
+# SUPERSCRIPTS
+# =========================================================
+⁰  superscript 0
+¹  superscript 1
+²  superscript 2
+³  superscript 3
+⁴  superscript 4
+⁵  superscript 5
+⁶  superscript 6
+⁷  superscript 7
+⁸  superscript 8
+⁹  superscript 9
+⁺  superscript plus
+⁻  superscript minus
+⁼  superscript equals
+⁽  superscript left parenthesis
+⁾  superscript right parenthesis
+ⁿ  superscript n
+ⁱ  superscript i
 
-# --- SUBSCRIPTS ---
-₀ subscript 0
-₁ subscript 1
-₂ subscript 2
-₃ subscript 3
-₄ subscript 4
-₅ subscript 5
-₆ subscript 6
-₇ subscript 7
-₈ subscript 8
-₉ subscript 9
-₊ subscript plus
-₋ subscript minus
-₌ subscript equals
-₍ subscript (
-₎ subscript )
+# =========================================================
+# SUBSCRIPTS
+# =========================================================
+₀  subscript 0
+₁  subscript 1
+₂  subscript 2
+₃  subscript 3
+₄  subscript 4
+₅  subscript 5
+₆  subscript 6
+₇  subscript 7
+₈  subscript 8
+₉  subscript 9
+₊  subscript plus
+₋  subscript minus
+₌  subscript equals
+₍  subscript left parenthesis
+₎  subscript right parenthesis
+ₐ  subscript a
+ₑ  subscript e
+ₕ  subscript h
+ᵢ  subscript i
+ⱼ  subscript j
+ₖ  subscript k
+ₗ  subscript l
+ₘ  subscript m
+ₙ  subscript n
+ₒ  subscript o
+ₚ  subscript p
+ₛ  subscript s
+ₜ  subscript t
+ₓ  subscript x
 
-# --- LATIN EXTENDED ---
-á latin a acute
-à latin a grave
-ä latin a umlaut
-â latin a circumflex
-ç latin c cedilla
-é latin e acute
-è latin e grave
-ê latin e circumflex
-ë latin e umlaut
-í latin i acute
-ì latin i grave
-î latin i circumflex
-ï latin i umlaut
-ñ latin n tilde
-ó latin o acute
-ò latin o grave
-ô latin o circumflex
-ö latin o umlaut
-ú latin u acute
-ù latin u grave
-û latin u circumflex
-ü latin u umlaut
-ß sharp s german
+# =========================================================
+# LATIN EXTENDED / ACCENTED LETTERS
+# =========================================================
+á  latin a acute
+à  latin a grave
+â  latin a circumflex
+ä  latin a umlaut
+ã  latin a tilde
+å  latin a ring
+æ  latin ae ligature
+ç  latin c cedilla
+é  latin e acute
+è  latin e grave
+ê  latin e circumflex
+ë  latin e umlaut
+í  latin i acute
+ì  latin i grave
+î  latin i circumflex
+ï  latin i umlaut
+ñ  latin n tilde
+ó  latin o acute
+ò  latin o grave
+ô  latin o circumflex
+ö  latin o umlaut
+õ  latin o tilde
+ø  latin o slash
+ú  latin u acute
+ù  latin u grave
+û  latin u circumflex
+ü  latin u umlaut
+ý  latin y acute
+ÿ  latin y umlaut
+ß  german sharp s
+œ  oe ligature
 
-# --- MISC SYMBOLS ---
-° degree
-§ section
-¶ paragraph
-† dagger
-‡ double dagger
-• bullet
-… ellipsis
-‰ per mille
-© copyright
-® registered
-™ trademark
+# =========================================================
+# CURRENCY SYMBOLS
+# =========================================================
+$  dollar
+€  euro
+£  pound sterling
+¥  yen yuan
+₩  won
+₹  indian rupee
+₽  ruble
+₿  bitcoin
+
+# =========================================================
+# TYPOGRAPHIC SYMBOLS
+# =========================================================
+©  copyright
+®  registered trademark
+™  trademark
+§  section
+¶  paragraph
+†  dagger
+‡  double dagger
+•  bullet
+‣  triangular bullet
+…  ellipsis
+‰  per mille
+‱  per ten thousand
+′  prime
+″  double prime
+‴  triple prime
+¡  inverted exclamation
+¿  inverted question
+
+# =========================================================
+# QUOTATION MARKS
+# =========================================================
+“  left double quotation
+”  right double quotation
+‘  left single quotation
+’  right single quotation
+«  left guillemet
+»  right guillemet
+
+# =========================================================
+# BOX DRAWING / UI
+# =========================================================
+│  vertical line
+─  horizontal line
+┌  top left corner
+┐  top right corner
+└  bottom left corner
+┘  bottom right corner
+├  left tee
+┤  right tee
+┬  top tee
+┴  bottom tee
+┼  crossing
+
+# =========================================================
+# CHECKS & MARKS
+# =========================================================
+✓  check mark
+✔  heavy check mark
+✗  ballot x
+✘  heavy ballot x
+
+# =========================================================
+# SCIENTIFIC / TECHNICAL
+# =========================================================
+µ  micro sign
+Ω  ohm
+℉  fahrenheit
+℃  celsius
+Å  angstrom
+ℓ  script l liter
+⌀  diameter
+⌖  position indicator
+⌗  viewdata square
+⌁  electrical alternating current
+⌑  octahedron
+⌒  arc
+⌓  segment
+⌔  smile
+⌭  projective
+⌬  benzene ring
+⌯  vertical line extension
+⌰  apl functional symbol
+⌱  electric arrow
+⌲  software function
+⌳  apl i-beam
+⌴  apl up shoe jot
+⌵  apl down shoe jot
+⌶  apl i-beam quad
+⌷  apl quad slash
+⌸  apl quad equal
+⌹  apl quad divide
+⌺  apl quad diamond
+⌻  apl quad jot
+⌼  apl quad circle
+⌽  apl circle stile
+⌾  circled backslash
+⌿  slash bar
+⍀  backslash bar
+⍁  apl functional symbol quad slash
+⍂  apl functional symbol backslash
+⍃  apl functional symbol quad less-than
+⍄  apl functional symbol quad greater-than
+⍅  apl functional symbol leftwards vane
+⍆  apl functional symbol rightwards vane
+⍇  apl functional symbol quad leftwards arrow
+⍈  apl functional symbol quad rightwards arrow
+
+
+# =========================================================
+# FRACTIONS
+# =========================================================
+¼  fraction one quarter
+½  fraction one half
+¾  fraction three quarters
+⅐  fraction one seventh
+⅑  fraction one ninth
+⅒  fraction one tenth
+⅓  fraction one third
+⅔  fraction two thirds
+⅕  fraction one fifth
+⅖  fraction two fifths
+⅗  fraction three fifths
+⅘  fraction four fifths
+⅙  fraction one sixth
+⅚  fraction five sixths
+⅛  fraction one eighth
+⅜  fraction three eighths
+⅝  fraction five eighths
+⅞  fraction seven eighths
+
+# =========================================================
+# ROMAN NUMERALS
+# =========================================================
+Ⅰ  roman numeral one
+Ⅱ  roman numeral two
+Ⅲ  roman numeral three
+Ⅳ  roman numeral four
+Ⅴ  roman numeral five
+Ⅵ  roman numeral six
+Ⅶ  roman numeral seven
+Ⅷ  roman numeral eight
+Ⅸ  roman numeral nine
+Ⅹ  roman numeral ten
+Ⅺ  roman numeral eleven
+Ⅻ  roman numeral twelve
+Ⅼ  roman numeral fifty
+Ⅽ  roman numeral one hundred
+Ⅾ  roman numeral five hundred
+Ⅿ  roman numeral one thousand
+
+# =========================================================
+# NUMBER FORMS
+# =========================================================
+№  numero sign
+℅  care of
+℮  estimated symbol
+
+# =========================================================
+# GEOMETRIC SHAPES
+# =========================================================
+■  black square
+□  white square
+▪  small black square
+▫  small white square
+▲  black up triangle
+△  white up triangle
+▶  black right triangle
+▷  white right triangle
+▼  black down triangle
+▽  white down triangle
+◆  black diamond
+◇  white diamond
+○  white circle
+●  black circle
+◉  fisheye
+◎  bullseye
+◌  dotted circle
+
+# =========================================================
+# STARS & ASTERISMS
+# =========================================================
+★  black star
+☆  white star
+✦  black four pointed star
+✧  white four pointed star
+✪  circled star
+✶  six pointed star
+✷  eight pointed star
+✹  heavy eight pointed star
+✺  sixteen pointed asterisk
+✻  teardrop asterisk
+✼  open center asterisk
+
+# =========================================================
+# WEATHER & ASTROLOGY
+# =========================================================
+☀  sun
+☁  cloud
+☂  umbrella
+☃  snowman
+☄  comet
+☾  crescent moon
+☽  reverse crescent moon
+♈  aries
+♉  taurus
+♊  gemini
+♋  cancer
+♌  leo
+♍  virgo
+♎  libra
+♏  scorpio
+♐  sagittarius
+♑  capricorn
+♒  aquarius
+♓  pisces
+
+# =========================================================
+# CHESS SYMBOLS
+# =========================================================
+♔  white king
+♕  white queen
+♖  white rook
+♗  white bishop
+♘  white knight
+♙  white pawn
+♚  black king
+♛  black queen
+♜  black rook
+♝  black bishop
+♞  black knight
+♟  black pawn
+
+# =========================================================
+# MUSIC SYMBOLS
+# =========================================================
+♩  quarter note
+♪  eighth note
+♫  beamed eighth notes
+♬  beamed sixteenth notes
+♭  flat
+♮  natural
+♯  sharp
+
+# =========================================================
+# RELIGIOUS & CULTURAL SYMBOLS
+# =========================================================
+☥  ankh
+☦  orthodox cross
+☧  chi rho
+☨  cross of lorraine
+☩  cross potent
+☪  star and crescent
+☮  peace symbol
+☯  yin yang
+☸  dharma wheel
+✝  latin cross
+✡  star of david
+🕉  om
+
+# =========================================================
+# WARNING & SAFETY
+# =========================================================
+⚠  warning
+☢  radioactive
+☣  biohazard
+⚡  high voltage
+🔥  fire
+❄  snowflake
+☠  skull and crossbones
+
+# =========================================================
+# COMPUTER & UI SYMBOLS
+# =========================================================
+⌂  home
+⌐  reversed not sign
+⌘  command key
+⌥  option key
+⌦  delete to right
+⌫  erase to left
+⌧  clear screen
+⎋  escape key
+⏎  return enter
+⇥  tab key
+⇧  shift key
+⇪  caps lock
+␣  space symbol
+⏻  power symbol
+⏼  power on off
+⭘  radio button
+
+# =========================================================
+# BRACKETS & DELIMITERS
+# =========================================================
+(  left parenthesis
+)  right parenthesis
+[  left bracket
+]  right bracket
+{  left brace
+}  right brace
+⟨  left angle bracket
+⟩  right angle bracket
+⌈  left ceiling
+⌉  right ceiling
+⌊  left floor
+⌋  right floor
+⟦  left white bracket
+⟧  right white bracket
+
+# =========================================================
+# IPA / PHONETIC SYMBOLS
+# =========================================================
+ə  schwa
+ɛ  open e
+ɪ  small capital i
+ɔ  open o
+ʊ  upsilon
+ʃ  esh
+ʒ  ezh
+θ  theta
+ð  eth
+ŋ  eng
+ɲ  palatal n
+æ  ash
+ɑ  script a
+
+# =========================================================
+# CARD SUITS
+# =========================================================
+♠  spade suit
+♥  heart suit
+♦  diamond suit
+♣  club suit
+
+# =========================================================
+# EM DASHES & SPACING
+# =========================================================
+-   hyphen minus
+‐   hyphen
+-   non breaking hyphen
+–   en dash
+—   em dash
+―   horizontal bar
+·   middle dot
+•   bullet
+    non breaking space
+
+# =========================================================
+# MATHEMATICAL ALPHANUMERIC SYMBOLS
+# =========================================================
+ℂ  double struck C complex numbers
+ℍ  double struck H quaternions
+ℕ  double struck N natural numbers
+ℙ  double struck P primes
+ℚ  double struck Q rational numbers
+ℝ  double struck R real numbers
+ℤ  double struck Z integers
+ℑ  imaginary part
+ℜ  real part
+℘  weierstrass p
+ℵ  aleph
+ℶ  beth
+ℷ  gimel
+ℸ  daleth
+
+# =========================================================
+# COMMON PROGRAMMING SYMBOLS
+# =========================================================
+@  at sign
+#  hash pound
+&  ampersand
+|  vertical bar pipe
+\  backslash
+~  tilde
+^  caret
+`  grave accent backtick
+_  underscore
+%  percent
+:= assignment operator
+== equality operator
+!= inequality operator
+=> lambda arrow
+:: scope resolution
