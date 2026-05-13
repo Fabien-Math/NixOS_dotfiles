@@ -105,7 +105,7 @@ in
         };
 
         # Set wallpaper
-        services.swww.enable = true;
+        services.awww.enable = true;
 
         #test later systemd.user.targets.hyprland-session.Unit.Wants = [ "xdg-desktop-autostart.target" ];
         wayland.windowManager.hyprland = {
@@ -306,9 +306,9 @@ in
               "opacity 0.80 0.70, match:class ^(gjs)$"
 
 
-               "opacity 0.90 0.80, match:class ^(kitty|alacritty|Alacritty|org.wezfurlong.wezterm)$"
-               "opacity 0.95 0.90, match:class ^(dev.zed.Zed)$"
-               "opacity 0.95 0.90, match:class ^(code|code-url-handler)$"
+              "opacity 0.90 0.80, match:class ^(kitty|alacritty|Alacritty|org.wezfurlong.wezterm)$"
+              "opacity 0.95 0.90, match:class ^(dev.zed.Zed)$"
+              "opacity 0.95 0.90, match:class ^(code|code-url-handler)$"
 
               "opacity 0.90 0.80, match:class ^(discord)$"
               "opacity 0.90 0.80, match:class ^(WebCord)$"
@@ -415,7 +415,8 @@ in
               "$mainMod, A, exec, launcher drun" # launch desktop applications
               "$mainMod, SPACE, exec, launcher drun" # launch desktop applications
               "$mainMod SHIFT, W, exec, launcher wallpaper" # launch wallpaper switcher
-              "$mainMod SHIFT, Z, exec, launcher emoji" # launch emoji picker
+              "$mainMod SHIFT, E, exec, launcher emoji" # launch emoji picker
+              "$mainMod SHIFT, Z, exec, launcher symbols" # launch symbols picker
               "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
               "$mainMod, G, exec, launcher games" # game launcher
               "$mainMod, tab, exec, launcher window" # switch between desktop applications
@@ -589,12 +590,12 @@ in
             ];
 
             workspace = [
-              "1,monitor:desc:Chimei Innolux Corporation 0x1521,default:true"
-              "2,monitor:desc:Chimei Innolux Corporation 0x1521"
-              "3,monitor:desc:Lenovo Group Limited P24QD-40 VKVK5787,default:true"
-              "4,monitor:desc:Lenovo Group Limited P24QD-40 VKVK5787"
-              "5,monitor:desc:Lenovo Group Limited P24q-30 V90EZ1NZ,default:true"
-              "6,monitor:desc:Lenovo Group Limited P24q-30 V90EZ1NZ"
+              "1,persistent:true,monitor:desc:Chimei Innolux Corporation 0x1521,default:true"
+              "2,persistent:true,monitor:desc:Chimei Innolux Corporation 0x1521"
+              "3,persistent:true,monitor:desc:Lenovo Group Limited P24QD-40 VKVK5787,default:true"
+              "4,persistent:true,monitor:desc:Lenovo Group Limited P24QD-40 VKVK5787"
+              "5,persistent:true,monitor:desc:Lenovo Group Limited P24q-30 V90EZ1NZ,default:true"
+              "6,persistent:true,monitor:desc:Lenovo Group Limited P24q-30 V90EZ1NZ"
               ];
           };
         };
