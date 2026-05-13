@@ -30,9 +30,14 @@ in
     socat
     # Note system
     unstable.affine
+    # Utility to count line of code of a project
+    cloc
+    # File trasfert
+    localsend
 
     #####   Modeling   #####
     blender
+    bambu-studio
 
     freecad
     calculix-ccx
