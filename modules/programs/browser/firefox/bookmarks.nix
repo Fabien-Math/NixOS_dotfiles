@@ -18,6 +18,10 @@
           url = "https://chatgpt.com/";
         }
         {
+        	name = "Nerd Fonts";
+         	url = "https://www.nerdfonts.com/#home";
+        }
+        {
           name = "NixOS";
           bookmarks = [
             {

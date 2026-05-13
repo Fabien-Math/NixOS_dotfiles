@@ -36,7 +36,10 @@ in
   nix = {
     # Nix Package Manager Settings
     settings = {
-      trusted-users = [ "root" "@wheel" ]; # Required by Cachix to be used as non-root user
+      trusted-users = [
+        "root"
+        "@wheel"
+      ]; # Required by Cachix to be used as non-root user
       accept-flake-config = true;
       builders-use-substitutes = true;
       download-buffer-size = 200000000;
@@ -45,7 +48,7 @@ in
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org/"
         "https://hyprland.cachix.org/"
-        "https://cuda-maintainers.cachix.org/"
+        "https://noctalia.cachix.org"
         # "https://nix-gaming.cachix.org"
         # "https://chaotic-nyx.cachix.org"
         # "https://nixpkgs-wayland.cachix.org"
@@ -55,7 +58,7 @@ in
         "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
-        "cuda-maintainers.cachix.org-1:0dq3bujKpuEPMCX6U4WylrUDZ9JyUG0VpVZa7CNfq5E="
+        "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
         # "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
         # "nixpkgs-wayland.cachix.org-1:3lwxaILxMRkVhehr5StQprHdEo4IrE8sRho9R9HOLYA="

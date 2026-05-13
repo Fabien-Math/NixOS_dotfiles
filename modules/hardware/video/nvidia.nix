@@ -32,8 +32,8 @@ in
   hardware = {
     nvidia = {
       open = false;
-      # nvidiaPersistenced = true;
-      nvidiaSettings = false;
+      nvidiaPersistenced = true;
+      nvidiaSettings = true;
       powerManagement.enable = true; # Fixes sleep/suspend
 
       modesetting.enable = true; # Modesetting is required.

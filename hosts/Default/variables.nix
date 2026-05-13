@@ -21,6 +21,7 @@
   # Hardware
   hostname = "fabien";
   videoDriver = "nvidia"; # nvidia, amdgpu, intel
+  nvidiaChannel = "stable"; # stable, latest, beta, legacy_xxx
 
   # Localization
   timezone = "Europe/Paris";
