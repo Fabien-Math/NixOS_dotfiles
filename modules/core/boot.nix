@@ -32,7 +32,7 @@
       };
     };
     plymouth = {
-          enable = true;
+          enable = false;
           theme = "loader";
           themePackages = with pkgs; [
             # By default we would install all themes
