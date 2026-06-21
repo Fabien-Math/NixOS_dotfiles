@@ -28,6 +28,7 @@
     git # Git
     gh # Github Authentication Client
     libjxl # Support for JXL Images
+    dig # Network debugging
     microfetch # Small fetch (Blazingly fast)
     nix-prefetch-scripts # Find Hashes/Revisions of Nix Packages
     ripgrep # Improved Grep
