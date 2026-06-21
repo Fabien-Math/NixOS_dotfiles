@@ -5,7 +5,7 @@
   desktop = "hyprland"; # hyprland, i3, gnome, plasma6
 
   # Theme & Appearance
-  waybarTheme = "minimal"; # stylish, minimal
+  bar = "minimal"; # stylish, minimal
   sddmTheme = "astronaut"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
   defaultWallpaper = "lets_go_home.jpg"; # Change with SUPER + SHIFT + W
   hyprlockWallpaper = "storm.jpg";

@@ -37,7 +37,7 @@ in
 
     #####   Modeling   #####
     blender
-    bambu-studio
+    # bambu-studio
 
     freecad
     calculix-ccx

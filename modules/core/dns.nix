@@ -57,6 +57,18 @@
           edns-buffer-size = 1232;
           hide-identity = true;
           hide-version = true;
+          num-threads = 1;
+          so-rcvbuf = "1m";
+
+          do-udp = true;
+          do-tcp = true;
+          do-ip4 = true;
+          do-ip6 = false;
+          prefer-ip6 = false;
+
+          serve-expired = true;
+          serve-expired-ttl = 21600;            # do not serve replies older than one day, in seconds
+          serve-expired-client-timeout = 1500;  # consider serving expired replies when resolution takes longer than 1.5 seconds, in milliseconds
         };
         forward-zone = [
           {
