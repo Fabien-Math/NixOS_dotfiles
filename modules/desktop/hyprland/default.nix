@@ -25,6 +25,7 @@ let
   gamemode = pkgs.callPackage ./scripts/gamemode.nix { };
   keyboardswitch = pkgs.callPackage ./scripts/keyboardswitch.nix { };
   monitorswitch = pkgs.callPackage ./scripts/monitorswitch.nix { };
+  changelayout = pkgs.callPackage ./scripts/changelayout.nix { };
   keybinds-yad = pkgs.callPackage ./scripts/keybinds-yad.nix { };
   keybinds-inputrc = pkgs.callPackage ./scripts/keybinds-inputrc.nix { };
   keybinds-kitty = pkgs.callPackage ./scripts/keybinds-kitty.nix { };
@@ -274,6 +275,9 @@ in
               new_on_top = true;
               mfact = 0.5;
             };
+            scrolling = {
+              column_width = 0.7;
+            };
             windowrule = [
               #"noanim, match:class ^(Rofi)$
               "workspace 1, match:class ^(firefox|floorp|zen|zen-beta)$"
@@ -396,7 +400,7 @@ in
               "ALT, return, fullscreen" # toggle the window on focus to fullscreen
               "$mainMod ALT, L, exec, hyprlock" # lock screen
               "$mainMod, backspace, exec, pkill -x wlogout || wlogout -b 4" # logout menu
-              "$CONTROL, ESCAPE, exec, pkill waybar || waybar" # toggle waybar
+              "CTRL, ESCAPE, exec, pkill waybar || waybar" # toggle waybar
               "$mainMod CTRL, mouse_down, exec, ${getExe zoom} in" # zoom in
               "$mainMod CTRL, mouse_up, exec, ${getExe zoom} out" # zoom out
 
@@ -406,10 +410,11 @@ in
               "$mainMod, E, exec, $fileManager"
               "$mainMod, C, exec, $code_editor"
               "$mainMod, Z, exec, ${editor}"
-              "$mainMod, F, exec, $browser"
+              "$mainMod, F, exec, $browser -P Work"
+              "$mainMod SHIFT, F, exec, $browser -P Home" # launch file search
               "$mainMod SHIFT, S, exec, spotify"
               # "$mainMod SHIFT, Y, exec, youtube-music"
-              "$CONTROL ALT, DELETE, exec, $term -e btop" # System Monitor
+              "CTRL ALT, DELETE, exec, $term -e btop" # System Monitor
               "$mainMod CTRL, C, exec, ${getExe pkgs.hyprpicker} --autocopy --format=hex" # Colour Picker
 
               "$mainMod, A, exec, launcher drun" # launch desktop applications
@@ -419,13 +424,14 @@ in
               "$mainMod SHIFT, Z, exec, launcher symbols" # launch symbols picker
               "$mainMod SHIFT, T, exec, launcher tmux" # launch tmux sessions
               "$mainMod, G, exec, launcher games" # game launcher
-              "$mainMod, tab, exec, launcher window" # switch between desktop applications
+              "$mainMod, Tab, exec, launcher window" # switch between desktop applications
               "$mainMod, R, exec, hyprctl reload" # Reload hyprland config
               "$mainMod ALT, K, exec, ${getExe keyboardswitch}" # change keyboard layout
               "$mainMod SHIFT, N, exec, swaync-client -t -sw" # swayNC panel
               "$mainMod SHIFT, Q, exec, swaync-client -t -sw" # swayNC panel
               "$mainMod ALT, G, exec, ${getExe gamemode}" # disable hypr effects for gamemode
-              "$mainMod SHIFT, Tab, togglesplit" # toggle the window on focus to float
+              "$mainMod SHIFT, Tab, layoutmsg, togglesplit" # toggle the window to split vertically or horizontally
+              "$mainMod, F1, exec, ${getExe changelayout}" # toggle the window to split vertically or horizontally
               "$mainMod, V, exec, ${getExe clipmanager}" # Clipboard Manager
               "$mainMod, M, exec, ${getExe monitorswitch}" # Force monitor switch to run
 
@@ -534,16 +540,16 @@ in
               "$mainMod CTRL, agrave, movetoworkspacesilent, 10"
 
               # Move active window around current workspace with mainMod + SHIFT + CTRL [←→↑↓]
-              "$mainMod SHIFT $CONTROL, left, movewindow, l"
-              "$mainMod SHIFT $CONTROL, right, movewindow, r"
-              "$mainMod SHIFT $CONTROL, up, movewindow, u"
-              "$mainMod SHIFT $CONTROL, down, movewindow, d"
+              "$mainMod SHIFT CTRL, left, movewindow, l"
+              "$mainMod SHIFT CTRL, right, movewindow, r"
+              "$mainMod SHIFT CTRL, up, movewindow, u"
+              "$mainMod SHIFT CTRL, down, movewindow, d"
 
               # Move active window around current workspace with mainMod + SHIFT + CTRL [HLJK]
-              "$mainMod SHIFT $CONTROL, H, movewindow, l"
-              "$mainMod SHIFT $CONTROL, L, movewindow, r"
-              "$mainMod SHIFT $CONTROL, K, movewindow, u"
-              "$mainMod SHIFT $CONTROL, J, movewindow, d"
+              "$mainMod SHIFT CTRL, H, movewindow, l"
+              "$mainMod SHIFT CTRL, L, movewindow, r"
+              "$mainMod SHIFT CTRL, K, movewindow, u"
+              "$mainMod SHIFT CTRL, J, movewindow, d"
 
               # Special workspaces (scratchpad)
               "$mainMod CTRL, S, movetoworkspacesilent, special"
