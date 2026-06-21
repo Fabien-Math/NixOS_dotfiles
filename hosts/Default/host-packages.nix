@@ -47,6 +47,7 @@ in
     texliveFull
     # C
     glib
+    clang-tools
     # Compression tool
     zlib
     # Simple interprocess messaging system
