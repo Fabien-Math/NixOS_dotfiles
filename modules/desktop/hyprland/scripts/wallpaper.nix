@@ -1,6 +1,11 @@
 { pkgs, defaultWallpaper, ... }:
 pkgs.writeShellScriptBin "wallpaper" ''
 
+if ! pgrep awww-daemon &> /dev/null; then
+  awww-daemon &
+  sleep 0.5
+fi
+
 # Restore
 awww restore &> /dev/null
 

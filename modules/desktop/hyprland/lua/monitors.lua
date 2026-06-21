@@ -1,37 +1,70 @@
+-- Laptop screen
 hl.monitor({
-	output = "",
-	mode = "preferred",
-	position = "auto",
-	scale = 1,
+	output = "desc:Chimei Innolux Corporation 0x1521",
+	mode = "1920x1080@60.02",
+	position = "0x360",
+	scale = 1.0,
 })
+
+-- Thesis screens
 hl.monitor({
-	output = "desc:BNQ BenQ EW277HDR 99J01861SL0",
-	mode = "preferred",
-	position = "-1920x0",
-	scale = 1,
+	output = "desc:Lenovo Group Limited P24QD-40 VKVK5787",
+	mode = "2560x1440@60.0",
+	position = "1920x0",
+	scale = 1.0,
 })
+
 hl.monitor({
-	output = "desc:BNQ BenQ EL2870U PCK00489SL0",
-	mode = "preferred",
-	position = "0x0",
-	scale = 2,
+	output = "desc:Lenovo Group Limited P24q-30 V90EZ1NZ",
+	mode = "2560x1440@60.0",
+	position = "4480x0",
+	scale = 1.0,
 })
+
+-- Home screen
 hl.monitor({
-	output = "desc:BNQ BenQ xl2420t 99D06760SL0",
-	mode = "preferred",
-	position = "1920x-420",
-	scale = 1,
-	transform = 1, -- 5 for fipped
+	output = "desc:Iiyama North America PL3484WQ 1251650400525",
+	mode = "3440x1440@60.0",
+	position = "auto-center-left",
+	scale = 1.0,
 })
 
 -- Binds workspaces to my monitors (find desc with: hyprctl monitors)
-hl.workspace_rule({ workspace = "1", persistent = true, monitor = "desc:BNQ BenQ EL2870U PCK00489SL0", default = true })
-hl.workspace_rule({ workspace = "2", persistent = true, monitor = "desc:BNQ BenQ EL2870U PCK00489SL0" })
-hl.workspace_rule({ workspace = "3", persistent = true, monitor = "desc:BNQ BenQ EL2870U PCK00489SL0" })
-hl.workspace_rule({ workspace = "4", persistent = true, monitor = "desc:BNQ BenQ EL2870U PCK00489SL0" })
-hl.workspace_rule({ workspace = "5", persistent = true, monitor = "desc:BNQ BenQ EW277HDR 99J01861SL0", default = true })
-hl.workspace_rule({ workspace = "6", persistent = true, monitor = "desc:BNQ BenQ EW277HDR 99J01861SL0" })
-hl.workspace_rule({ workspace = "7", persistent = true, monitor = "desc:BNQ BenQ EW277HDR 99J01861SL0" })
-hl.workspace_rule({ workspace = "8", persistent = true, monitor = "desc:BNQ BenQ xl2420t 99D06760SL0", default = true })
-hl.workspace_rule({ workspace = "9", persistent = true, monitor = "desc:BNQ BenQ xl2420t 99D06760SL0" })
-hl.workspace_rule({ workspace = "10", persistent = true, monitor = "desc:BNQ BenQ EL2870U PCK00489SL0" })
+hl.workspace_rule({
+	workspace = "1",
+	persistent = true,
+	monitor = "desc:Chimei Innolux Corporation 0x1521",
+	default = true,
+})
+
+hl.workspace_rule({
+	workspace = "2",
+	persistent = true,
+	monitor = "desc:Chimei Innolux Corporation 0x1521",
+})
+
+hl.workspace_rule({
+	workspace = "3",
+	persistent = true,
+	monitor = "desc:Lenovo Group Limited P24QD-40 VKVK5787",
+	default = true,
+})
+
+hl.workspace_rule({
+	workspace = "4",
+	persistent = true,
+	monitor = "desc:Lenovo Group Limited P24QD-40 VKVK5787",
+})
+
+hl.workspace_rule({
+	workspace = "5",
+	persistent = true,
+	monitor = "desc:Lenovo Group Limited P24q-30 V90EZ1NZ",
+	default = true,
+})
+
+hl.workspace_rule({
+	workspace = "6",
+	persistent = true,
+	monitor = "desc:Lenovo Group Limited P24q-30 V90EZ1NZ",
+})

@@ -39,10 +39,10 @@ hl.config({
 			repeat_rate = 35,
 			numlock_by_default = true,
 
-			follow_mouse = 1,
+			follow_mouse = 0,
 
 			touchpad = {
-				natural_scroll = false,
+				natural_scroll = true,
 			},
 
 			tablet = {
@@ -53,26 +53,11 @@ hl.config({
 			force_no_accel = true,
 		}
 
-		if capslockAsESC then
-			t.kb_options = "caps:swapescape"
-		end
-
 		return t
 	end)(),
 	general = {
-		gaps_in = 4,
-		gaps_out = 9,
-		border_size = 2,
-		col = {
-			active_border = {
-				colors = { "rgba(ca9ee6ff)", "rgba(f2d5cfff)" },
-				angle = 45,
-			},
-			inactive_border = {
-				colors = { "rgba(b4befecc)", "rgba(6c7086cc)" },
-				angle = 45,
-			},
-		},
+		gaps_in = 2,
+		gaps_out = 5,
 		resize_on_border = true,
 		layout = "dwindle", -- dwindle, master, scrolling, monocle
 		-- allow_tearing = true, -- Allow tearing for games (use immediate window rules for specific games or all titles)
@@ -81,7 +66,7 @@ hl.config({
 		shadow = {
 			enabled = false,
 		},
-		rounding = 10,
+		rounding = 5,
 		dim_special = 0.3,
 		blur = {
 			enabled = true,
@@ -133,6 +118,9 @@ hl.config({
 	dwindle = {
 		preserve_split = true,
 	},
+	scrolling = {
+        column_width = 0.7,
+    },
 	master = {
 		new_status = "master",
 		new_on_top = true,

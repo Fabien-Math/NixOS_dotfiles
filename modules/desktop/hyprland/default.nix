@@ -8,19 +8,18 @@
 }:
 let
   inherit (lib) optional;
-  inherit (import ../../../hosts/${host}/variables.nix) bar;
 in
 {
   imports = [
     ../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./variables.nix
-    ./programs/${bar}
+    ./programs/waybar
     ./programs/wlogout
     ./programs/rofi
     ./programs/hypridle
     ./programs/hyprlock
-  ]
-  ++ optional (bar != "hyprpanel" && bar != "wayle") ./programs/swaync;
+    ./programs/swaync
+  ];
 
   environment.systemPackages = with pkgs; [
     pavucontrol
