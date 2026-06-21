@@ -88,6 +88,7 @@
           bind_port = 53;
           upstream_dns = [ "127.0.0.1:5335" ];
           bootstrap_dns = [ "127.0.0.1:5335" ];
+          # bootstrap_dns = [ "9.9.9.9" ];
         };
         filtering = {
           protection_enabled = true;
@@ -130,11 +131,12 @@
 
 
 ### Debug
-#
-# resolvectl status
 # cat /etc/resolv.conf
 # ss -tpn | grep 853
-# drill google.com
 # dig google.com @9.9.9.9
 # dig 8.8.8.8 @9.9.9.9
+
+# Functional test:
 # dig google.com @127.0.0.1 -p 5335
+# If this is slow or hangs → problem is Unbound or upstream (Quad9/DoT/IPv6).
+# If this is fast → problem is AdGuard or system resolver.
