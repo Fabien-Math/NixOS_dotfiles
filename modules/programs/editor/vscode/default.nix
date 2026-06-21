@@ -73,6 +73,10 @@
 		          key = "ctrl+shift+q";
 		          command = "workbench.action.quit";
 		        }
+					  {
+							key = "shift+alt+m";
+							command = "editor.action.toggleMinimap";
+					  }
           ];
           userSettings = {
             "chat.disableAIFeatures" = true;
@@ -116,7 +120,7 @@
             # "editor.formatOnType" = true;
             "editor.formatOnPaste" = true;
 
-            "editor.minimap.enabled" = false;
+            "editor.minimap.enabled" = true;
             "workbench.sideBar.location" = "right";
             # "workbench.activityBar.location" = "hidden";
             # "workbench.editor.showTabs" = "single";
@@ -129,8 +133,8 @@
             "breadcrumbs.enabled" = true;
             "editor.renderControlCharacters" = false;
             "editor.stickyScroll.enabled" = true; # Top code preview
-            "editor.scrollbar.verticalScrollbarSize" = 5;
-            "editor.scrollbar.horizontalScrollbarSize" = 5;
+            "editor.scrollbar.verticalScrollbarSize" = 10;
+            "editor.scrollbar.horizontalScrollbarSize" = 10;
             "editor.scrollbar.vertical" = "visible";
             "editor.scrollbar.horizontal" = "visible";
             "workbench.layoutControl.enabled" = true;
@@ -161,6 +165,12 @@
             "C_Cpp.workspaceParsingPriority" = "medium";
             "C_Cpp.clang_format_sortIncludes" = true;
             "C_Cpp.doxygen.generatedStyle" = "/**";
+
+            # Latex
+            "latex-workshop.latex.autoBuild.run" = "never";
+            "latex-workshop.formatting.latex" = "latexindent";
+            "latex-workshop.format.fixMath.enabled" = true;
+
 
             "vim.leader" = "<Space>";
             "vim.useCtrlKeys" = true;
