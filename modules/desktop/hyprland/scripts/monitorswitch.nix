@@ -1,136 +1,65 @@
 { pkgs, ... }:
 pkgs.writeShellScriptBin "monitorswitch" ''
   #!/usr/bin/env bash
+  set -euo pipefail
 
-  # Monitor defaults
   MON0="Chimei Innolux Corporation 0x1521"
-  MON0_CONF="1920x1080@60.02"
-
   MON1="Lenovo Group Limited P24QD-40 VKVK5787"
-  MON1_CONF="2560x1440@60.0"
-
   MON2="Lenovo Group Limited P24q-30 V90EZ1NZ"
-  MON2_CONF="2560x1440@60.0"
-
   MON3="Iiyama North America PL3484WQ 1251650400525"
-  MON3_CONF="3440x1440@60.0"
 
-  # Function to detect connected monitors
-  check_monitors() {
+  get_connected() {
+    hyprctl monitors -j | jq -r '.[] | .description // .name'
+  }
 
-    connected=$(hyprctl monitors -j | jq -r '.[] | .description // .name')
+  has() {
+    echo "$CONNECTED" | grep -Fxq "$1"
+  }
 
-    has0=$(echo "$connected" | grep -Fx "$MON0" > /dev/null && echo 1 || echo 0)
-    has1=$(echo "$connected" | grep -Fx "$MON1" > /dev/null && echo 1 || echo 0)
-    has2=$(echo "$connected" | grep -Fx "$MON2" > /dev/null && echo 1 || echo 0)
-    has3=$(echo "$connected" | grep -Fx "$MON3" > /dev/null && echo 1 || echo 0)
+  eval_monitor() {
+    hyprctl eval "$1"
+  }
 
-    # Apply rules with fixed configurations
-    if [ "$has0" -eq 1 ] && [ "$has1" -eq 1 ] && [ "$has2" -eq 1 ]; then
-      hyprctl keyword monitor "desc:$MON0,$MON0_CONF,auto-center-left,1.0"
-      hyprctl keyword monitor "desc:$MON1,$MON1_CONF,auto-center,1.0"
-      hyprctl keyword monitor "desc:$MON2,$MON2_CONF,auto-center-right1.0"
-    elif [ "$has0" -eq 1 ] && [ "$has1" -eq 1 ]; then
-      hyprctl keyword monitor "desc:$MON0,$MON0_CONF,auto,1.0"
-      hyprctl keyword monitor "desc:$MON1,$MON1_CONF,auto-center-up,1.0"
-    elif [ "$has0" -eq 1 ] && [ "$has2" -eq 1 ]; then
-      hyprctl keyword monitor "desc:$MON0,$MON0_CONF,auto,1.0"
-      hyprctl keyword monitor "desc:$MON2,$MON2_CONF,auto-center-up,1.0"
-    elif [ "$has0" -eq 1 ] && [ "$has3" -eq 1 ]; then
-      hyprctl keyword monitor "desc:$MON0,disable"
-      hyprctl keyword monitor "desc:$MON3,$MON3_CONF,1.0"
+  apply() {
+    CONNECTED="$(get_connected)"
+
+    has0=0; has1=0; has2=0; has3=0
+    has "$MON0" && has0=1
+    has "$MON1" && has1=1
+    has "$MON2" && has2=1
+    has "$MON3" && has3=1
+
+    # reset baseline (enable all known outputs first)
+    eval_monitor 'hl.monitor({ output = "desc:'"$MON0"'", disabled = false })'
+    eval_monitor 'hl.monitor({ output = "desc:'"$MON1"'", disabled = false })'
+    eval_monitor 'hl.monitor({ output = "desc:'"$MON2"'", disabled = false })'
+    eval_monitor 'hl.monitor({ output = "desc:'"$MON3"'", disabled = false })'
+
+    # 3-monitor layout
+    if [[ $has0 -eq 1 && $has1 -eq 1 && $has2 -eq 1 ]]; then
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON0"'", disabled = false })'
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON1"'", disabled = false })'
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON2"'", disabled = false })'
+
+    # laptop + 1 external
+    elif [[ $has0 -eq 1 && $has1 -eq 1 ]]; then
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON0"'", disabled = false })'
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON1"'", disabled = false })'
+
+    elif [[ $has0 -eq 1 && $has2 -eq 1 ]]; then
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON0"'", disabled = false })'
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON2"'", disabled = false })'
+
+    # ultrawide only (disable laptop)
+    elif [[ $has0 -eq 1 && $has3 -eq 1 ]]; then
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON0"'", disabled = true })'
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON3"'", disabled = false, mode = "preferred"})'
+
+    # fallback laptop only
     else
-      hyprctl keyword monitor "desc:$MON0,$MON0_CONF,1.0"
+      eval_monitor 'hl.monitor({ output = "desc:'"$MON0"'", disabled = false })'
     fi
   }
 
-  # Initial check at startup
-  check_monitors
-
-  # Listen for hotplug events
-  # socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do
-  #   case "$line" in
-  #     monitoradded*|monitorremoved*)
-  #       sleep 2.0
-  #       check_monitors
-  #       ;;
-  #   esac
-  # done
-
+  apply
 ''
-
-
-### DEBUG VERSION
-# #!/usr/bin/env bash
-# # Monitor defaults
-# MON0="Chimei Innolux Corporation 0x1521"
-# MON0_CONF="1920x1080@60.02"
-
-# MON1="Lenovo Group Limited P24QD-40 VKVK5787"
-# MON1_CONF="2560x1440@60.0"
-
-# MON2="Lenovo Group Limited P24q-30 V90EZ1NZ"
-# MON2_CONF="2560x1440@60.0"
-
-# MON3="Iiyama North America PL3484WQ 1251650400525"
-# MON3_CONF="3440x1440@60.0"
-
-# # Function to detect connected monitors
-# check_monitors() {
-#   echo "=== Checking connected monitors ==="
-
-#   connected=$(hyprctl monitors -j | jq -r '.[] | .description // .name')
-#   echo "Connected monitors:"
-#   echo "$connected"
-
-#   has0=$(echo "$connected" | grep -Fx "$MON0" > /dev/null && echo 1 || echo 0)
-#   has1=$(echo "$connected" | grep -Fx "$MON1" > /dev/null && echo 1 || echo 0)
-#   has2=$(echo "$connected" | grep -Fx "$MON2" > /dev/null && echo 1 || echo 0)
-#   has3=$(echo "$connected" | grep -Fx "$MON3" > /dev/null && echo 1 || echo 0)
-
-#   echo "Detection flags: 0=$has0, 1=$has1, 2=$has2, 3=$has3"
-
-
-#   # Apply rules with fixed configurations
-#   if [ "$has0" -eq 1 ] && [ "$has1" -eq 1 ] && [ "$has2" -eq 1 ]; then
-#     echo "Applying layout: 0,1,2"
-#     hyprctl keyword monitor "desc:$MON0,$MON0_CONF,auto-center-left,1.0"
-#     hyprctl keyword monitor "desc:$MON1,$MON1_CONF,auto-center,1.0"
-#     hyprctl keyword monitor "desc:$MON2,$MON2_CONF,auto-center-right1.0"
-#   elif [ "$has0" -eq 1 ] && [ "$has1" -eq 1 ]; then
-#     echo "Applying layout: 0 and 1"
-#     hyprctl keyword monitor "desc:$MON0,$MON0_CONF,auto,1.0"
-#     hyprctl keyword monitor "desc:$MON1,$MON1_CONF,auto-center-up,1.0"
-#   elif [ "$has0" -eq 1 ] && [ "$has2" -eq 1 ]; then
-#     echo "Applying layout: 0 and 2"
-#     hyprctl keyword monitor "desc:$MON0,$MON0_CONF,auto,1.0"
-#     hyprctl keyword monitor "desc:$MON2,$MON2_CONF,auto-center-up,1.0"
-#   elif [ "$has0" -eq 1 ] && [ "$has3" -eq 1 ]; then
-#     echo "Applying layout: 0 and 3"
-#     hyprctl keyword monitor "desc:$MON0,disable"
-#     hyprctl keyword monitor "desc:$MON3,$MON3_CONF,1.0"
-#   elif [ "$has0" -eq 1 ]; then
-#     echo "Applying layout: only 0"
-#     hyprctl keyword monitor "desc:$MON0,$MON0_CONF,1.0"
-#   else
-#     echo "No known monitors connected or no rules applied"
-#   fi
-
-#   echo "=== Layout applied ==="
-# }
-
-# # Initial check at startup
-# echo "Running initial monitor check..."
-# check_monitors
-
-# # Listen for hotplug events
-# echo "Listening for monitor hotplug events..."
-# socat -U - UNIX-CONNECT:$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock | while read -r line; do
-#   case "$line" in
-#     monitoradded*|monitorremoved*)
-#       echo "Hotplug event detected: $line"
-#       sleep 2.0
-#       check_monitors
-#       ;;
-#   esac
-# done

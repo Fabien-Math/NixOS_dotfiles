@@ -9,7 +9,7 @@
   waybarTheme = "minimal"; # stylish, minimal
   sddmTheme = "astronaut"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
   defaultWallpaper = "lets_go_home.jpg"; # Change with SUPER + SHIFT + W
-  hyprlockWallpaper = "storm.jpg";
+  hyprlockWallpaper = "moon_half.jpg";
 
   # Default Applications
   shell = "bash"; # Options: zsh, bash

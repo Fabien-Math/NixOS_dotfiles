@@ -37,7 +37,7 @@ in
 
     #####   Modeling   #####
     blender
-    # bambu-studio
+    orca-slicer
 
     freecad
     calculix-ccx
