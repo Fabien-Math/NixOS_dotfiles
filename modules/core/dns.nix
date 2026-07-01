@@ -13,13 +13,17 @@
   # Disable systemd dns resolver
   services.resolved = {
     enable = false;
-    domains = [ "~." ];
-    fallbackDns = [ ]; # Empty to prevent bypass
-    dnsovertls = "true";
+    settings = {
+      Resolve = {
+        Domains = [ "~." ];
+        FallbackDNS = [ ]; # Empty to prevent bypass
+        DNSOverTLS = "true";
 
-    # github.com/systemd/systemd/issues/10579
-    # dnssec = "allow-downgrade";
-    dnssec = "false";
+        # github.com/systemd/systemd/issues/10579
+        # dnssec = "allow-downgrade";
+        DNSSEC = "false";
+      };
+    };
   };
   systemd.services = {
     unbound.stopIfChanged = false;
@@ -53,17 +57,29 @@
           edns-buffer-size = 1232;
           hide-identity = true;
           hide-version = true;
+          num-threads = 1;
+          so-rcvbuf = "1m";
+
+          do-udp = true;
+          do-tcp = true;
+          do-ip4 = true;
+          do-ip6 = false;
+          prefer-ip6 = false;
+
+          serve-expired = true;
+          serve-expired-ttl = 21600;            # do not serve replies older than one day, in seconds
+          serve-expired-client-timeout = 1500;  # consider serving expired replies when resolution takes longer than 1.5 seconds, in milliseconds
         };
         forward-zone = [
           {
             name = ".";
             forward-tls-upstream = "yes";
             forward-addr = [
-              "1.1.1.1@853#cloudflare-dns.com"
-              "1.0.0.1@853#cloudflare-dns.com"
+              "9.9.9.9@853#dns.quad9.net"
+              "149.112.112.112@853#dns.quad9.net"
 
-              # "9.9.9.9#dns.quad9.net"
-              # "149.112.112.112#dns.quad9.net"
+              # "1.1.1.1@853#cloudflare-dns.com"
+              # "1.0.0.1@853#cloudflare-dns.com"
             ];
           }
         ];
@@ -84,6 +100,7 @@
           bind_port = 53;
           upstream_dns = [ "127.0.0.1:5335" ];
           bootstrap_dns = [ "127.0.0.1:5335" ];
+          # bootstrap_dns = [ "9.9.9.9" ];
         };
         filtering = {
           protection_enabled = true;
@@ -104,50 +121,34 @@
               "https://easylist.to/easylist/easylist.txt" # Base filter
               "https://easylist.to/easylist/easyprivacy.txt" # Privacy protection
               "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt" # Malware domains
-              "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt" # Scam protection                                                                                      "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"  # Cryptominers
+              "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt" # Scam protection
+              "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"  # Cryptominers
 
               # My Lists
-              # "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt" # Large
+              "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt" # Large
               "https://raw.githubusercontent.com/yokoffing/filterlists/refs/heads/main/privacy_essentials.txt"
               "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
               "https://raw.githubusercontent.com/yokoffing/filterlists/refs/heads/main/annoyance_list.txt"
               "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/BrowseWebsitesWithoutLoggingIn.txt"
               "https://raw.githubusercontent.com/hagezi/dns-blocklists/refs/heads/main/adblock/spam-tlds-ublock.txt"
               "https://raw.githubusercontent.com/iam-py-test/my_filters_001/refs/heads/main/antitypo.txt"
-              # "https://raw.githubusercontent.com/iam-py-test/my_filters_001/refs/heads/main/antimalware.txt"
-              # "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/Dandelion%20Sprout's%20Anti-Malware%20List.txt"
+              "https://raw.githubusercontent.com/iam-py-test/my_filters_001/refs/heads/main/antimalware.txt"
+              "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/Dandelion%20Sprout's%20Anti-Malware%20List.txt"
             ];
       };
     };
   };
-  /*
-    services.stubby = {
-      enable = true;
-      settings = {
-        # ::1 cause error, use 0::1 instead
-        listen_addresses = [
-          "127.0.0.1@5300"
-          "0::1@5300"
-        ];
-        resolution_type = "GETDNS_RESOLUTION_STUB";
-        dns_transport_list = [ "GETDNS_TRANSPORT_TLS" ];
-        tls_authentication = "GETDNS_AUTHENTICATION_REQUIRED";
-        tls_query_padding_blocksize = 128;
-        idle_timeout = 10000;
-        round_robin_upstreams = 1;
-        tls_min_version = "GETDNS_TLS1_3";
-        dnssec = "GETDNS_EXTENSION_TRUE";
-        upstream_recursive_servers = [
-          {
-            address_data = "1.0.0.2";
-            tls_auth_name = "cloudflare-dns.com";
-          }
-          {
-            address_data = "9.9.9.9";
-            tls_auth_name = "dns.quad9.net";
-          }
-        ];
-      };
-    };
-  */
 }
+
+
+
+### Debug
+# cat /etc/resolv.conf
+# ss -tpn | grep 853
+# dig google.com @9.9.9.9
+# dig 8.8.8.8 @9.9.9.9
+
+# Functional test:
+# dig google.com @127.0.0.1 -p 5335
+# If this is slow or hangs → problem is Unbound or upstream (Quad9/DoT/IPv6).
+# If this is fast → problem is AdGuard or system resolver.

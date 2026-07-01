@@ -39,3 +39,7 @@ pkgs.writeShellScriptBin "rebuild" ''
   echo
   read -rsn1 -p"$(echo -e "''${GREEN}Press any key to continue''${NC}")"
 ''
+# sudo nixos-rebuild switch --flake "/home/fabien/NixOS#Default" --option substitute false
+
+# sudo nixos-rebuild boot --flake "/home/fabien/NixOS#Default"
+# sudo reboot

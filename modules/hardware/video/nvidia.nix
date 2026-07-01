@@ -1,11 +1,12 @@
 {
+  host,
   lib,
   pkgs,
   config,
   ...
 }:
 let
-  nvidiaDriverChannel = config.boot.kernelPackages.nvidiaPackages.stable; # stable, latest, beta, etc.
+  inherit (import ../../../hosts/${host}/variables.nix) nvidiaChannel;
 in
 {
   environment.sessionVariables = lib.optionalAttrs config.programs.hyprland.enable {
@@ -31,17 +32,17 @@ in
   hardware = {
     nvidia = {
       open = false;
-      # nvidiaPersistenced = true;
-      nvidiaSettings = false;
+      nvidiaPersistenced = true;
+      nvidiaSettings = true;
       powerManagement.enable = true; # Fixes sleep/suspend
 
       modesetting.enable = true; # Modesetting is required.
 
-      package = nvidiaDriverChannel;
+      package = config.boot.kernelPackages.nvidiaPackages.${nvidiaChannel};
     };
     graphics = {
       enable = true;
-      # package = nvidiaDriverChannel;
+      # package = config.boot.kernelPackages.nvidiaPackages.${nvidiaChannel};
       enable32Bit = true;
       extraPackages = with pkgs; [
         nvidia-vaapi-driver
@@ -52,7 +53,6 @@ in
   };
   nixpkgs.config = {
     nvidia.acceptLicense = true;
-    cudaSupport = true;
     allowUnfreePredicate =
       pkg:
       builtins.elem (lib.getName pkg) [

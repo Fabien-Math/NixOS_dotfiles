@@ -235,6 +235,7 @@
         # -----------------------
         extensions = [
           "nix"
+          "lua"
           "toml"
           "make"
           "python-snippets"

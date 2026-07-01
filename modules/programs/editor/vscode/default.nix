@@ -9,38 +9,55 @@
     (_: {
       programs.vscode = {
         enable = true;
-        # mutableExtensionsDir = true; # TODO: test with home-manager
+        mutableExtensionsDir = true;
         # package = pkgs.vscodium;
         package = pkgs.vscode;
         profiles.default = {
           extensions = with pkgs.vscode-extensions; [
-            bbenoist.nix
-            # arrterian.nix-env-selector
-            eamodio.gitlens
-            github.vscode-github-actions
-            yzhang.markdown-all-in-one
+            # Themes
             catppuccin.catppuccin-vsc
             catppuccin.catppuccin-vsc-icons
-            # asvetliakov.vscode-neovim
-            # vscodevim.vim
-            tamasfe.even-better-toml
-            #jnoortheen.nix-ide
-            # redhat.vscode-yaml
-            # vadimcn.vscode-lldb
-            rust-lang.rust-analyzer
-            ms-vscode.cpptools
-            ms-vscode.cmake-tools
-            ms-vscode.makefile-tools
-            ziglang.vscode-zig
-            # ms-dotnettools.csharp
+
+            # Utils
+            hediet.vscode-drawio
+            yzhang.markdown-all-in-one
+
+            # Latex
+            james-yu.latex-workshop
+
+            # Python
             ms-python.python
-            # pkief.material-icon-theme
-            # equinusocio.vsc-material-theme
-            # dracula-theme.theme-dracula
+            ms-python.vscode-pylance
+            ms-python.debugpy
+
+            # C / C++
+            ms-vscode.cpptools
+
+            # Docker
+            ms-vscode-remote.remote-containers
+
+            # Nix
+            bbenoist.nix
+            jnoortheen.nix-ide
+            arrterian.nix-env-selector
+
+            # Git
+            mhutchie.git-graph
+            eamodio.gitlens
           ];
           keybindings = [
+	          {
+	            key = "ctrl+shift+[Period]";
+	            command = "-editor.action.commentLine";
+	            when = "editorTextFocus && !editorReadonly";
+	          }
+	          {
+	            key = "ctrl+[Period]";
+	            command = "-breadcrumbs.focus";
+	            when = "breadcrumbsPossible && breadcrumbsVisible";
+	          }
             {
-              key = "ctrl+:";
+              key = "ctrl+[Period]";
               command = "editor.action.commentLine";
               when = "editorTextFocus && !editorReadonly";
             }
@@ -48,15 +65,27 @@
               key = "ctrl+s";
               command = "workbench.action.files.saveFiles";
             }
+            {
+              key = "ctrl+q";
+              command = "-workbench.action.quit";
+            }
+		        {
+		          key = "ctrl+shift+q";
+		          command = "workbench.action.quit";
+		        }
+					  {
+							key = "shift+alt+m";
+							command = "editor.action.toggleMinimap";
+					  }
           ];
           userSettings = {
+            "chat.disableAIFeatures" = true;
+
             "update.mode" = "none";
             # "extensions.autoUpdate" = false; # Fixes vscode freaking out when theres an update
             "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
             "window.menuBarVisibility" = "classic";
             "window.zoomLevel" = 0.5;
-            "editor.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont', 'monospace', monospace";
-            "terminal.integrated.fontFamily" = "'JetBrainsMono Nerd Font', 'SymbolsNerdFont'";
             "editor.fontSize" = 14;
             "workbench.colorTheme" = "Catppuccin Mocha";
             "workbench.iconTheme" = "catppuccin-mocha";
@@ -67,6 +96,8 @@
             "workbench.startupEditor" = "none";
             "telemetry.enableCrashReporter" = false;
             "telemetry.enableTelemetry" = false;
+
+
 
             "security.workspace.trust.untrustedFiles" = "open";
 
@@ -89,7 +120,7 @@
             # "editor.formatOnType" = true;
             "editor.formatOnPaste" = true;
 
-            "editor.minimap.enabled" = false;
+            "editor.minimap.enabled" = true;
             "workbench.sideBar.location" = "right";
             # "workbench.activityBar.location" = "hidden";
             # "workbench.editor.showTabs" = "single";
@@ -101,12 +132,12 @@
             "explorer.openEditors.visible" = 0;
             "breadcrumbs.enabled" = true;
             "editor.renderControlCharacters" = false;
-            "editor.stickyScroll.enabled" = false; # Top code preview
-            "editor.scrollbar.verticalScrollbarSize" = 2;
-            "editor.scrollbar.horizontalScrollbarSize" = 2;
-            "editor.scrollbar.vertical" = "hidden";
-            "editor.scrollbar.horizontal" = "hidden";
-            "workbench.layoutControl.enabled" = false;
+            "editor.stickyScroll.enabled" = true; # Top code preview
+            "editor.scrollbar.verticalScrollbarSize" = 10;
+            "editor.scrollbar.horizontalScrollbarSize" = 10;
+            "editor.scrollbar.vertical" = "visible";
+            "editor.scrollbar.horizontal" = "visible";
+            "workbench.layoutControl.enabled" = true;
 
             "editor.mouseWheelZoom" = true;
 
@@ -134,6 +165,12 @@
             "C_Cpp.workspaceParsingPriority" = "medium";
             "C_Cpp.clang_format_sortIncludes" = true;
             "C_Cpp.doxygen.generatedStyle" = "/**";
+
+            # Latex
+            "latex-workshop.latex.autoBuild.run" = "never";
+            "latex-workshop.formatting.latex" = "latexindent";
+            "latex-workshop.format.fixMath.enabled" = true;
+
 
             "vim.leader" = "<Space>";
             "vim.useCtrlKeys" = true;

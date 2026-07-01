@@ -23,12 +23,9 @@ in
     ../../modules/core/sddm.nix
     ../../modules/core/security.nix
     ../../modules/core/services.nix
-    ../../modules/core/syncthing.nix
     ../../modules/core/system.nix
     ../../modules/core/users.nix
-    # ../../modules/core/flatpak.nix
-    # ../../modules/core/virtualisation.nix
-    # ../../modules/core/dlna.nix
+    ../../modules/core/virtualisation.nix
 
     # Optional
     ../../modules/hardware/drives # Automatically mount extra external/internal drives
@@ -43,7 +40,7 @@ in
     ../../modules/programs/cli/direnv
     ../../modules/programs/cli/lazygit
     ../../modules/programs/cli/cava
-    ../../modules/programs/cli/fastfetch
+    # ../../modules/programs/cli/fastfetch
     ../../modules/programs/cli/btop
     ../../modules/programs/media/discord
     ../../modules/programs/media/spicetify
@@ -54,90 +51,93 @@ in
     ../../modules/programs/misc/thunar
     ../../modules/programs/misc/lact # GPU fan, clock and power configuration
   ]
-  ++ lib.optional (vars.games == true) ../../modules/core/games.nix;
-
-  virtualisation.docker.enable = true;
-  users.users.${vars.username}.extraGroups = [ "docker" ];
-
-  virtualisation.docker.daemon.settings = {
-  data-root = "/home/fabien/softwares/docker";
-  };
+  ;
 
   environment.etc."inputrc".text = ''
-# /etc/inputrc - global inputrc for libreadline
-# See readline(3readline) and `info rluserman' for more information.
+# /etc/inputrc - optimized for kitty terminal
+#####
+# General behavior
+#####
 
-# Be 8 bit clean.
+# 8-bit support
 set input-meta on
 set output-meta on
+set convert-meta off
 
-# To allow the use of 8bit-characters like the german umlauts, uncomment
-# the line below. However this makes the meta key not work as a meta key,
-# which is annoying to those which don't need to type in 8-bit characters.
+# Editing mode
+set editing-mode emacs
 
-# set convert-meta off
+# No annoying bell
+set bell-style none
 
-# try to enable the application keypad when it is called. Some systems
-# need this to enable the arrow keys.
-# set enable-keypad on
+# Faster key sequence recognition
+set keyseq-timeout 250
 
-# see /usr/share/doc/bash/inputrc.arrows for other codes of arrow keys
+# Enable bracketed paste (kitty supports this perfectly)
+set enable-bracketed-paste on
 
-# do not bell on tab-completion
-# set bell-style none
-# set bell-style visible
+#####
+# Completion improvements
+#####
 
-# some defaults / modifications for the emacs mode
-$if mode=emacs
+set completion-ignore-case on
+set completion-map-case on
+set show-all-if-ambiguous off
+set show-all-if-unmodified off
+set menu-complete-display-prefix on
+set colored-stats on
+set visible-stats on
+set mark-symlinked-directories on
 
-# allow the use of the Home/End keys
-"\e[1~": beginning-of-line
-"\e[4~": end-of-line
+#####
+# History behavior
+#####
 
-# allow the use of the Delete/Insert keys
+# Arrow up/down search history by prefix (much better UX)
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+
+# Page Up / Page Down also search history
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+
+#####
+# Modern kitty key sequences
+#####
+
+# Ctrl + Left / Right
+"\e[1;5C": forward-word
+"\e[1;5D": backward-word
+
+# Alt + Left / Right
+"\e[1;3C": forward-word
+"\e[1;3D": backward-word
+
+# Home / End
+"\e[H": beginning-of-line
+"\e[F": end-of-line
+"\eOH": beginning-of-line
+"\eOF": end-of-line
+
+# Delete / Insert
 "\e[3~": delete-char
 "\e[2~": quoted-insert
 
-# mappings for "page up" and "page down" to step to the beginning/end
-# of the history
-# "\e[5~": beginning-of-history
-# "\e[6~": end-of-history
+# Shift+Tab (reverse completion)
+"\e[Z": menu-complete-backward
 
-# alternate mappings for "page up" and "page down" to search the history
-# "\e[5~": history-search-backward
-# "\e[6~": history-search-forward
+#####
+# Productivity bindings
+#####
 
-## arrow up
-"\e[A":history-search-backward
-## arrow down
-"\e[B":history-search-forward
+# Alt + . → insert last argument
+"\e.": yank-last-arg
 
-# mappings for Ctrl-left-arrow and Ctrl-right-arrow for word moving
-"\e[1;5C": forward-word
-"\e[1;5D": backward-word
-"\e[5C": forward-word
-"\e[5D": backward-word
-"\e\e[C": forward-word
-"\e\e[D": backward-word
+# Ctrl-x Ctrl-e → edit command in $EDITOR
+"\C-x\C-e": edit-and-execute-command
 
-$if term=rxvt
-"\e[7~": beginning-of-line
-"\e[8~": end-of-line
-"\eOc": forward-word
-"\eOd": backward-word
-$endif
-
-# for non RH/Debian xterm, can't hurt for RH/Debian xterm
-# "\eOH": beginning-of-line
-# "\eOF": end-of-line
-
-# for freebsd console
-# "\e[H": beginning-of-line
-
-# "\e[F": end-of-line
-
-set completion-ignore-case On
-
-$endif
+# Better word deletion
+"\e\C-h": backward-kill-word
+"\C-w": unix-word-rubout
   '';
 }

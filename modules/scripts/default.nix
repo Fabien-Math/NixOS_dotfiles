@@ -30,6 +30,7 @@ let
     (import ./driverinfo.nix scriptArgs)
     (import ./underwatt.nix scriptArgs)
     # Add new scripts here as you create them
+    (import ./ros2-base-attacher.nix scriptArgs)
   ];
 in
 {

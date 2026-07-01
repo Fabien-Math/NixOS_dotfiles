@@ -21,10 +21,6 @@
           '';
           bashrcExtra = ''
             export TERM="xterm-256color" # Get correct colour
-            alias control_sim="cd /home/fabien/thesis/codes/control_sim/ && nix develop . --command zeditor . && exit"
-            alias config_nixos="zeditor ~/NixOS && exit"
-            alias ibvs_sim="cd /home/fabien/thesis/codes/ibvs_sim/ && nix develop . --command zeditor . && exit"
-            alias compress_pdf="/home/fabien/NixOS/modules/desktop/hyprland/scripts/compress-pdf.sh"
           '';
           shellOptions = [
             "autocd" # change to named directory
@@ -100,7 +96,7 @@
             tp = "${pkgs.trash-cli}/bin/trash-put";
             tpr = "${pkgs.trash-cli}/bin/trash-restore";
             grep = "grep --color=always";
-            pokemon = "pokego --random 1-8 --no-title";
+            compress_pdf = "/home/fabien/NixOS/modules/desktop/hyprland/scripts/compress-pdf.sh";
 
             # Nixos
             list-gens = "nixos-rebuild list-generations";
@@ -108,24 +104,19 @@
             update-input = "nix flake update $@";
             sysup = "nix flake update --flake ~/NixOS && rebuild";
 
-            # Directory Shortcuts.
+            # Directory Shortcuts
             dots = "cd ~/NixOS/";
-            games = "cd /mnt/games/";
-            work = "cd /mnt/work/";
-            media = "cd /mnt/work/media/";
-            projects = "cd /mnt/work/Projects/";
-            proj = "cd /mnt/work/Projects/";
-            dev = "cd /mnt/work/Projects/";
-            # dev = "cd /mnt/work/dev/";
-            # nixdir = "cd /mnt/work/dev/nix/";
-            # cppdir = "cd /mnt/work/dev/C++/";
-            # zigdir = "cd /mnt/work/dev/Zig/";
-            # csdir = "cd /mnt/work/dev/C#/";
-            # rustdir = "cd /mnt/work/dev/Rust/";
-            # pydir = "cd /mnt/work/dev/Python/";
-            # javadir = "cd /mnt/work/dev/Java/";
-            # luadir = "cd /mnt/work/dev/lua/";
-            # webdir = "cd /mnt/work/dev/Website/";
+
+            # Code Shortcuts
+            attach_ros2_base = "cd /home/fabien/thesis/codes/stonefish_sim/.devcontainer/ && docker compose exec ros2-base bash";
+            start_ros2_container = "cd /home/fabien/thesis/codes/stonefish_sim/.devcontainer/ && docker compose up -d ros2-base && code && exit";
+
+            gpush = "eval $(ssh-agent -s) && ssh-add ~/.ssh/git_key && git push";
+            stonefish_devcontainer = "cd /home/fabien/thesis/codes/stonefish_sim/.devcontainer/ && zeditor .";
+            stonefish_code = "cd /home/fabien/thesis/codes/stonefish_sim/stonefish_version/stonefish/ && zeditor .";
+            config_nixos = "zeditor ~/NixOS && exit";
+            control_sim = "cd /home/fabien/thesis/codes/control_sim/ && nix develop . --command zeditor . && exit";
+            ibvs_sim = "cd /home/fabien/thesis/codes/ibvs_sim/ && nix develop . --command zeditor . && exit";
           };
         };
       }
