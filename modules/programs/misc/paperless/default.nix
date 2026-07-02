@@ -24,13 +24,8 @@
           genericName = "File Manager";
           comment = "Launch Paperless in kiosk mode";
           exec = "firefox -P Paperless --kiosk http://localhost:28981";
-          icon = "./paperless-ngx.png";
-          mimeType = [
-            "Application"
-          ];
-          categories = [
-            "Application"
-          ];
+          icon = ./paperless-ngx.png;
+          categories = [ "Office" "Utility" ];
           terminal = false; # Important: set to false since we're calling kitty directly
         };
       };
