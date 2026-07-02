@@ -47,6 +47,7 @@ in
     ./programs/media/mpv
     ./programs/misc/tlp
     ./programs/misc/thunar
+    ./programs/misc/paperless
     ./programs/misc/lact # GPU fan, clock and power configuration
   ]
 }
