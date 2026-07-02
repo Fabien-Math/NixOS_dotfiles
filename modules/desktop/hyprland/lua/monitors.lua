@@ -1,6 +1,6 @@
 -- Laptop screen
 hl.monitor({
-	output = "desc:Chimei Innolux Corporation 0x1521",
+	output = "desc:BOE 0x0877",
 	mode = "1920x1080@60.02",
 	position = "0x360",
 	scale = 1.0,
@@ -33,14 +33,14 @@ hl.monitor({
 hl.workspace_rule({
 	workspace = "1",
 	persistent = true,
-	monitor = "desc:Chimei Innolux Corporation 0x1521",
+	monitor = "desc:BOE 0x0877",
 	default = true,
 })
 
 hl.workspace_rule({
 	workspace = "2",
 	persistent = true,
-	monitor = "desc:Chimei Innolux Corporation 0x1521",
+	monitor = "desc:BOE 0x0877",
 })
 
 hl.workspace_rule({

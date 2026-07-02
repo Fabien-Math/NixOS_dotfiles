@@ -11,7 +11,7 @@
     graphics.enable = true;
     enableRedistributableFirmware = true;
     keyboard.qmk.enable = true;
-    nvidia-container-toolkit.enable = true;
+    nvidia-container-toolkit.enable = false;
     bluetooth = {
       enable = true;
       powerOnBoot = true;
