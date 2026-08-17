@@ -29,6 +29,15 @@ hl.monitor({
 	scale = 1.0,
 })
 
+-- -- Bat X pool monitor HP
+-- hl.monitor({
+-- 	output = "desc:desc:HP Inc. HP 840 G9 AiO CZC4137R0W \x0d",
+-- 	mode = "1920x1080@60.00",
+-- 	position = "-1920x360",
+-- 	scale = 1.0,
+-- })
+
+
 -- Binds workspaces to my monitors (find desc with: hyprctl monitors)
 hl.workspace_rule({
 	workspace = "1",
@@ -68,3 +77,22 @@ hl.workspace_rule({
 	persistent = true,
 	monitor = "desc:Lenovo Group Limited P24q-30 V90EZ1NZ",
 })
+
+
+-- hl.workspace_rule({
+-- 	workspace = "3",
+-- 	persistent = true,
+-- 	monitor = "desc:HP Inc. HP 840 G9 AiO CZC4137R0W \x0d",
+-- })
+
+-- hl.workspace_rule({
+-- 	workspace = "4",
+-- 	persistent = true,
+-- 	monitor = "desc:HP Inc. HP 840 G9 AiO CZC4137R0W \x0d",
+-- })
+
+-- hl.workspace_rule({
+-- 	workspace = "5",
+-- 	persistent = true,
+-- 	monitor = "desc:HP Inc. HP 840 G9 AiO CZC4137R0W \x0d",
+-- })

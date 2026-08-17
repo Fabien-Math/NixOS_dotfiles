@@ -159,7 +159,7 @@
           disable_ai = true;
           soft_wrap = "editor_width";
           relative_line_numbers = "disabled";
-          hard_tabs = true;
+          hard_tabs = false;
           colorize_brackets = true;
 
           hour_format = "hour24";

@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 pkgs.writeShellScriptBin "gpuinfo" ''
   gpuinfo_file="/tmp/$UID-gpuinfo"
 

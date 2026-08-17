@@ -5,7 +5,7 @@
 
     address = "127.0.0.1";
 
-    passwordFile = "/home/fabien/paperless-password";
+    passwordFile = "/etc/secrets/paperless-password";
 
     mediaDir = "/srv/paperless/media";
     consumptionDir = "/srv/paperless/consume";
@@ -23,7 +23,7 @@
           name = "Paperless";
           genericName = "File Manager";
           comment = "Launch Paperless in kiosk mode";
-          exec = "./paperless_launch.sh";
+          exec = "firefox -P Paperless http://localhost:28981";
           icon = ./paperless-ngx.png;
           categories = [ "Office" "Utility" ];
           terminal = false; # Important: set to false since we're calling kitty directly

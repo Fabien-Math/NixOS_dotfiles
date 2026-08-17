@@ -43,32 +43,32 @@
         server = {
           # When only using Unbound as DNS, make sure to replace 127.0.0.1 with your ip address
           # When using Unbound in combination with pi-hole or Adguard, leave 127.0.0.1, and point Adguard to 127.0.0.1:PORT
-          interface = [ "127.0.0.1" ]; # "::1"
+          interface = [
+          	"127.0.0.1"
+          ]; # "::1"
           port = 5335;
           access-control = [
             "127.0.0.1 allow"
             "192.168.0.0/24 allow"
           ];
-          # Based on recommended settings in https://docs.pi-hole.net/guides/dns/unbound/#configure-unbound
-          harden-glue = true;
-          harden-dnssec-stripped = true;
-          use-caps-for-id = false;
-          prefetch = true;
-          edns-buffer-size = 1232;
+
+          # Privacy / Hardening
           hide-identity = true;
           hide-version = true;
-          num-threads = 1;
-          so-rcvbuf = "1m";
+          harden-glue = true;
+          harden-dnssec-stripped = true;
+          qname-minimisation = true;
 
-          do-udp = true;
-          do-tcp = true;
-          do-ip4 = true;
-          do-ip6 = false;
-          prefer-ip6 = false;
+          # Performance
+          prefetch = true;
+          prefetch-key = true; # may use slightly more cpu.
+          use-caps-for-id = false;
 
-          serve-expired = true;
-          serve-expired-ttl = 21600;            # do not serve replies older than one day, in seconds
-          serve-expired-client-timeout = 1500;  # consider serving expired replies when resolution takes longer than 1.5 seconds, in milliseconds
+          # Avoid fragmentation problems
+          edns-buffer-size = 1232;
+
+          # DNSSEC
+          auto-trust-anchor-file = "/var/lib/unbound/root.key";
         };
         forward-zone = [
           {
@@ -95,7 +95,18 @@
         http = {
           address = "127.0.0.1:3005";
         };
+        querylog = {
+          enabled = true;
+          size_memory = 1000;
+          interval = "6h";
+        };
+        statistics = {
+          enabled = true;
+          interval = "1d";
+        };
         dns = {
+          enable_dnssec = true;
+          anonymize_client_ip = true;
           bind_host = "0.0.0.0";
           bind_port = 53;
           upstream_dns = [ "127.0.0.1:5335" ];
@@ -116,15 +127,18 @@
               url = url;
             })
             [
-              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt"
-              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt"
+              # Main Lists
+              "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/ultimate.txt"
+              "https://big.oisd.nl"
+              "https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt"
               "https://easylist.to/easylist/easylist.txt" # Base filter
               "https://easylist.to/easylist/easyprivacy.txt" # Privacy protection
               "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt" # Malware domains
               "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt" # Scam protection
               "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"  # Cryptominers
 
-              # My Lists
+              # Optional
+              "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
               "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt" # Large
               "https://raw.githubusercontent.com/yokoffing/filterlists/refs/heads/main/privacy_essentials.txt"
               "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
