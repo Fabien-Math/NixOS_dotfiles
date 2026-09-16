@@ -6,10 +6,17 @@ in
 {
   environment.systemPackages = with pkgs; [
     #####   Utils   #####
+    # Vectorial drawing
     inkscape
+    # General Image Manipulation Program
     gimp
+    # Simple open source video editor
+    shotcut
+    # Image viewer
     qimgv
+    # Bibliography tool
     zotero
+    # Open source office suite like
     onlyoffice-desktopeditors
     vlc
     # Better file diff
@@ -42,7 +49,7 @@ in
     freecad
     calculix-ccx
 
-    # Code
+    #####   Code   #####
     # Latex
     texliveFull
     # C

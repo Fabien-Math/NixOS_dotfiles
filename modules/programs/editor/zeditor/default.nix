@@ -235,6 +235,7 @@
         # -----------------------
         extensions = [
           "nix"
+          "ruff"
           "lua"
           "toml"
           "make"

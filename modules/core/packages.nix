@@ -16,7 +16,7 @@
     appimage-run # Needed For AppImage Support
     killall # For Killing All Instances Of Programs
     lm_sensors # Used For Getting Hardware Temps
-    gnome-disk-utility # Disk Partitioning and Mounting Utility
+    # gnome-disk-utility # Disk Partitioning and Mounting Utility
     jq # Json Formatting Utility
     bibata-cursors
     sddm-astronaut # Sddm Theme (Overlayed)
@@ -26,7 +26,7 @@
     fzf # Fuzzy Finder
     fd # Better Find
     git # Git
-    zoxide # Fast directory jumping (z/cd replacement)
+    # zoxide # Fast directory jumping (z/cd replacement)
     gh # Github Authentication Client
     libjxl # Support for JXL Images
     dig # Network debugging
@@ -36,12 +36,13 @@
     tldr # Improved Man
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
+    ruff # Python linting and formatting
     # aider-chat # AI in terminal (Optional: Client only)
     # cmatrix # Matrix Movie Effect In Terminal
     # cowsay # Great Fun Terminal Program
-    # duf # Utility For Viewing Disk Usage In Terminal
+    duf # Utility For Viewing Disk Usage In Terminal
     # dysk # Disk space util nice formattting
-    # ffmpeg # Terminal Video / Audio Editing
+    ffmpeg # Terminal Video / Audio Editing
     # gemini-cli # CLI AI client ONLY (optional)
     # glxinfo # needed for inxi diag util
     # inxi # CLI System Information Tool
@@ -61,7 +62,7 @@
     # rhythmbox # audio player
     # socat # Needed For Screenshots
     # usbutils # Good Tools For USB Devices
-    # uwsm # Universal Wayland Session Manager (optional must be enabled)
+    uwsm # Universal Wayland Session Manager (optional must be enabled)
     # v4l-utils # Used For Things Like OBS Virtual Camera
     # warp-terminal # Terminal with AI support build in
     # waypaper # Change wallpaper
