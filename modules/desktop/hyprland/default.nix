@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    ../../themes/Catppuccin # Catppuccin GTK and QT themes
+    ../../themes/catppuccin # Catppuccin GTK and QT themes
     ./variables.nix
     ./programs/waybar
     ./programs/wlogout
@@ -53,7 +53,7 @@ in
     enable = true;
     package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
     portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
-    # withUWSM = true;
+    withUWSM = true;
   };
 
   home-manager.sharedModules = [
@@ -61,7 +61,7 @@ in
       xdg.portal = {
         enable = true;
         extraPortals = with pkgs; [
-          xdg-desktop-portal-gtk
+          xdg-desktop-portal-hyprland
         ];
         xdgOpenUsePortal = true;
         configPackages = [ config.programs.hyprland.package ];
@@ -96,3 +96,6 @@ in
     })
   ];
 }
+
+# If graphical session is not working
+# uwsm start hyprland
