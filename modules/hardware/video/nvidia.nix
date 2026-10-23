@@ -1,65 +1,55 @@
-{
-  host,
-  lib,
-  pkgs,
-  config,
-  ...
-}:
+{ host, lib, pkgs, config, ... }:
 let
-  inherit (import ../../../hosts/${host}/variables.nix) nvidiaChannel;
+  inherit (import ../../../hosts/${host}/variables.nix)
+    nvidiaChannel;
 in
 {
-  environment.sessionVariables = lib.optionalAttrs config.programs.hyprland.enable {
-    GBM_BACKEND = "nvidia-drm";
-    WLR_NO_HARDWARE_CURSORS = "1";
-    LIBVA_DRIVER_NAME = "nvidia";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    # MOZ_DISABLE_RDD_SANDBOX = 1; # Potential security risk
+  services.xserver.videoDrivers = [ "nvidia" ];
 
-    __GL_GSYNC_ALLOWED = "1"; # GSync
-    __GL_VRR_ALLOWED = "1"; # VRR
-    __GL_MaxFramesAllowed = "1"; # Reduces input lag
+  hardware.nvidia = {
+    open = true;
+
+    package =
+      config.boot.kernelPackages.nvidiaPackages.${nvidiaChannel};
+
+    modesetting.enable = true;
+    powerManagement.enable = true;
+    powerManagement.finegrained = false;
+    nvidiaSettings = false;
+
+    prime = {
+      # Replace with the actual IDs from lspci
+      amdgpuBusId = "PCI:6:0:0";
+      nvidiaBusId = "PCI:1:0:0";
+
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
+    };
   };
 
-  # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = [ "nvidia" ]; # or "nvidiaLegacy470", etc.
-  boot.kernelParams = lib.optionals (lib.elem "nvidia" config.services.xserver.videoDrivers) [
+  boot.kernelParams = [
     "nvidia-drm.modeset=1"
     "nvidia_drm.fbdev=1"
-
-    "nvidia.NVreg_RegistryDwords=RmEnableAggressiveVblank=1" # Experimental: reduce latency
   ];
-  hardware = {
-    nvidia = {
-      open = false;
-      nvidiaPersistenced = true;
-      nvidiaSettings = true;
-      powerManagement.enable = true; # Fixes sleep/suspend
 
-      modesetting.enable = true; # Modesetting is required.
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
 
-      package = config.boot.kernelPackages.nvidiaPackages.${nvidiaChannel};
-    };
-    graphics = {
-      enable = true;
-      # package = config.boot.kernelPackages.nvidiaPackages.${nvidiaChannel};
-      enable32Bit = true;
-      extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-        libva-vdpau-driver
-        libvdpau-va-gl
-      ];
-    };
+    extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
   };
+
   nixpkgs.config = {
     nvidia.acceptLicense = true;
-    allowUnfreePredicate =
-      pkg:
-      builtins.elem (lib.getName pkg) [
-        "cudatoolkit"
-        "nvidia-persistenced"
-        "nvidia-settings"
-        "nvidia-x11"
-      ];
+    allowUnfree = true;
   };
+
+  environment.sessionVariables =
+    lib.optionalAttrs config.programs.hyprland.enable {
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
 }
