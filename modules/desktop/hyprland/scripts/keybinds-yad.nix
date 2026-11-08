@@ -1,8 +1,8 @@
 { pkgs, ... }:
-let
-  flakePath = "$HOME/NixOS/flake.nix";
-in
+
 pkgs.writeShellScriptBin "keybinds-yad" ''
+  flakePath="$HOME/NixOS/flake.nix"
+
   if ${pkgs.procps}/bin/pidof rofi >/dev/null; then
     ${pkgs.procps}/bin/pkill rofi
   fi
@@ -16,7 +16,7 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     /settings = {/ {inside_settings=1; next}
     inside_settings && /}/ {inside_settings=0}
     inside_settings && $0 ~ key {print gensub(/.*"([^"]+)".*/, "\\1", "g", $0)}
-    ' key="$1" "${flakePath}"
+    ' key="$1" "$flakePath"
   }
 
   _browser=$(get_nix_value "browser =")
@@ -148,5 +148,5 @@ pkgs.writeShellScriptBin "keybinds-yad" ''
     "XF86 Pause" "Play / Pause media" "playerctl play-pause" \
     "XF86 Next" "Next track" "playerctl next" \
     "XF86 Prev" "Previous track" "playerctl previous" \
-    "" "" "" \
+    "" "" ""
 ''

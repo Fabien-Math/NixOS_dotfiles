@@ -40,6 +40,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nur.url = "github:nix-community/NUR";
+    qylock.url = "github:Darkkal44/qylock";
     betterfox = {
       url = "github:yokoffing/Betterfox";
       flake = false;

@@ -30,6 +30,7 @@ in
     playerctl
     pamixer
     hyprsunset
+    hyprshutdown
     btop
     hyprpicker
   ];

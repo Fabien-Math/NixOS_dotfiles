@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home-manager.sharedModules = [
     (_: {
@@ -6,12 +6,12 @@
       programs.wlogout = {
         enable = true;
         layout = [
-          # {
-          #   label = "lock";
-          #   action = "${pkgs.hyprlock}/bin/hyprlock";
-          #   text = "Lock";
-          #   keybind = "l";
-          # }
+          {
+            label = "lock";
+            action = "${pkgs.hyprlock}/bin/hyprlock";
+            text = "Lock";
+            keybind = "l";
+          }
           # {
           #   label = "hibernate";
           #   action = "systemctl hibernate";
@@ -19,17 +19,17 @@
           #   keybind = "h";
           # }
           {
+            label = "shutdown";
+            action = "systemctl poweroff";
+            text = "Shutdown";
+            keybind = "s";
+          }
+          {
             label = "logout";
             action = "hyprshutdown";
             # action = "killall -9 Hyprland sleep 2";
             text = "Exit";
             keybind = "e";
-          }
-          {
-            label = "shutdown";
-            action = "systemctl poweroff";
-            text = "Shutdown";
-            keybind = "s";
           }
           {
             label = "suspend";
@@ -57,6 +57,8 @@
             background-position: center;
             background-size: 25%;
             border: none;
+            min-width: 120px;
+            min-height: 120px;
             background-color: rgba(30, 30, 46, 0);
             margin: 5px;
             transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;

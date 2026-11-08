@@ -11,13 +11,14 @@ in
     # General Image Manipulation Program
     gimp
     # Simple open source video editor
-    shotcut
+    # shotcut
     # Image viewer
     qimgv
     # Bibliography tool
     zotero
     # Open source office suite like
     onlyoffice-desktopeditors
+    # Media player
     vlc
     # Better file diff
     meld
@@ -29,12 +30,8 @@ in
     borgbackup
     # Color generation and manipulator
     pastel
-    # Ensure bash is interactive
-    bashInteractive
     # A set of tool for PostScript and PDF (like compression)
     ghostscript
-    # Utility for bidirectional data transfer between two independent data channels (Check Hyprland monitors changes)
-    socat
     # Note system
     unstable.affine
     # Utility to count line of code of a project
@@ -44,6 +41,10 @@ in
 
     #####   Modeling   #####
     blender
+    # (blender.override {
+    #   config.cudaSupport = true;
+    #   config.rocmSupport = false;
+    # })
     orca-slicer
 
     freecad
