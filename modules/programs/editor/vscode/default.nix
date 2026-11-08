@@ -87,8 +87,8 @@
             "window.menuBarVisibility" = "classic";
             "window.zoomLevel" = 0.5;
             "editor.fontSize" = 14;
-            "workbench.colorTheme" = "Catppuccin Mocha";
-            "workbench.iconTheme" = "catppuccin-mocha";
+            "workbench.colorTheme" = "Catppuccin Macchiato";
+            # "workbench.iconTheme" = "catppuccin-mocha"; # Comment to reset to vscode default
             "catppuccin.accentColor" = "lavender";
             "vsicons.dontShowNewVersionMessage" = true;
             "explorer.confirmDragAndDrop" = false;
@@ -121,7 +121,9 @@
             "editor.formatOnPaste" = true;
 
             "editor.minimap.enabled" = true;
-            "workbench.sideBar.location" = "right";
+            "workbench.sideBar.location" = "left";
+            "workbench.tree.indent" = 20;
+
             # "workbench.activityBar.location" = "hidden";
             # "workbench.editor.showTabs" = "single";
             # "workbench.statusBar.visible" = false;
@@ -171,176 +173,6 @@
             "latex-workshop.formatting.latex" = "latexindent";
             "latex-workshop.format.fixMath.enabled" = true;
 
-
-            "vim.leader" = "<Space>";
-            "vim.useCtrlKeys" = true;
-            "vim.hlsearch" = true;
-            "vim.useSystemClipboard" = true;
-            "vim.handleKeys" = {
-              "<C-f>" = true;
-              "<C-a>" = false;
-            };
-            "vim.insertModeKeyBindings" = [
-              {
-                "before" = [
-                  "k"
-                  "j"
-                ];
-                "after" = [
-                  "<Esc>"
-                  "l"
-                ];
-              }
-            ];
-            "vim.normalModeKeyBindingsNonRecursive" = [
-              # NAVIGATION
-              # switch b/w buffers
-              {
-                "before" = [ "<S-h>" ];
-                "commands" = [ ":bprevious" ];
-              }
-              {
-                "before" = [ "<S-l>" ];
-                "commands" = [ ":bnext" ];
-              }
-
-              # splits
-              {
-                "before" = [
-                  "leader"
-                  "v"
-                ];
-                "commands" = [ ":vsplit" ];
-              }
-              {
-                "before" = [
-                  "leader"
-                  "s"
-                ];
-                "commands" = [ ":split" ];
-              }
-
-              # panes
-              {
-                "before" = [ "<C-h>" ];
-                "commands" = [ "workbench.action.focusLeftGroup" ];
-              }
-              {
-                "before" = [ "<C-j>" ];
-                "commands" = [ "workbench.action.focusBelowGroup" ];
-              }
-              {
-                "before" = [ "<C-k>" ];
-                "commands" = [ "workbench.action.focusAboveGroup" ];
-              }
-              {
-                "before" = [ "<C-l>" ];
-                "commands" = [ "workbench.action.focusRightGroup" ];
-              }
-              # NICE TO HAVE
-              {
-                "before" = [
-                  "leader"
-                  "w"
-                ];
-                "commands" = [ ":w!" ];
-              }
-              {
-                "before" = [
-                  "leader"
-                  "q"
-                ];
-                "commands" = [ ":q!" ];
-              }
-              {
-                "before" = [
-                  "leader"
-                  "x"
-                ];
-                "commands" = [ ":x!" ];
-              }
-              {
-                "before" = [
-                  "["
-                  "d"
-                ];
-                "commands" = [ "editor.action.marker.prev" ];
-              }
-              {
-                "before" = [
-                  "];"
-                  "d"
-                ];
-                "commands" = [ "editor.action.marker.next" ];
-              }
-              {
-                "before" = [
-                  "<leader>"
-                  "c"
-                  "a"
-                ];
-                "commands" = [ "editor.action.quickFix" ];
-              }
-              /*
-                  {
-                  "before" = [":"];
-                  "commands" = ["workbench.action.showCommands"];
-                }
-              */
-              {
-                "before" = [
-                  "<leader>"
-                  "f"
-                ];
-                "commands" = [ "workbench.action.quickOpen" ];
-              }
-              {
-                "before" = [ "<C-n>" ];
-                "commands" = [ "workbench.action.toggleSidebarVisibility" ];
-              }
-              {
-                "before" = [
-                  "<leader>"
-                  "p"
-                ];
-                "commands" = [ "editor.action.formatDocument" ];
-              }
-              {
-                "before" = [
-                  "g"
-                  "h"
-                ];
-                "commands" = [ "editor.action.showDefinitionPreviewHover" ];
-              }
-            ];
-            "vim.visualModeKeyBindings" = [
-              # Stay in visual mode while indenting
-              {
-                "before" = [ "<" ];
-                "commands" = [ "editor.action.outdentLines" ];
-              }
-              {
-                "before" = [ ">" ];
-                "commands" = [ "editor.action.indentLines" ];
-              }
-              # Move selected lines while staying in visual mode
-              {
-                "before" = [ "J" ];
-                "commands" = [ "editor.action.moveLinesDownAction" ];
-              }
-              {
-                "before" = [ "K" ];
-                "commands" = [ "editor.action.moveLinesUpAction" ];
-              }
-              # toggle comment selection
-              {
-                "before" = [
-                  "leader"
-                  "c"
-                ];
-                "commands" = [ "editor.action.commentLine" ];
-              }
-            ];
           };
         };
       };

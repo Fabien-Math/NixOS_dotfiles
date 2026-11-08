@@ -266,3 +266,4 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Rebuild NixOS with a KeyBind
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd(term .. " -e rebuild"))
+hl.bind(mainMod .. " + SHIFT + U", hl.dsp.exec_cmd(term .. " -e rebuild_offline"))

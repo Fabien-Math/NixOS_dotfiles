@@ -2,12 +2,10 @@
 {
   networking.firewall = {
     allowedTCPPorts = [
-      53
-      5335
+    	53
     ];
     allowedUDPPorts = [
-      53
-      5335
+    	53
     ];
   };
   # Disable systemd dns resolver
@@ -25,117 +23,42 @@
       };
     };
   };
-  systemd.services = {
-    unbound.stopIfChanged = false;
-    adguardhome.serviceConfig = {
-      After = [
-        "network.target"
-        "unbound.service"
-      ];
-      Requires = [ "unbound.service" ];
-    };
-  };
-  services = {
-    unbound = {
-      enable = true;
-      settings = {
-        remote-control.control-enable = true;
-        server = {
-          # When only using Unbound as DNS, make sure to replace 127.0.0.1 with your ip address
-          # When using Unbound in combination with pi-hole or Adguard, leave 127.0.0.1, and point Adguard to 127.0.0.1:PORT
-          interface = [ "127.0.0.1" ]; # "::1"
-          port = 5335;
-          access-control = [
-            "127.0.0.1 allow"
-            "192.168.0.0/24 allow"
-          ];
-          # Based on recommended settings in https://docs.pi-hole.net/guides/dns/unbound/#configure-unbound
-          harden-glue = true;
-          harden-dnssec-stripped = true;
-          use-caps-for-id = false;
-          prefetch = true;
-          edns-buffer-size = 1232;
-          hide-identity = true;
-          hide-version = true;
-          num-threads = 1;
-          so-rcvbuf = "1m";
 
-          do-udp = true;
-          do-tcp = true;
-          do-ip4 = true;
-          do-ip6 = false;
-          prefer-ip6 = false;
-
-          serve-expired = true;
-          serve-expired-ttl = 21600;            # do not serve replies older than one day, in seconds
-          serve-expired-client-timeout = 1500;  # consider serving expired replies when resolution takes longer than 1.5 seconds, in milliseconds
-        };
-        forward-zone = [
-          {
-            name = ".";
-            forward-tls-upstream = "yes";
-            forward-addr = [
-              "9.9.9.9@853#dns.quad9.net"
-              "149.112.112.112@853#dns.quad9.net"
-
-              # "1.1.1.1@853#cloudflare-dns.com"
-              # "1.0.0.1@853#cloudflare-dns.com"
-            ];
-          }
+  services.unbound = {
+    enable = true;
+    settings = {
+      server = {
+        access-control = [
+          "127.0.0.1 allow"
+          "192.168.0.0/24 allow"
         ];
-      };
-    };
-    adguardhome = {
-      enable = true;
-      host = "0.0.0.0";
-      port = 3005;
-      mutableSettings = true;
-      openFirewall = true;
-      settings = {
-        http = {
-          address = "127.0.0.1:3005";
-        };
-        dns = {
-          bind_host = "0.0.0.0";
-          bind_port = 53;
-          upstream_dns = [ "127.0.0.1:5335" ];
-          bootstrap_dns = [ "127.0.0.1:5335" ];
-          # bootstrap_dns = [ "9.9.9.9" ];
-        };
-        filtering = {
-          protection_enabled = true;
-          filtering_enabled = true;
 
-          parental_enabled = false;
-          safe_search.enabled = false;
-        };
-        filters =
-          map
-            (url: {
-              enabled = true;
-              url = url;
-            })
-            [
-              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_9.txt"
-              "https://adguardteam.github.io/HostlistsRegistry/assets/filter_11.txt"
-              "https://easylist.to/easylist/easylist.txt" # Base filter
-              "https://easylist.to/easylist/easyprivacy.txt" # Privacy protection
-              "https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt" # Malware domains
-              "https://raw.githubusercontent.com/Spam404/lists/master/main-blacklist.txt" # Scam protection
-              "https://raw.githubusercontent.com/hoshsadiq/adblock-nocoin-list/master/nocoin.txt"  # Cryptominers
+        num-threads = 2;
+        prefetch = true;
 
-              # My Lists
-              "https://cdn.jsdelivr.net/gh/hagezi/dns-blocklists@latest/adblock/pro.txt" # Large
-              "https://raw.githubusercontent.com/yokoffing/filterlists/refs/heads/main/privacy_essentials.txt"
-              "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/LegitimateURLShortener.txt"
-              "https://raw.githubusercontent.com/yokoffing/filterlists/refs/heads/main/annoyance_list.txt"
-              "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/BrowseWebsitesWithoutLoggingIn.txt"
-              "https://raw.githubusercontent.com/hagezi/dns-blocklists/refs/heads/main/adblock/spam-tlds-ublock.txt"
-              "https://raw.githubusercontent.com/iam-py-test/my_filters_001/refs/heads/main/antitypo.txt"
-              "https://raw.githubusercontent.com/iam-py-test/my_filters_001/refs/heads/main/antimalware.txt"
-              "https://raw.githubusercontent.com/DandelionSprout/adfilt/refs/heads/master/Dandelion%20Sprout's%20Anti-Malware%20List.txt"
-            ];
+        serve-expired = true;
+        serve-expired-ttl = 86400;
+        serve-expired-client-timeout = 1800;
+        serve-expired-reply-ttl = 30;
+
+        edns-buffer-size = 1232;
+        hide-identity = true;
+        hide-version = true;
+        qname-minimisation = true;
       };
+
+      forward-zone = [{
+        name = ".";
+
+        forward-tls-upstream = true;
+
+        forward-addr = [
+          "9.9.9.9@853#dns.quad9.net"
+          "149.112.112.112@853#dns.quad9.net"
+          "1.1.1.1@853#cloudflare-dns.com"
+          "1.0.0.1@853#cloudflare-dns.com"
+        ];
+      }];
     };
   };
 }

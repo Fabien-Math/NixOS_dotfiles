@@ -7,50 +7,50 @@ in
   environment.systemPackages = with pkgs; [
     #####   Utils   #####
     inkscape
-    gimp
+    # gimp
     qimgv
-    zotero
-    onlyoffice-desktopeditors
+    # zotero
+    # onlyoffice-desktopeditors
     vlc
-    # Better file diff
+    # # Better file diff
     meld
-    # Basic terminal calculator
+    # # Basic terminal calculator
     bc
-    # Disk space analyser
+    # # Disk space analyser
     qdirstat
-    # Backup tool
+    # # Backup tool
     borgbackup
-    # Color generation and manipulator
+    # # Color generation and manipulator
     pastel
-    # Ensure bash is interactive
+    # # Ensure bash is interactive
     bashInteractive
-    # A set of tool for PostScript and PDF (like compression)
+    # # A set of tool for PostScript and PDF (like compression)
     ghostscript
-    # Utility for bidirectional data transfer between two independent data channels (Check Hyprland monitors changes)
+    # # Utility for bidirectional data transfer between two independent data channels (Check Hyprland monitors changes)
     socat
-    # Note system
-    unstable.affine
-    # Utility to count line of code of a project
+    # # Note system
+    # unstable.affine
+    # # Utility to count line of code of a project
     cloc
-    # File trasfert
+    # # File trasfert
     localsend
 
-    #####   Modeling   #####
-    blender
-    orca-slicer
+    # #####   Modeling   #####
+    # blender
+    # orca-slicer
 
     freecad
-    calculix-ccx
+    # calculix-ccx
 
-    # Code
-    # Latex
-    texliveFull
-    # C
+    # # Code
+    # # Latex
+    # texliveFull
+    # # C
     glib
     clang-tools
-    # Compression tool
+    # # Compression tool
     zlib
-    # Simple interprocess messaging system
+    # # Simple interprocess messaging system
     dbus
     # Python
     (python313.withPackages (ps: with ps; [

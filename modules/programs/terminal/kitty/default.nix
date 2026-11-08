@@ -17,6 +17,7 @@
           strip_trailing_spaces = "smart";
           macos_option_as_alt = "yes";
           macos_quit_when_last_window_closed = true;
+          remember_window_size = "no";
           copy_on_select = "yes";
           confirm_os_window_close = 0;
           scrollback_lines = 10000;
