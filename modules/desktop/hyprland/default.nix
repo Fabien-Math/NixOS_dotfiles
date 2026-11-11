@@ -11,7 +11,7 @@ let
 in
 {
   imports = [
-    ../../themes/Catppuccin # Catppuccin GTK and QT themes
+    ../../themes/catppuccin # Catppuccin GTK and QT themes
     ./variables.nix
     ./programs/waybar
     ./programs/wlogout
@@ -30,6 +30,7 @@ in
     playerctl
     pamixer
     hyprsunset
+    hyprshutdown
     btop
     hyprpicker
   ];
@@ -96,3 +97,6 @@ in
     })
   ];
 }
+
+# If graphical session is not working
+# uwsm start hyprland

@@ -53,12 +53,12 @@ hl.bind(mainMod .. " + F10",
 
 hl.bind(mainMod .. " + Q", hl.dsp.window.close())
 hl.bind("ALT + F4", hl.dsp.window.kill())
-hl.bind(mainMod .. " + delete", hl.dsp.exit()) -- kill hyperland session
+hl.bind(mainMod .. " + delete", hl.dsp.exec_cmd("hyprshutdown")) -- kill hyperland session
 hl.bind(mainMod .. " + W", hl.dsp.window.float({ action = "toggle" })) -- toggle the window on focus to float
 hl.bind(mainMod .. " + SHIFT + G", hl.dsp.group.toggle()) -- toggle the window on focus to group
 hl.bind("ALT + return", hl.dsp.window.fullscreen()) -- toggle the window on focus to fullscreen
 hl.bind(mainMod .. " + ALT + L", hl.dsp.exec_cmd("hyprlock"))
-hl.bind(mainMod .. " + backspace", hl.dsp.exec_cmd("pkill -x wlogout || wlogout -b 4"))
+hl.bind(mainMod .. " + backspace", hl.dsp.exec_cmd("pkill -x wlogout || wlogout -b 5"))
 hl.bind("CTRL + ESCAPE", hl.dsp.exec_cmd("pkill waybar || waybar"))
 
 hl.bind(mainMod .. " + CTRL + mouse_down", hl.dsp.exec_cmd("zoom in"))
@@ -266,4 +266,4 @@ hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
 
 -- Rebuild NixOS with a KeyBind
 hl.bind(mainMod .. " + U", hl.dsp.exec_cmd(term .. " -e rebuild"))
-hl.bind(mainMod .. " + SHIFT + U", hl.dsp.exec_cmd(term .. " -e rebuild_offline"))
+hl.bind(mainMod .. " + SHIFT + U", hl.dsp.exec_cmd(term .. " -e rebuild-offline"))

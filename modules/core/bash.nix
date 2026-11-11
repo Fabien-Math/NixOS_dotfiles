@@ -108,8 +108,8 @@
             dots = "cd ~/NixOS/";
 
             # Code Shortcuts
-            attach_ros2_base = "cd /home/fabien/thesis/codes/stonefish_sim/.devcontainer/ && docker compose exec ros2-base bash";
-            start_ros2_container = "cd /home/fabien/thesis/codes/stonefish_sim/.devcontainer/ && docker compose up -d ros2-base && code && exit";
+            attach_ros2_base = "cd /home/fabien/thesis/codes/expe_docker/.devcontainer/ && docker compose exec bluerov-ros2-jazzy bash";
+            start_ros2_container = "cd /home/fabien/thesis/codes/expe_docker/.devcontainer/ && docker compose up -d bluerov-ros2-jazzy && code && exit";
 
             gpush = "eval $(ssh-agent -s) && ssh-add ~/.ssh/git_key && git push";
             stonefish_devcontainer = "cd /home/fabien/thesis/codes/stonefish_sim/.devcontainer/ && zeditor .";

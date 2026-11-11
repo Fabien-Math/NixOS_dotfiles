@@ -88,6 +88,7 @@
             "window.zoomLevel" = 0.5;
             "editor.fontSize" = 14;
             "workbench.colorTheme" = "Catppuccin Macchiato";
+            # "workbench.colorTheme" = "Quiet Light";
             # "workbench.iconTheme" = "catppuccin-mocha"; # Comment to reset to vscode default
             "catppuccin.accentColor" = "lavender";
             "vsicons.dontShowNewVersionMessage" = true;

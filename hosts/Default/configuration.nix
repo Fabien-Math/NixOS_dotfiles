@@ -52,4 +52,9 @@ in
     ../../modules/programs/misc/lact # GPU fan, clock and power configuration
   ]
   ;
+
+  nix.settings = {
+    max-jobs = 1;
+    cores = 4;
+  };
 }

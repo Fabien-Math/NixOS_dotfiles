@@ -7,8 +7,7 @@
       extraBackends = [ pkgs.sane-airscan ];
       disabledDefaultBackends = [ "escl" ];
     };
-    logitech.wireless.enable = true;
-    graphics.enable = true;
+    logitech.wireless.enable = false;
     enableRedistributableFirmware = true;
     keyboard.qmk.enable = true;
     nvidia-container-toolkit.enable = false;

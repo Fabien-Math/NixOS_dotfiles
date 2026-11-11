@@ -13,62 +13,85 @@
   nixpkgs.config.allowUnfree = true;
 
   environment.systemPackages = with pkgs; [
+    # AppImage Support
     appimage-run # Needed For AppImage Support
-    killall # For Killing All Instances Of Programs
-    lm_sensors # Used For Getting Hardware Temps
-    gnome-disk-utility # Disk Partitioning and Mounting Utility
-    jq # Json Formatting Utility
+
+    # Cursors & Themes
     bibata-cursors
     sddm-astronaut # Sddm Theme (Overlayed)
-    kdePackages.qtsvg # Sddm Dependency
+
+    # SDDM Dependencies
     kdePackages.qtmultimedia # Sddm Dependency
+    kdePackages.qtsvg # Sddm Dependency
     kdePackages.qtvirtualkeyboard # Sddm Dependency
-    fzf # Fuzzy Finder
-    fd # Better Find
-    git # Git
-    gh # Github Authentication Client
-    libjxl # Support for JXL Images
-    dig # Network debugging
-    microfetch # Small fetch (Blazingly fast)
-    nix-prefetch-scripts # Find Hashes/Revisions of Nix Packages
-    ripgrep # Improved Grep
-    tldr # Improved Man
+    # libsForQt5.qt5.qtgraphicaleffects # Sddm Dependency (Old)
+
+    # System & Hardware Information
+    lm_sensors # Used For Getting Hardware Temps
+    lshw # Detailed Hardware Information
+    # glxinfo # Needed For Inxi Diag Util
+    # inxi # CLI System Information Tool
+    # pciutils # Collection Of Tools For Inspecting PCI Devices
+    socat # Utility for bidirectional data transfer between two independent data channels (Check Hyprland monitors changes)
+    # usbutils # Good Tools For USB Devices
+
+    # Disk & File Management
+    duf # Utility For Viewing Disk Usage In Terminal
+    # dysk # Disk Space Util, Nice Formatting
+    gnome-disk-utility # Disk Partitioning and Mounting Utility
+    # ncdu # Disk Usage Analyzer With Ncurses Interface
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
-    # aider-chat # AI in terminal (Optional: Client only)
-    # cmatrix # Matrix Movie Effect In Terminal
-    # cowsay # Great Fun Terminal Program
-    # duf # Utility For Viewing Disk Usage In Terminal
-    # dysk # Disk space util nice formattting
-    # ffmpeg # Terminal Video / Audio Editing
-    # gemini-cli # CLI AI client ONLY (optional)
-    # glxinfo # needed for inxi diag util
-    # inxi # CLI System Information Tool
-    # libsForQt5.qt5.qtgraphicaleffects # Sddm Dependency (Old)
-    libnotify # For Notifications
-    # lolcat # Add Colors To Your Terminal Command Output
-    lshw # Detailed Hardware Information
-    mpv # Incredible Video Player
-    # ncdu # Disk Usage Analyzer With Ncurses Interface
-    # nixfmt-rfc-style # Nix Formatter
-    # nwg-displays # configure monitor configs via GUI
-    # onefetch # provides zsaneyos build info on current system
-    pavucontrol # For Editing Audio Levels & Devices
-    # pciutils # Collection Of Tools For Inspecting PCI Devices
-    # picard # For Changing Music Metadata & Getting Cover Art
-    # pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
-    # rhythmbox # audio player
-    # socat # Needed For Screenshots
-    # usbutils # Good Tools For USB Devices
-    # uwsm # Universal Wayland Session Manager (optional must be enabled)
-    # v4l-utils # Used For Things Like OBS Virtual Camera
-    # warp-terminal # Terminal with AI support build in
-    # waypaper # Change wallpaper
-    # wget # Tool For Fetching Files With Links
-    # ytmdl # Tool For Downloading Audio From YouTube
 
+    # Terminal Utilities
+    fd # Better Find
+    fzf # Fuzzy Finder
+    jq # JSON Formatting Utility
+    killall # For Killing All Instances Of Programs
+    microfetch # Small Fetch (Blazingly Fast)
+    ripgrep # Improved Grep
+    bashInteractive # Ensure bash is interactive
+    # zoxide # Fast Directory Jumping (z/cd Replacement)
+
+    # Networking & Downloads
+    dig # Network Debugging
+    wget # Tool For Fetching Files With Links
+    # gh # GitHub Authentication Client
+
+    # Nix & Development Tools
+    git # Git
+    nix-prefetch-scripts # Find Hashes/Revisions Of Nix Packages
+    # nixfmt-rfc-style # Nix Formatter
+    # pkg-config # Wrapper Script For Allowing Packages To Get Info On Others
     # devenv
     # devbox
     # shellify
+
+    # Programming & Python
+    ruff # Python Linting And Formatting
+
+    # Documents & File Conversion
+    pandoc # Universal Document Converter
+
+    # Multimedia & Graphics
+    ffmpeg # Terminal Video / Audio Editing
+    libjxl # Support For JXL Images
+    mpv # Incredible Video Player
+    # picard # For Changing Music Metadata & Getting Cover Art
+    # rhythmbox # Audio Player
+    # v4l-utils # Used For Things Like OBS Virtual Camera
+    # ytmdl # Tool For Downloading Audio From YouTube
+
+    # Audio
+    pavucontrol # For Editing Audio Levels & Devices
+
+    # Desktop & Wayland
+    libnotify # For Notifications
+    uwsm # Universal Wayland Session Manager (Optional, Must Be Enabled)
+    # nwg-displays # Configure Monitor Configs Via GUI
+
+    # Documentation
+    tldr # Improved Man
+
   ];
 }

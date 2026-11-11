@@ -1,3 +1,4 @@
+
 { host, ... }:
 let
   inherit (import ../../../../../hosts/${host}/variables.nix) hyprlockWallpaper;
@@ -9,100 +10,91 @@ in
         enable = true;
         settings = {
           general = {
+            no_fade_in = false;
+            grace = 0;
+            disable_loading_bar = false;
             hide_cursor = true;
           };
 
           background = [
             {
               monitor = "";
-              color = "rgb(36, 39, 58)";
               path = "${../../../../themes/wallpapers/${hyprlockWallpaper}}";
-
-              new_optimizations = true;
-              # blur_size = 3;
-              # blur_passes = 2;
-              # noise = 0.0117;
-              contrast = 1.000;
-              brightness = 1.0000;
-              vibrancy = 0.2100;
-              vibrancy_darkness = 0.0;
-            }
-          ];
-
-          input-field = [
-            {
-              monitor = "";
-              size = "100, 20";
-              outline_thickness = 0;
-              rounding = 0;
-              outer_color = "rgba(0, 0, 0, 0)";
-              inner_color = "rgba(0, 0, 0, 0)";
-              font_color = "rgba(160, 160, 160, 1)";
-              fail_color = "rgb(237, 135, 150)";
-              fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
-              fail_transition = 100;
-              fade_on_empty = false;
-              placeholder_text = "";
-              dots_size = 0.2;
-              dots_spacing = 0.64;
-              dots_center = true;
-              position = "0, 10";
-              halign = "center";
-              valign = "bottom";
+              # blur_passes = 0;
+              # contrast = 0.8916;
+              # brightness = 0.8172;
+              # vibrancy = 0.1696;
+              # vibrancy_darkness = 0.0;
             }
           ];
 
           label = [
+            # GREETINGS
+            # {
+            #   monitor = "";
+            #   text = "Welcome!";
+            #   color = "rgba(205, 214, 224, 0.75)";
+            #   font_size = 55;
+            #   font_family = "JetBrainsMono Nerd Font";
+            #   position = "165, 320";
+            #   halign = "left";
+            #   valign = "center";
+            # }
+
+            # TIME
             {
               monitor = "";
-              # text = "cmd[update:1000] echo \"<b><big> $(date +\"%H:%M:%S\") </big></b>\"";
-              text = "$TIME";
-              font_size = 50;
-              color = "rgba(216, 222, 233, 0.70)";
-              position = "0, 100";
+              text = "cmd[update:1000] echo \"<span>$(date +\"%H:%M\")</span>\"";
+              color = "rgba(205, 214, 224, 0.75)";
+              font_size = 40;
+              font_family = "JetBrainsMono Nerd Font";
+              position = "255, 240";
+              halign = "left";
               valign = "center";
-              halign = "center";
             }
 
-            {
-                monitor = "";
-                text = "cmd[update:1000] echo -e \"$(date +\"%d %B\")\"";
-                color = "rgba(216, 222, 233, 0.70)";
-                font_size = 40;
-                position = "0, 20";
-                halign = "center";
-                valign = "center";
-            }
-
-            /*
+            # DAY-MONTH-DATE
             {
               monitor = "";
-              text = "Hello <span text_transform=\"capitalize\" size=\"larger\">$USER!</span>";
-              color = "rgb(160, 206, 246)";
+              text = ''cmd[update:60000] echo -e "$(date +"%A, %B %-d")"'';
+              color = "rgba(205, 214, 224, 0.75)";
               font_size = 20;
-              position = "0, 120";
-              halign = "center";
+              text_align = "left";
+              font_family = "JetBrainsMono Nerd Font";
+              position = "180, 175";
+              halign = "left";
               valign = "center";
             }
+
+
+          ];
+
+          # INPUT FIELD
+          input-field = [
             {
               monitor = "";
-              text = "Current Layout : $LAYOUT";
-              color = "rgb(160, 206, 246)";
-              font_size = 14;
-              position = "0, 20";
-              halign = "center";
-              valign = "bottom";
+              size = "320, 55";
+              outline_thickness = 0;
+              dots_size = 0.15;
+              dots_spacing = 0.2;
+              dots_center = true;
+              outer_color = "rgba(255, 255, 255, 0)";
+              inner_color = "rgba(255, 255, 255, 0.1)";
+              font_color = "rgba(160, 160, 160, 1)";
+              fail_color = "rgba(255, 255, 255, 0.1)";
+              check_color = "rgba(255, 255, 255, 0.1)";
+              capslock_color = "rgba(255, 255, 255, 0.1)";
+              numlock_color = "rgba(255, 255, 255, 0.1)";
+              bothlock_color = "rgba(255, 255, 255, 0.1)";
+              fail_transition = 100;
+              fade_on_empty = false;
+              font_family = "JetBrainsMono Nerd Font";
+              placeholder_text = "$USER";
+              hide_input = false;
+              position = "170, -220";
+              halign = "left";
+              valign = "center";
             }
-            {
-              monitor = "";
-              text = "Enter your password to unlock.";
-              color = "rgb(198, 160, 246)";
-              font_size = 14;
-              position = "0, 60";
-              halign = "center";
-              valign = "bottom";
-            }
-            */
           ];
         };
       };

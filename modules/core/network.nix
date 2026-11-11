@@ -19,14 +19,14 @@ in
         allowedUDPPorts = [ 53317 ];
       };
 
-      interfaces."enp6s0f4u1" = {
+      interfaces."enp3s0f3u2" = {
           allowedTCPPorts = [ 11311 ];  # ROS1 master, MAVROS TCP
           allowedUDPPortRanges = [
              { from = 0; to = 65535; }
            ];
         };
 
-        interfaces."enp7s0f3u1" = {
+        interfaces."enp3s0f3u3" = {
             allowedTCPPorts = [ 11311 ];  # ROS1 master, MAVROS TCP
             allowedUDPPortRanges = [
                { from = 0; to = 65535; }

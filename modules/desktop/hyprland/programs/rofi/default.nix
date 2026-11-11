@@ -13,7 +13,7 @@ in
     (_: {
       programs.rofi = {
         enable = true;
-        settings.terminal = "${getExe pkgs.${terminal}}";
+        # terminal = "${getExe pkgs.${terminal}}";
         plugins = with pkgs; [
           rofi-emoji # https://github.com/Mange/rofi-emoji 🤯
           rofi-games # https://github.com/Rolv-Apneseth/rofi-games 🎮

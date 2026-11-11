@@ -1,51 +1,34 @@
-{
-  pkgs,
-  lib,
-  host,
-  ...
-}:
+
+{ inputs, pkgs, ... }:
+
 let
-  inherit (import ../../hosts/${host}/variables.nix) sddmTheme;
-  sddm-astronaut = pkgs.sddm-astronaut.override {
-    embeddedTheme = "${sddmTheme}";
-    themeConfig =
-      if lib.hasSuffix "black_hole" sddmTheme then
-        {
-          ScreenPadding = "";
-          FormPosition = "center"; # left, center, right
-        }
-      else if lib.hasSuffix "astronaut" sddmTheme then
-        {
-          PartialBlur = "false";
-          FormPosition = "center"; # left, center, right
-        }
-      else if lib.hasSuffix "purple_leaves" sddmTheme then
-        {
-          PartialBlur = "false";
-        }
-      else
-        { };
+  clockworkTheme = pkgs.stdenvNoCC.mkDerivation {
+    pname = "clockwork";
+    version = "1.0";
+
+    src = inputs.qylock;
+    dontBuild = true;
+
+    installPhase = ''
+      mkdir -p $out/share/sddm/themes/clockwork
+      cp -r themes/clockwork/. $out/share/sddm/themes/clockwork/
+    '';
   };
-  sddmDependencies = [
-        sddm-astronaut
-        pkgs.kdePackages.qtsvg # Sddm Dependency
-        pkgs.kdePackages.qtmultimedia # Sddm Dependency
-        pkgs.kdePackages.qtvirtualkeyboard # Sddm Dependency
-      ];
 in
 {
-  services.displayManager = {
-    sddm = {
-      enable = true;
-      wayland.enable = true;
-      enableHidpi = true;
-      autoNumlock = true;
-      package = lib.mkForce pkgs.kdePackages.sddm;
-      extraPackages = sddmDependencies;
-      settings.Theme.CursorTheme = "Bibata-Modern-Classic";
-      theme = "sddm-astronaut-theme";
-    };
-  };
+  environment.systemPackages = [
+    clockworkTheme
+  ];
 
-  environment.systemPackages = sddmDependencies;
+  services.displayManager.sddm = {
+    enable = true;
+    wayland.enable = true;
+
+    theme = "clockwork/orbital";
+
+    extraPackages = with pkgs; [
+      qt6.qt5compat
+      qt6.qtsvg
+    ];
+  };
 }
